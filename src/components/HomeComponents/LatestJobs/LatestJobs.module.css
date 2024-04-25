@@ -1,0 +1,36 @@
+.container {
+  display: flex;
+  justify-content: center;
+}
+.JobsContainer {
+  display: block;
+  margin-left: 3rem;
+  width: calc(100vw - 5rem);
+}
+
+.cardContainer {
+  /* display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 350px));
+  gap: 1rem;
+  overflow-y: auto;
+  padding-bottom: 1rem; */
+  display: flex;
+  gap: 1rem;
+  overflow-x: auto;
+  overflow-y: hidden;
+  /* white-space: nowrap; */
+  scroll-behavior: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.cardContainer::-webkit-scrollbar {
+  display: none;
+}
+
+@media (max-width: 767px) {
+  .JobsContainer {
+    margin-left: 1rem;
+    width: calc(100vw - 3rem);
+  }
+}

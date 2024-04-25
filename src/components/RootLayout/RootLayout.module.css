@@ -1,0 +1,9 @@
+.Main {
+  /* min-height: calc(100vh - (70px)); */
+  /* margin: 1rem; */
+  margin-top: calc(70px);
+}
+
+.Layout {
+  position: relative;
+}

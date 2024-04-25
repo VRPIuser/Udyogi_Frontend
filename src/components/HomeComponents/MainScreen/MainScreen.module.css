@@ -1,0 +1,50 @@
+.container {
+  width: 100%;
+  height: 50vh;
+  display: flex;
+  padding: 2rem;
+  gap: 2rem;
+  background-color: var(--U_Secondary);
+  align-items: center;
+}
+.MainScreenImage {
+  width: 40%;
+}
+
+.descriptionContainer {
+  width: 60%;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.descriptionContainer h1 {
+  font-size: 2.1rem;
+  font-weight: 600;
+}
+.descriptionContainer p {
+  font-size: 1.1rem;
+  font-weight: 400;
+}
+
+.emptyImage {
+  width: 100%;
+  height: 250px;
+  background-color: var(--U_Third);
+}
+
+@media (max-width: 767px) {
+  .container {
+    flex-direction: column;
+    height: auto;
+  }
+  .descriptionContainer {
+    width: 95%;
+  }
+
+  .MainScreenImage {
+    width: 95%;
+  }
+}
