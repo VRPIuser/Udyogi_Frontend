@@ -7,12 +7,13 @@ const SignUpOrLoginContainer = ({
   classForMainContent,
   classForScreen,
   smallFrame,
+  classForFrame,
 }) => {
   return (
     <div className={`${style.container} ${classForScreen}`}>
       <div
-        className={style.frame}
-        style={{ width: smallFrame ? "50vw" : "100%" }}
+        className={`${style.frame} ${classForFrame}`}
+        // style={{ width: smallFrame ? "50vw" : "100%" }}
       >
         <div className={style.content}>
           {/* <h1>{screenData.title}</h1> */}
@@ -27,7 +28,7 @@ const SignUpOrLoginContainer = ({
       </div>
       <div
         className={`${style.mainContent} ${classForMainContent}`}
-        style={{ width: smallFrame ? "100%" : "50vw" }}
+        // style={{ width: smallFrame ? "100%" : "50vw" }}
       >
         {children}
       </div>

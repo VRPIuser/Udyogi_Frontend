@@ -1,4 +1,6 @@
+import Button from "@/UI/Button/Button";
 import CustomImage from "@/UI/Image/Image";
+import { useRouter } from "next/router";
 import React from "react";
 
 // Shared Tailwind CSS classes
@@ -9,6 +11,7 @@ const titleClasses = "text-2xl font-bold mb-2";
 const paragraphClasses = "mb-6";
 
 const EmailVerified = () => {
+  const router = useRouter();
   return (
     <div className="flex items-center justify-center h-screen">
       <div className="bg-white p-8 rounded-lg  max-w-2xl mx-auto text-center">
@@ -24,7 +27,13 @@ const EmailVerified = () => {
           Thank you for creating your account in Udhyogi! Now choose your career
           in Best Companies. All the Best!
         </p>
-        <button className={buttonClasses}>Continue</button>
+        <Button
+          onClick={() => {
+            router.push("/sign-up/job-seeker/onBoarding");
+          }}
+        >
+          Continue
+        </Button>
       </div>
     </div>
   );
