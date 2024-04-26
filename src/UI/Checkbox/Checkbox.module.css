@@ -22,7 +22,7 @@
 .checked {
   background-color: var(--primary);
   border: 1.5px solid var(--primary);
-  background-image: url("../../assets/tick.png");
+  background-image: url("/assets/icons/tick.png");
   background-size: 70%;
   background-position: center;
   background-repeat: no-repeat;

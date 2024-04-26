@@ -11,6 +11,7 @@ const CustomDatePicker = ({
   className,
   placeholderText,
   mandatory,
+  disabled,
 }) => {
   const [isFocused, setIsFocused] = useState(false);
 
@@ -40,6 +41,7 @@ const CustomDatePicker = ({
         onBlur={handleDatePickerBlur}
         customInput={<input />}
         ref={datePickerRef}
+        disabled={disabled}
       />
       <label
         className={`${
@@ -50,6 +52,7 @@ const CustomDatePicker = ({
         {placeholderText}{" "}
         {mandatory && <span style={{ color: "red" }}>&nbsp;*</span>}
       </label>
+      <span className={style.format}>yyyy-mm-dd</span>
     </div>
   );
 };

@@ -21,7 +21,7 @@ const Genders = [
   { value: "others", label: "Others" },
 ];
 
-const UserSignupFrom = () => {
+const UserSignupFrom = ({ onSubmit }) => {
   const firstNameInput = useInput({ validateValue: nameValidation });
   const lastNameInput = useInput({ validateValue: nameValidation });
 
@@ -60,17 +60,25 @@ const UserSignupFrom = () => {
   ]);
 
   const submitHandler = () => {
-    console.log(
-      firstNameInput.value,
-      lastNameInput.value,
-      mobileNumberInput.value,
-      emailInput.value,
-      passwordInput.value,
-      confirmPasswordInput.value,
-      gender
-    );
+    // console.log(
+    //   firstNameInput.value,
+    //   lastNameInput.value,
+    //   mobileNumberInput.value,
+    //   emailInput.value,
+    //   passwordInput.value,
+    //   confirmPasswordInput.value,
+    //   gender
+    // );
+    onSubmit({
+      firstName: firstNameInput.value,
+      lastName: lastNameInput.value,
+      mobileNumber: mobileNumberInput.value,
+      email: emailInput.value,
+      password: passwordInput.value,
+      gender: gender.value,
+    });
 
-    router.push("/sign-up/job-seeker/email-OTP-verification");
+    // router.push("/sign-up/job-seeker/email-OTP-verification");
   };
 
   const Line1 = (
@@ -78,31 +86,17 @@ const UserSignupFrom = () => {
       <InputWithInvalidText
         ErrorMessage={"Invalid First Name"}
         className={styles.Input}
-        inputFields={{
-          placeholder: "First Name",
-          value: firstNameInput.value,
-          isInvalid: firstNameInput.hasError,
-          onBlurHandler: firstNameInput.validateValueHandler,
-          onFocusHandler: firstNameInput.focusHandler,
-          onChange: firstNameInput.valueChangeHandler,
-          type: "text",
-          isTouched: firstNameInput.isFocused,
-        }}
+        placeholder="First Name"
+        type="text"
+        inputFields={firstNameInput}
         mandatory="true"
       />
       <InputWithInvalidText
         ErrorMessage={"Invalid Last Name"}
         className={styles.Input}
-        inputFields={{
-          placeholder: "Last Name",
-          value: lastNameInput.value,
-          isInvalid: lastNameInput.hasError,
-          onBlurHandler: lastNameInput.validateValueHandler,
-          onFocusHandler: lastNameInput.focusHandler,
-          onChange: lastNameInput.valueChangeHandler,
-          type: "text",
-          isTouched: lastNameInput.isFocused,
-        }}
+        placeholder="Last Name"
+        type="text"
+        inputFields={lastNameInput}
         mandatory="true"
       />
     </div>
@@ -113,16 +107,9 @@ const UserSignupFrom = () => {
       <InputWithInvalidText
         ErrorMessage={"Invalid Mobile Number"}
         className={`${styles.Input} `}
-        inputFields={{
-          placeholder: "Mobile Number",
-          value: mobileNumberInput.value,
-          isInvalid: mobileNumberInput.hasError,
-          onBlurHandler: mobileNumberInput.validateValueHandler,
-          onFocusHandler: mobileNumberInput.focusHandler,
-          onChange: mobileNumberInput.valueChangeHandler,
-          type: "text",
-          isTouched: mobileNumberInput.isFocused,
-        }}
+        placeholder="Mobile Number"
+        type="text"
+        inputFields={mobileNumberInput}
         mandatory="true"
       />
       <Dropdown
@@ -140,16 +127,9 @@ const UserSignupFrom = () => {
       <InputWithInvalidText
         ErrorMessage={"Invalid Email"}
         className={`${styles.Input} `}
-        inputFields={{
-          placeholder: "Mail-ID",
-          value: emailInput.value,
-          isInvalid: emailInput.hasError,
-          onBlurHandler: emailInput.validateValueHandler,
-          onFocusHandler: emailInput.focusHandler,
-          onChange: emailInput.valueChangeHandler,
-          type: "email",
-          isTouched: emailInput.isFocused,
-        }}
+        placeholder="Mail-ID"
+        inputFields={emailInput}
+        type="email"
         mandatory="true"
       />
     </div>
@@ -160,16 +140,9 @@ const UserSignupFrom = () => {
       <InputWithInvalidText
         ErrorMessage={"Invalid Password"}
         className={`${styles.Input} `}
-        inputFields={{
-          placeholder: "Password",
-          value: passwordInput.value,
-          isInvalid: passwordInput.hasError,
-          onBlurHandler: passwordInput.validateValueHandler,
-          onFocusHandler: passwordInput.focusHandler,
-          onChange: passwordInput.valueChangeHandler,
-          type: "password",
-          isTouched: passwordInput.isFocused,
-        }}
+        placeholder="Password"
+        inputFields={passwordInput}
+        type="password"
         mandatory="true"
       />
     </div>
@@ -180,16 +153,9 @@ const UserSignupFrom = () => {
       <InputWithInvalidText
         ErrorMessage={"Invalid Confirm Password"}
         className={`${styles.Input} `}
-        inputFields={{
-          placeholder: "Confirm Password",
-          value: confirmPasswordInput.value,
-          isInvalid: confirmPasswordInput.hasError,
-          onBlurHandler: confirmPasswordInput.validateValueHandler,
-          onFocusHandler: confirmPasswordInput.focusHandler,
-          onChange: confirmPasswordInput.valueChangeHandler,
-          type: "password",
-          isTouched: confirmPasswordInput.isFocused,
-        }}
+        placeholder="Confirm Password"
+        inputFields={confirmPasswordInput}
+        type="password"
         mandatory="true"
       />
     </div>

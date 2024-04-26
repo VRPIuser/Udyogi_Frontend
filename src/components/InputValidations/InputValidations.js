@@ -4,6 +4,19 @@ const nameValidation = (value) => {
   return value.trim() !== "" && /^[a-zA-Z]+$/.test(value); // Example: Not empty and contains only alphabets
 };
 
+export const NoOfYearsValidation = (value) => {
+  // Add your validation logic for mobile number here
+  return /^\d{1,2}$/.test(value.trim()); // Matches 1 or 2 digits
+};
+export const ValueUndefinedValidations = (value) => {
+  // Add your validation logic for mobile number here
+  return value !== undefined && value !== null; // Matches 1 or 2 digits
+};
+
+export const BooleanValidation = (value) => {
+  return value === false || value === true;
+};
+
 export const fullNameValidation = (value) => {
   return value.trim() !== "" && /^[a-zA-Z\s]+$/.test(value); // Not empty and contains only alphabets and spaces
 };
@@ -76,6 +89,25 @@ export const yearValidation = (value) => {
     parseInt(value) >= 1700 &&
     parseInt(value) <= currentYear
   );
+};
+
+export const fromDateValidation = (date) => {
+  const fromDate = new Date(date);
+  const today = new Date();
+  today.setHours(0, 0, 0, 0); // Reset time to start of day for comparison
+
+  // Check if fromDate is not beyond today's date
+  return fromDate <= today;
+};
+
+export const toDateValidation = (fromDate, toDate) => {
+  const fromDateObj = new Date(fromDate);
+  const toDateObj = new Date(toDate);
+  const today = new Date();
+  today.setHours(0, 0, 0, 0); // Reset time to start of day for comparison
+
+  // Check if toDate is not today and is not before fromDate
+  return toDateObj <= today && toDateObj >= fromDateObj;
 };
 
 export const endYearValidation = (value, startYear) => {

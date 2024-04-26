@@ -8,6 +8,8 @@ const InputWithInvalidText = ({
   inputFields,
   className,
   mandatory,
+  type,
+  placeholder,
 }) => {
   const inputRef = useRef(null);
 
@@ -19,7 +21,7 @@ const InputWithInvalidText = ({
 
   useEffect(() => {
     if (inputFields.value) {
-      inputFields.onFocusHandler();
+      inputFields.focusHandler();
     }
   });
 
@@ -28,20 +30,16 @@ const InputWithInvalidText = ({
       <CustomInput
         ref={inputRef}
         className={`${style.checkoutFormControl} ${
-          inputFields.isInvalid && style.invalid
+          inputFields.hasError && style.invalid
         }`}
-        placeholder={inputFields.placeholder}
+        placeholder={placeholder}
         value={inputFields.value}
-        onFocus={inputFields.onFocusHandler}
-        onBlur={inputFields.onBlurHandler}
-        onChange={inputFields.onChange}
-        type={`${
-          inputFields.type === "password" && checkPassword
-            ? "text"
-            : inputFields.type
-        }`}
+        onFocus={inputFields.focusHandler}
+        onBlur={inputFields.validateValueHandler}
+        onChange={inputFields.valueChangeHandler}
+        type={`${type === "password" && checkPassword ? "text" : type}`}
       />
-      {inputFields.type === "password" && (
+      {type === "password" && (
         <CustomImage
           src={`/assets/icons/${
             checkPassword ? "showPassword.png" : "hidePassword.png"
@@ -54,20 +52,20 @@ const InputWithInvalidText = ({
       )}
       <label
         className={` ${
-          inputFields.isTouched || inputFields.value !== ""
+          inputFields.isFocused || inputFields.value !== ""
             ? style.transition
             : style.placeholder
         }`}
         onClick={handleLabelClick}
       >
-        {inputFields.placeholder}{" "}
+        {placeholder}{" "}
         {mandatory && <span style={{ color: "red" }}>&nbsp;*</span>}
       </label>
       {
         <p
           className={style.invalidText}
           style={{
-            opacity: inputFields.isInvalid ? "1" : "0",
+            opacity: inputFields.hasError ? "1" : "0",
           }}
         >
           {ErrorMessage}
