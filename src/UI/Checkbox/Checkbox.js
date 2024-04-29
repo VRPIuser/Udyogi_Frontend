@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styles from "./Checkbox.module.css"; // Import CSS for styling
-const CustomCheckbox = ({ label, onChange }) => {
+const CustomCheckbox = ({ label, onChange, id }) => {
   const [checked, setChecked] = useState(false);
 
   const handleChange = () => {
@@ -19,6 +19,7 @@ const CustomCheckbox = ({ label, onChange }) => {
         className={styles["hidden-checkbox"]}
         checked={checked}
         readOnly
+        id={id}
       />
       <div
         className={

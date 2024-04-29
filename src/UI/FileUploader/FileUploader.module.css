@@ -49,6 +49,10 @@
   bottom: 0.75rem;
 }
 
+.imageContainer {
+  height: fit-content;
+}
+
 .removeFile {
   position: relative;
   z-index: 10;

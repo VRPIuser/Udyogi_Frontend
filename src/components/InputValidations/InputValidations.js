@@ -100,6 +100,20 @@ export const fromDateValidation = (date) => {
   return fromDate <= today;
 };
 
+export const fileLastModifiedValidation = (file) => {
+  // Check if file object is provided
+  if (!file || !file.lastModified) {
+    return false; // Invalid file object
+  }
+
+  const lastModified = new Date(file.lastModified);
+  const today = new Date();
+  today.setHours(0, 0, 0, 0); // Reset time to start of day for comparison
+
+  // Check if lastModified date is not beyond today's date
+  return lastModified <= today;
+};
+
 export const toDateValidation = (fromDate, toDate) => {
   const fromDateObj = new Date(fromDate);
   const toDateObj = new Date(toDate);

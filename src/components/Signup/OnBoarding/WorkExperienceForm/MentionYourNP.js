@@ -24,7 +24,9 @@ const MentionYourNP = ({ SNPInput }) => {
           <button
             key={index}
             className={`${BUTTON_CLASS} ${
-              selected === index ? "bg-orange-500 text-white" : "bg-white"
+              selected === index
+                ? "bg-orange-500 text-white transition-all"
+                : "bg-white transition-all"
             }`}
             onClick={() => {
               //   console.log(data);

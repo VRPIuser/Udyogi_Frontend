@@ -28,7 +28,7 @@ const loginScreenData = {
 
 const Container_Class = "bg-gray-300 p-6 rounded-2xl";
 
-const WorkExperienceForm = ({ onDisclosingExperience }) => {
+const WorkExperienceForm = ({ onDisclosingExperience, onSubmitExperience }) => {
   // Data Manager
   // const [Months, setMonths] = useState();
 
@@ -131,6 +131,21 @@ const WorkExperienceForm = ({ onDisclosingExperience }) => {
       toDateInput.value,
       toDateInput.isValid
     );
+
+    onSubmitExperience({
+      years: yearsInput.value,
+      months: monthsInput.value,
+      SNP: SNPInput.value,
+      FreelancerOrNot: FreelancerOrNotInput.value,
+      CompanyName: companyNameInput.value,
+      CompanyAddress: companyAddressInput.value,
+      JobTitle: jobTitleInput.value,
+      CTC: ctcInput.value,
+      FromDate: fromDateInput.value,
+      ToDate: toDateInput.value,
+      StillWorking: stillWorkingInput.value,
+    });
+    onDisclosingExperience("completed");
   };
 
   return (
