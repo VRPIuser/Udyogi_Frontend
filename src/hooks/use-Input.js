@@ -6,6 +6,7 @@ const useInput = ({ initialValue = "", validateValue }) => {
 
   useEffect(() => {
     setValue(initialValue);
+    console.log(initialValue && initialValue);
   }, [initialValue]);
   const reset = () => {
     setValue(initialValue);

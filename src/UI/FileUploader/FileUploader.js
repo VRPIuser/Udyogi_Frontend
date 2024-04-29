@@ -1,7 +1,11 @@
 import React, { useRef, useState } from "react";
-import style from "./FileUploader.module.css"; // Assuming you have a CSS module for styling
+import style from "./FileUploader.module.css";
 import CustomImage from "../Image/Image";
 import HideExtraText from "../HideExtraText/HideExtraText";
+import LoadingBar from "../loadingBar/loadingBar";
+
+const ContainerClasses =
+  "border-2 border-dashed border-black rounded-lg text-center mb-2 cursor-pointer w-44 relative z-10 overflow-hidden";
 
 const CustomFileUploader = ({
   onChange,
@@ -13,6 +17,7 @@ const CustomFileUploader = ({
   const [fileName, setFileName] = useState(null);
   const [fileSize, setFileSize] = useState(null);
   const [dragOver, setDragOver] = useState(false);
+  const [isLoading, setIsLoading] = useState(false); // New loading state
 
   const handleFileChange = (e) => {
     const file = e.target.files[0];
@@ -29,12 +34,17 @@ const CustomFileUploader = ({
   };
 
   const handleFile = (file) => {
+    setIsLoading(true); // Set loading state to true when file upload starts
     if (file && acceptedFileType.includes(file.type) && file.size <= 5242880) {
-      // 5MB limit (5 * 1024 * 1024)
-      onChange(file);
-      setFileName(file.name);
-      setFileSize(file.size);
+      // Simulating delay for demonstration purposes (remove in actual implementation)
+      setTimeout(() => {
+        onChange(file);
+        setFileName(file.name);
+        setFileSize(file.size);
+        setIsLoading(false); // Set loading state to false when file upload completes
+      }, 2000); // Simulated delay of 2 seconds
     } else {
+      setIsLoading(false); // Set loading state to false if file is invalid
       // Handle invalid file
     }
   };
@@ -56,34 +66,30 @@ const CustomFileUploader = ({
   };
 
   return (
-    <div
-      className={`${style.inputContainer}  ${
-        dragOver ? "bg-gray-200" : ""
-      } p-4 border-2 border-dashed border-black rounded-lg text-center mb-2 cursor-pointer w-44`}
-      style={{
-        width: "100%",
-        height: "200px",
-        borderStyle: "dashed",
-        borderColor: "black",
-      }}
-      onDrop={handleFileDrop}
-      onDragOver={handleDragOver}
-      onDragLeave={handleDragLeave}
-      onClick={handleButtonClick}
-    >
-      <input
-        type="file"
-        ref={inputRef}
-        onChange={handleFileChange}
-        style={{ display: "none" }}
-        accept={acceptedFileType.join(",")}
-      />
+    <div style={{ position: "relative" }}>
+      <div
+        className={` ${dragOver && "bg-gray-200 "} ${ContainerClasses} ${
+          style.container
+        }`}
+        onDrop={handleFileDrop}
+        onDragOver={handleDragOver}
+        onDragLeave={handleDragLeave}
+        onClick={handleButtonClick}
+      >
+        <input
+          type="file"
+          ref={inputRef}
+          onChange={handleFileChange}
+          style={{ display: "none" }}
+          accept={acceptedFileType.join(",")}
+        />
+      </div>
       <div
         className={`${
           dragOver
             ? "flex flex-col justify-center items-center content-center h-full"
             : "hidden"
-        }`}
+        } ${style.box}`}
       >
         <>
           <span className="">{"Drag and Drop the file here"}</span>
@@ -95,7 +101,7 @@ const CustomFileUploader = ({
       <div
         className={`flex flex-col justify-center items-center content-center h-full ${
           dragOver ? " hidden" : "flex"
-        }`}
+        } ${style.box}`}
       >
         <CustomImage
           src={`/assets/icons/${
@@ -103,7 +109,6 @@ const CustomFileUploader = ({
           }`}
           alt=""
           width={80}
-          // className=""
           classForDiv={style.imageContainer}
         />
         {fileName ? (
@@ -126,6 +131,7 @@ const CustomFileUploader = ({
             </p>
           </>
         )}
+        {isLoading && <LoadingBar />}
       </div>
     </div>
   );

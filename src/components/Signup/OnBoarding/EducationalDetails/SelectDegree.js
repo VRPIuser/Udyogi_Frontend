@@ -24,9 +24,7 @@ const SelectDegree = ({ setEducationDetailsFilled }) => {
   const [selectedEducation, setSelectedEducation] = useState(0);
 
   const SubmitHandler = () => {
-    setEducationDetailsFilled({
-      highestDegree: educationOptions[selectedEducation],
-    });
+    setEducationDetailsFilled(educationOptions[selectedEducation]);
   };
 
   return (

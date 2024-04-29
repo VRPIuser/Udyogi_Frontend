@@ -14,6 +14,7 @@ import {
   toDateValidation,
 } from "@/components/InputValidations/InputValidations";
 // Shared Tailwind CSS classes
+import { useRouter } from "next/router";
 
 const loginScreenData = {
   description:
@@ -21,42 +22,64 @@ const loginScreenData = {
   image: "EnterDetailsScreen.svg",
 };
 
-const EducationalDetails = () => {
+const EducationalDetails = ({ onSubmittingEducationalDetails }) => {
   const [educationDetailsFilled, setEducationDetailsFilled] = useState(null);
+  const router = useRouter();
 
   const InstituteNameInput = useInput({ validateValue: fullNameValidation });
   const SpecializationInInput = useInput({ validateValue: fullNameValidation });
 
-  const StillPursuingInput = useInput({ validateValue: BooleanValidation });
+  const StillPursuingInput = useInput({
+    validateValue: BooleanValidation,
+    initialValue: false,
+  });
 
   const degreeStartedOnInput = useInput({ validateValue: fromDateValidation });
   const degreeCompletedOnInput = useInput({
-    validateValue: (value) => toDateValidation(fromDateValidation.value, value),
+    validateValue: (value) =>
+      toDateValidation(degreeStartedOnInput.value, value),
   });
 
   const resumeInput = useInput({ validateValue: fileLastModifiedValidation });
 
   const [formIsValid, setFormIsValid] = useState(false);
   useEffect(() => {
+    let datesValues =
+      StillPursuingInput.value ||
+      (degreeCompletedOnInput.isValid && degreeStartedOnInput.isValid);
     if (educationDetailsFilled) {
       setFormIsValid(
         InstituteNameInput.isValid &&
           SpecializationInInput.isValid &&
-          StillPursuingInput.isValid &&
-          degreeStartedOnInput.isValid &&
-          degreeCompletedOnInput.isValid &&
+          datesValues &&
           resumeInput.isValid
       );
     }
   }, [
-    InstituteNameInput.isValid,
-    SpecializationInInput.isValid,
-    StillPursuingInput.isValid,
-    degreeStartedOnInput.isValid,
-    degreeCompletedOnInput.isValid,
-    resumeInput.isValid,
+    InstituteNameInput,
+    SpecializationInInput,
+    StillPursuingInput,
+    degreeStartedOnInput,
+    degreeCompletedOnInput,
+    resumeInput,
     educationDetailsFilled,
   ]);
+
+  const SubmitHandler = () => {
+    const EducationalDetailsData = {
+      highestDegree: educationDetailsFilled,
+      InstituteName: InstituteNameInput.value,
+      SpecializationIn: SpecializationInInput.value,
+      StillPursuing: StillPursuingInput.value,
+      degreeStartedOn: degreeStartedOnInput.value,
+      degreeCompletedOn: degreeCompletedOnInput.value,
+      resume: resumeInput.value,
+    };
+    // console.log(EducationalDetailsData);
+    onSubmittingEducationalDetails(EducationalDetailsData);
+
+    router.push("/sign-up/job-seeker/preference");
+  };
 
   let CurrentComponent;
   if (educationDetailsFilled === null || !educationDetailsFilled) {
@@ -72,6 +95,8 @@ const EducationalDetails = () => {
         degreeStartedOnInput={degreeStartedOnInput}
         degreeCompletedOnInput={degreeCompletedOnInput}
         resumeInput={resumeInput}
+        formIsValid={formIsValid}
+        SubmitHandler={SubmitHandler}
       />
     );
   }
@@ -84,7 +109,7 @@ const EducationalDetails = () => {
         classForMainContent={`${styles.mainContent} bg-gray-50 `}
         classForFrame={styles.frame}
       >
-        {CurrentComponent}
+        <div className="my-auto max-w-2xl w-full ">{CurrentComponent}</div>
       </SignUpOrLoginContainer>
     </div>
   );

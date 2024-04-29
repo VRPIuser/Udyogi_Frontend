@@ -64,27 +64,3 @@ const HowManyWE = ({ monthsInput, yearsInput }) => {
 };
 
 export default HowManyWE;
-
-// ```jsx
-// import React from 'react';
-
-// const INPUT_CLASS = 'form-input mt-1 p-2 border border-zinc-300 rounded w-full';
-// const BUTTON_CLASS = 'px-4 py-2 border border-zinc-300 rounded';
-
-// const WorkExperienceForm = () => {
-//     return (
-//         <div className="bg-zinc-100 p-4 font-sans">
-//             <div className="max-w-lg mx-auto bg-white p-6 rounded-lg shadow">
-//                 // <a href="#" className="text-blue-500 flex items-center mb-6">
-//                 //     <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-//                 //         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 17l-5-5m0 0l5-5m-5 5h12" />
-//                 //     </svg>
-//                 //     Back
-//                 // </a>
-
-//         </div>
-//     );
-// };
-
-// export default WorkExperienceForm;
-// ```;

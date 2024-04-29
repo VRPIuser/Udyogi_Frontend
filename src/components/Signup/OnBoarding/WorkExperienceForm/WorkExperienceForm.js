@@ -20,6 +20,7 @@ import {
   toDateValidation,
   yearValidation,
 } from "@/components/InputValidations/InputValidations";
+import { useRouter } from "next/router";
 const loginScreenData = {
   description:
     "In turpis tempor suspendisse malesuada vivamus pellentesque ac blandit. Nulla eu id id diam cras neque id massa in.",
@@ -28,7 +29,7 @@ const loginScreenData = {
 
 const Container_Class = "bg-gray-300 p-6 rounded-2xl";
 
-const WorkExperienceForm = ({ onDisclosingExperience, onSubmitExperience }) => {
+const WorkExperienceForm = ({ onSubmitExperience }) => {
   // Data Manager
   // const [Months, setMonths] = useState();
 
@@ -108,29 +109,31 @@ const WorkExperienceForm = ({ onDisclosingExperience, onSubmitExperience }) => {
     FreelancerOrNotInput.value,
   ]);
 
+  const router = useRouter();
+
   const SubmitHandler = () => {
-    console.log(
-      "Years",
-      yearsInput.value,
-      "Months",
-      monthsInput.value,
-      "Service N P",
-      SNPInput.value,
-      "Freelance->",
-      FreelancerOrNotInput.value,
-      "Company Name",
-      companyNameInput.value,
-      "Company Address",
-      companyAddressInput.value,
-      "Job Title",
-      ctcInput.value,
-      "From Date",
-      fromDateInput.value,
-      fromDateInput.isValid,
-      "To Date",
-      toDateInput.value,
-      toDateInput.isValid
-    );
+    // console.log(
+    //   "Years",
+    //   yearsInput.value,
+    //   "Months",
+    //   monthsInput.value,
+    //   "Service N P",
+    //   SNPInput.value,
+    //   "Freelance->",
+    //   FreelancerOrNotInput.value,
+    //   "Company Name",
+    //   companyNameInput.value,
+    //   "Company Address",
+    //   companyAddressInput.value,
+    //   "Job Title",
+    //   ctcInput.value,
+    //   "From Date",
+    //   fromDateInput.value,
+    //   fromDateInput.isValid,
+    //   "To Date",
+    //   toDateInput.value,
+    //   toDateInput.isValid
+    // );
 
     onSubmitExperience({
       years: yearsInput.value,
@@ -145,7 +148,8 @@ const WorkExperienceForm = ({ onDisclosingExperience, onSubmitExperience }) => {
       ToDate: toDateInput.value,
       StillWorking: stillWorkingInput.value,
     });
-    onDisclosingExperience("completed");
+
+    router.push("/sign-up/job-seeker/education-details");
   };
 
   return (
@@ -157,7 +161,7 @@ const WorkExperienceForm = ({ onDisclosingExperience, onSubmitExperience }) => {
         classForFrame={styles.frame}
       >
         <div className="max-w-xl flex flex-col gap-6 mb-8">
-          <BackComponent backFunction={() => onDisclosingExperience(null)} />
+          <BackComponent backFunction={() => {}} />
           <div className={Container_Class}>
             <HowManyWE monthsInput={monthsInput} yearsInput={yearsInput} />
             <MentionYourNP SNPInput={SNPInput} />

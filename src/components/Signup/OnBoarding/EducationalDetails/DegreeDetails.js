@@ -15,9 +15,11 @@ const DegreeDetails = ({
   degreeStartedOnInput,
   degreeCompletedOnInput,
   resumeInput,
+  SubmitHandler,
+  formIsValid,
 }) => {
   return (
-    <div className="my-auto max-w-2xl w-full ">
+    <>
       <div className=" mx-auto  p-6 rounded-lg shadow bg-gray-300 flex flex-col gap-4">
         <h2 className="text-lg font-semibold ">Enter your Education Details</h2>
         <div className="flex flex-col sm:flex-row sm:gap-4 gap-0 ">
@@ -49,12 +51,14 @@ const DegreeDetails = ({
             onChange={degreeStartedOnInput.AssignValue}
             placeholderText="From"
             mandatory={true}
+            selectedDate={degreeStartedOnInput.value}
           />
           {!StillPursuingInput.value && (
             <CustomDatePicker
               onChange={degreeCompletedOnInput.AssignValue}
               placeholderText="To"
               mandatory={true}
+              selectedDate={degreeCompletedOnInput.value}
             />
           )}
         </div>
@@ -62,9 +66,15 @@ const DegreeDetails = ({
       </div>
       <ResumeUploader resumeInput={resumeInput} />
       <div className="w-full flex justify-center">
-        <Button className="w-full max-w-44">Submit</Button>
+        <Button
+          className="w-full max-w-44"
+          disabled={!formIsValid}
+          onClick={SubmitHandler}
+        >
+          Submit
+        </Button>
       </div>
-    </div>
+    </>
   );
 };
 export default DegreeDetails;

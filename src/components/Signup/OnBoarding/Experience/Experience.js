@@ -29,7 +29,7 @@ const Experience = ({ onDisclosingExperience }) => {
           className={`${boxClasses}`}
           onClick={() => {
             onDisclosingExperience("experienced");
-            // router.push("/sign-up/job-seeker/fresher");
+            router.push("/sign-up/job-seeker/education-details");
           }}
         >
           I’ve have an Work Experience
@@ -37,7 +37,7 @@ const Experience = ({ onDisclosingExperience }) => {
         <div
           className={`${boxClasses} `}
           onClick={() => {
-            // router.push("/sign-up/job-seeker/experienced ");
+            router.push("/sign-up/job-seeker/work-experience");
             onDisclosingExperience("fresher");
           }}
         >
