@@ -20,29 +20,33 @@ const DegreeDetails = ({
 }) => {
   return (
     <>
-      <div className=" mx-auto  p-6 rounded-lg shadow bg-gray-300 flex flex-col gap-4">
-        <h2 className="text-lg font-semibold ">Enter your Education Details</h2>
+      <div className="mx-auto p-6 rounded-lg shadow bg-white flex flex-col ">
+        <h2 className="text-lg font-semibold mb-4">
+          Enter your Education Details
+        </h2>
         <div className="flex flex-col sm:flex-row sm:gap-4 gap-0 ">
-          {/* <input
-        /> */}
           <InputWithInvalidText
             type="text"
             inputFields={InstituteNameInput}
             placeholder="Institute Name"
+            mandatory={true}
+            ErrorMessage={"Invalid Institute Name"}
           />
           <InputWithInvalidText
             inputFields={SpecializationInInput}
             type="text"
             placeholder="Specialization in"
+            mandatory={true}
+            ErrorMessage={"Invalid Specialization In"}
           />
         </div>
 
-        <div className="flex">
+        <div className="flex mb-4">
           <CustomCheckbox
             onChange={StillPursuingInput.AssignValue}
             id="stillPursuing"
           />
-          <label htmlFor="stillPursuing" className="ml-2 cursor-pointer">
+          <label htmlFor="stillPursuing" className="ml-2 cursor-">
             Still Pursuing
           </label>
         </div>

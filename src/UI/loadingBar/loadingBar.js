@@ -22,17 +22,7 @@ const LoadingBar = () => {
 
   return (
     <div className={styles.loadingBar}>
-      <div
-        //   style={{
-        //     // position: "absolute",
-        //     // top: 0,
-        //     // left: "50%",
-        //     // transform: "translate(-50%)",
-        //     textAlign: "center",
-        //     width: "250px",
-        //   }}
-        className={styles.progress}
-      >
+      <div className={styles.progress}>
         {progress}
         {" %"}
       </div>

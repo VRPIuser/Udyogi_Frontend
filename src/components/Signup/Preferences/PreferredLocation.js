@@ -33,10 +33,15 @@ const Locations = [
   "Madurai",
 ];
 
-const PreferredLocation = ({ onSelectedLocationsInput }) => {
+const nextBtnContainerClasses = "w-full flex justify-end mt-4";
+const nextBtnClasses = "px-8 py-2 text-white rounded-3xl transition-all";
+const btnDisabledClasses = "bg-zinc-400 hover:bg-zinc-400";
+const btnEnabledClasses = "bg-black hover:bg-gray-800";
+
+const PreferredLocation = ({ onSelectedLocationsInput, setShowPreference }) => {
   return (
     <div className="max-w-4xl mx-auto w-full bg-zinc-300 p-6 rounded-lg shadow mb-6">
-      <label for="location" class="block mb-2 font-medium">
+      <label htmlFor="location" className="block mb-2 font-medium">
         Enter preferred Location
       </label>
 
@@ -45,6 +50,19 @@ const PreferredLocation = ({ onSelectedLocationsInput }) => {
         placeholder="E.g.: Hyderabad"
         onChange={onSelectedLocationsInput.AssignValue}
       />
+      <div className={nextBtnContainerClasses}>
+        <button
+          className={`${nextBtnClasses} ${
+            !onSelectedLocationsInput.isValid
+              ? btnDisabledClasses
+              : btnEnabledClasses
+          }`}
+          disabled={!onSelectedLocationsInput.isValid}
+          onClick={() => setShowPreference(true)}
+        >
+          Next
+        </button>
+      </div>
     </div>
   );
 };

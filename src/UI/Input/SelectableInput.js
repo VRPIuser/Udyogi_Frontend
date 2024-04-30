@@ -1,5 +1,8 @@
 import { useEffect, useState } from "react";
 
+const SuggestionClasses =
+  "bg-white rounded-full px-3 py-1 text-sm cursor-pointer hover:bg-zinc-100 transition-all";
+
 const SelectableInput = ({
   options,
   placeholder,
@@ -14,7 +17,6 @@ const SelectableInput = ({
   };
 
   const handleOptionClick = (option) => {
-    // Check if the option is already selected
     if (!selectedOptions.includes(option)) {
       setSelectedOptions((prevSelectedOptions) => [
         ...prevSelectedOptions,
@@ -34,26 +36,32 @@ const SelectableInput = ({
     );
   };
 
-  const filteredOptions = options.filter((option) =>
-    option.toLowerCase().includes(inputValue.toLowerCase())
-  );
+  const handleAddCustomOption = () => {
+    if (inputValue.trim() !== "" && !options.includes(inputValue)) {
+      setSelectedOptions((prevSelectedOptions) => [
+        ...prevSelectedOptions,
+        inputValue,
+      ]);
+      setInputValue("");
+    }
+  };
+
+  const filteredOptions = options
+    .filter((option) => option.toLowerCase().includes(inputValue.toLowerCase()))
+    .filter((option) => !selectedOptions.includes(option)); // Filter out selected options
 
   return (
     <div className="max-w-4xl mx-auto mt-4 w-full ">
       {selectedOptions.length > 0 && (
         <div id="selectedOptions" className="flex flex-wrap gap-2 mb-4">
           {selectedOptions.map((option, index) => (
-            <div
-              key={index}
-              className="bg-white rounded-full px-3 py-1 text-sm"
-            >
-              {option}{" "}
+            <div key={index} className={SuggestionClasses}>
               <button
                 type="button"
                 onClick={() => handleRemoveOption(index)}
                 className="ml-1"
               >
-                &#x2715;
+                {option} &#x2715;
               </button>
             </div>
           ))}
@@ -73,11 +81,18 @@ const SelectableInput = ({
           <span
             key={index}
             onClick={() => handleOptionClick(option)}
-            className="bg-white rounded-full px-3 py-1 text-sm cursor-pointer"
+            className={SuggestionClasses}
           >
-            {option} +
+            {option}
+            {" +"}
           </span>
         ))}
+        {inputValue.trim() !== "" && !options.includes(inputValue) && (
+          <span className={SuggestionClasses} onClick={handleAddCustomOption}>
+            {inputValue}
+            {" +"}
+          </span>
+        )}
       </div>
     </div>
   );

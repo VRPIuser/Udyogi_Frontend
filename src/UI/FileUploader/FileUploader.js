@@ -99,42 +99,46 @@ const CustomFileUploader = ({
         </>
       </div>
       <div
-        className={`flex flex-col justify-center items-center content-center h-full ${
+        className={`flex flex-col justify-center items-center content-center w-full p-4 h-full ${
           dragOver ? " hidden" : "flex"
         } ${style.box}`}
       >
-        <CustomImage
-          src={`/assets/icons/${
-            fileName ? "fileReplaceIcon.png" : "fileUploaderIcon.png"
-          }`}
-          alt=""
-          width={80}
-          classForDiv={style.imageContainer}
-        />
-        {fileName ? (
-          <>
-            <HideExtraText lines={1} className="">
-              {fileName} {fileSize && ` (${(fileSize / 1024).toFixed(2)} KB)`}
-            </HideExtraText>
-            <p className="text-xs text-zinc-500">
-              File can be PDF, DOC; of size 5MB
-            </p>
-          </>
+        {isLoading ? (
+          <LoadingBar />
         ) : (
           <>
-            <span className="text-xl font-semibold text-black ">
-              {buttonText}
-            </span>
-            <p className="text-xs ">{"Drag and Drop the file"}</p>
+            <CustomImage
+              src={`/assets/icons/${
+                fileName ? "fileReplaceIcon.png" : "fileUploaderIcon.png"
+              }`}
+              alt=""
+              width={80}
+              classForDiv={style.imageContainer}
+            />
+            {fileName ? (
+              <HideExtraText lines={1} className="">
+                {fileName} {fileSize && ` (${(fileSize / 1024).toFixed(2)} KB)`}
+              </HideExtraText>
+            ) : (
+              <DefaultText buttonText={buttonText} />
+            )}
             <p className="text-xs text-zinc-500">
               File can be PDF, DOC; of size 5MB
             </p>
           </>
         )}
-        {isLoading && <LoadingBar />}
       </div>
     </div>
   );
 };
 
 export default CustomFileUploader;
+
+const DefaultText = ({ buttonText }) => {
+  return (
+    <>
+      <span className="text-xl font-semibold text-black ">{buttonText}</span>
+      <p className="text-xs ">Drag and Drop the file</p>
+    </>
+  );
+};

@@ -10,9 +10,9 @@ const loginScreenData = {
 };
 
 const boxClasses =
-  "bg-gray-300 max-w-96 w-full max-h-60 h-52 rounded-xl flex items-center justify-center text-xl px-6 text-center cursor-pointer  hover:scale-105 transition-all ";
+  "font-medium  max-w-96 w-full max-h-60 h-52 flex items-center justify-center text-xl px-6 text-center cursor-pointer hover:scale-105 hover:bg-orange-500 hover:text-white  transition-all ";
 
-const Experience = ({ onDisclosingExperience }) => {
+const Experience = () => {
   const router = useRouter();
   return (
     <SignUpOrLoginContainer
@@ -24,12 +24,13 @@ const Experience = ({ onDisclosingExperience }) => {
       <div
         className={`${styles.container} flex flex-col gap-5 justify-center items-center h-full`}
       >
-        <h1 className="font-semibold text-2xl mb-6">Any work experience</h1>
+        <h1 className="font-normal text-3xl mb-6 text-center ">
+          Any Work Experience?
+        </h1>
         <div
           className={`${boxClasses}`}
           onClick={() => {
-            onDisclosingExperience("experienced");
-            router.push("/sign-up/job-seeker/education-details");
+            router.push("/sign-up/job-seeker/work-experience");
           }}
         >
           I’ve have an Work Experience
@@ -37,8 +38,7 @@ const Experience = ({ onDisclosingExperience }) => {
         <div
           className={`${boxClasses} `}
           onClick={() => {
-            router.push("/sign-up/job-seeker/work-experience");
-            onDisclosingExperience("fresher");
+            router.push("/sign-up/job-seeker/education-details");
           }}
         >
           No! I don’t have any work experience. I’m a Fresher

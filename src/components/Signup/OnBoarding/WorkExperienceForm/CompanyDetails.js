@@ -21,7 +21,7 @@ const CompanyDetails = ({
   stillWorkingInput,
 }) => {
   return (
-    <div className={Container_Class}>
+    <>
       <h2 className="text-xl font-semibold mb-4">
         Enter your present Company Details
       </h2>
@@ -100,7 +100,7 @@ const CompanyDetails = ({
         </div>
       </div>
       {/* )} */}
-    </div>
+    </>
   );
 };
 

@@ -27,7 +27,7 @@ const loginScreenData = {
   image: "EnterDetailsScreen.svg",
 };
 
-const Container_Class = "bg-gray-300 p-6 rounded-2xl";
+const Container_Class = "bg-white border border-orange-500 p-6 rounded-2xl";
 
 const WorkExperienceForm = ({ onSubmitExperience }) => {
   // Data Manager
@@ -112,29 +112,6 @@ const WorkExperienceForm = ({ onSubmitExperience }) => {
   const router = useRouter();
 
   const SubmitHandler = () => {
-    // console.log(
-    //   "Years",
-    //   yearsInput.value,
-    //   "Months",
-    //   monthsInput.value,
-    //   "Service N P",
-    //   SNPInput.value,
-    //   "Freelance->",
-    //   FreelancerOrNotInput.value,
-    //   "Company Name",
-    //   companyNameInput.value,
-    //   "Company Address",
-    //   companyAddressInput.value,
-    //   "Job Title",
-    //   ctcInput.value,
-    //   "From Date",
-    //   fromDateInput.value,
-    //   fromDateInput.isValid,
-    //   "To Date",
-    //   toDateInput.value,
-    //   toDateInput.isValid
-    // );
-
     onSubmitExperience({
       years: yearsInput.value,
       months: monthsInput.value,
@@ -166,16 +143,18 @@ const WorkExperienceForm = ({ onSubmitExperience }) => {
             <HowManyWE monthsInput={monthsInput} yearsInput={yearsInput} />
             <MentionYourNP SNPInput={SNPInput} />
           </div>
-          <CompanyDetails
-            FreelancerOrNotInput={FreelancerOrNotInput}
-            companyNameInput={companyNameInput}
-            companyAddressInput={companyAddressInput}
-            jobTitleInput={jobTitleInput}
-            ctcInput={ctcInput}
-            fromDateInput={fromDateInput}
-            toDateInput={toDateInput}
-            stillWorkingInput={stillWorkingInput}
-          />
+          <div className={Container_Class}>
+            <CompanyDetails
+              FreelancerOrNotInput={FreelancerOrNotInput}
+              companyNameInput={companyNameInput}
+              companyAddressInput={companyAddressInput}
+              jobTitleInput={jobTitleInput}
+              ctcInput={ctcInput}
+              fromDateInput={fromDateInput}
+              toDateInput={toDateInput}
+              stillWorkingInput={stillWorkingInput}
+            />
+          </div>
 
           <div className="flex justify-center w-full">
             <Button

@@ -1,4 +1,5 @@
 import Button from "@/UI/Button/Button";
+import { optionClasses } from "@/tailwindClasses/ButtonClassess";
 import { useState } from "react";
 
 const SelectDegree = ({ setEducationDetailsFilled }) => {
@@ -29,7 +30,7 @@ const SelectDegree = ({ setEducationDetailsFilled }) => {
 
   return (
     <div
-      className={` max-w-xl w-full mx-auto my-auto p-4  shadow-lg rounded-lg bg-gray-300`}
+      className={` max-w-xl w-full mx-auto my-auto p-4 shadow-lg rounded-lg bg-white border border-orange-500`}
     >
       <h2 className="text-lg font-semibold mb-4">
         Select your Highest Education
@@ -38,10 +39,10 @@ const SelectDegree = ({ setEducationDetailsFilled }) => {
         {educationOptions.map((option, index) => (
           <button
             key={index}
-            className={`${sharedClasses.button} ${
+            className={`${optionClasses} ${
               selectedEducation === index
-                ? "bg-orange-500 text-white  hover:bg-orange-600  "
-                : "bg-zinc-50  hover:bg-zinc-100"
+                ? "bg-orange-500 text-white"
+                : "bg-zinc-50"
             }`}
             onClick={() => {
               setSelectedEducation(index);

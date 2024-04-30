@@ -3,7 +3,7 @@
   height: 200px;
   border-style: dashed;
   border-color: black;
-  padding: 7rem;
+  padding: 1rem;
   position: relative;
   z-index: 2;
 }

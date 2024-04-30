@@ -1,5 +1,6 @@
 .loadingBar {
   width: 100%;
+  min-width: 250px;
   height: 25px;
   background-color: #f0f0f0;
   border-radius: 20px;

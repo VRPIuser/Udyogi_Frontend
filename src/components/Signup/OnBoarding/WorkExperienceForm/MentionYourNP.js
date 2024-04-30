@@ -1,3 +1,4 @@
+import { optionClasses } from "@/tailwindClasses/ButtonClassess";
 import { useState } from "react";
 
 const SNPData = [
@@ -13,7 +14,8 @@ const SNPData = [
 const MentionYourNP = ({ SNPInput }) => {
   const INPUT_CLASS =
     "form-input mt-1 p-2 border border-zinc-300 rounded w-full";
-  const BUTTON_CLASS = "px-4 py-2 border border-zinc-300 rounded-xl";
+  // const BUTTON_CLASS =
+  //   "px-4 py-2 border border-orange-500 text-orange-500 hover:bg-zinc-50 rounded-xl transition-all";
 
   const [selected, setSelected] = useState(null);
   return (
@@ -23,10 +25,10 @@ const MentionYourNP = ({ SNPInput }) => {
         {SNPData.map((data, index) => (
           <button
             key={index}
-            className={`${BUTTON_CLASS} ${
+            className={`${optionClasses} ${
               selected === index
-                ? "bg-orange-500 text-white transition-all"
-                : "bg-white transition-all"
+                ? "bg-orange-500 text-white"
+                : "bg-white text-orange-500"
             }`}
             onClick={() => {
               //   console.log(data);

@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import JobRoles from "./JobRoles";
 import Skills from "./skills";
 import PreferredLocation from "./PreferredLocation";
 import Button from "@/UI/Button/Button";
 import JobCategories from "./JobCategories";
 import useInput from "@/hooks/use-Input";
+import RightSlideAnimation from "@/animations/RightSlideAnimation";
 
 const inputClasses = "w-full p-2 border rounded-md mb-2";
 const tagClasses = "bg-zinc-200 rounded-full px-3 py-1 text-sm";
@@ -29,37 +30,100 @@ const JobPreferences = () => {
     validateValue: (value) => value.length > 0,
   });
   const selectedSkillsInput = useInput({
-    validateValue: (value) => value.length > 0,
+    validateValue: (value) => value.length >= 5,
   });
   const selectedLocationsInput = useInput({
     validateValue: (value) => value.length > 0,
   });
+
+  const [showSkills, setShowSkills] = useState(false);
+  const [showLocations, setShowLocations] = useState(false);
+  const [showPreference, setShowPreference] = useState(false);
+
+  const [formIsValid, setFormIsValid] = useState(false);
+
+  useEffect(() => {
+    if (!selectedJobRolesInput.isValid) {
+      setShowSkills(false);
+    }
+    if (!selectedSkillsInput.isValid) {
+      setShowLocations(false);
+    }
+    if (!selectedLocationsInput.isValid) {
+      setShowPreference(false);
+    }
+  }, [
+    selectedJobRolesInput.isValid,
+    selectedSkillsInput.isValid,
+    selectedLocationsInput.isValid,
+  ]);
+
+  useEffect(() => {
+    setFormIsValid(
+      selectedJobRolesInput.isValid &&
+        selectedSkillsInput.isValid &&
+        selectedLocationsInput.isValid &&
+        selectedJobTypeInput.isValid &&
+        selectedExperienceInput.isValid &&
+        selectedWorkOptionsInput.isValid
+    );
+  }, [
+    selectedJobTypeInput.isValid,
+    selectedExperienceInput.isValid,
+    selectedWorkOptionsInput.isValid,
+    selectedJobRolesInput.isValid,
+    selectedSkillsInput.isValid,
+    selectedLocationsInput.isValid,
+  ]);
 
   const SubmitHandler = () => {
     console.log(
       selectedJobTypeInput.value,
       selectedExperienceInput.value,
       selectedWorkOptionsInput.value,
-      selectedJobRolesInput.value
+      selectedJobRolesInput.value,
+      selectedSkillsInput.value,
+      selectedLocationsInput.value
     );
   };
 
   return (
-    <div className=" p-8 font-sans flex flex-col items-center">
+    <div className="sm:p-8 p-2 font-sans flex flex-col items-center">
       <h2 className="text-xl font-semibold mb-6">
         List out your Job preferences
       </h2>
-      <JobRoles onSelectedJobRolesInput={selectedJobRolesInput} />
-      <Skills onSelectedSkillsInput={selectedSkillsInput} />
-      <PreferredLocation onSelectedLocationsInput={selectedLocationsInput} />
-      <JobCategories
-        onSelectedJobType={selectedJobTypeInput}
-        onSelectedExperience={selectedExperienceInput}
-        onSelectedWorkOptions={selectedWorkOptionsInput}
+      <JobRoles
+        onSelectedJobRolesInput={selectedJobRolesInput}
+        setShowSkills={setShowSkills}
       />
-      <Button className=" hover:bg-blue-600" onClick={SubmitHandler}>
-        Submit
-      </Button>
+      <RightSlideAnimation className="w-full" show={showSkills}>
+        <Skills
+          onSelectedSkillsInput={selectedSkillsInput}
+          setShowLocations={setShowLocations}
+        />
+      </RightSlideAnimation>
+      <RightSlideAnimation className="w-full" show={showLocations}>
+        <PreferredLocation
+          onSelectedLocationsInput={selectedLocationsInput}
+          setShowPreference={setShowPreference}
+        />
+      </RightSlideAnimation>
+      <RightSlideAnimation className="w-full" show={showPreference}>
+        <JobCategories
+          onSelectedJobType={selectedJobTypeInput}
+          onSelectedExperience={selectedExperienceInput}
+          onSelectedWorkOptions={selectedWorkOptionsInput}
+        />
+      </RightSlideAnimation>
+
+      <RightSlideAnimation
+        className="w-full flex justify-center"
+        show={showPreference}
+      >
+        <Button onClick={SubmitHandler} disabled={!formIsValid}>
+          Submit
+        </Button>
+      </RightSlideAnimation>
     </div>
   );
 };
