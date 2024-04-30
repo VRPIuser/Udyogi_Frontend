@@ -13,7 +13,7 @@ const SelectableInput = ({
   onChange,
   minNoOfOptions,
 }) => {
-  // const [inputValue, setInputValue] = useState("");
+  // const [optionsInput.value, setInputValue] = useState("");
   const [selectedOptions, setSelectedOptions] = useState([]);
 
   const optionsInput = useInput({ validateValue: nameValidation });
@@ -43,10 +43,13 @@ const SelectableInput = ({
   };
 
   const handleAddCustomOption = () => {
-    if (inputValue.trim() !== "" && !options.includes(inputValue)) {
+    if (
+      optionsInput.value.trim() !== "" &&
+      !options.includes(optionsInput.value)
+    ) {
       setSelectedOptions((prevSelectedOptions) => [
         ...prevSelectedOptions,
-        inputValue,
+        optionsInput.value,
       ]);
       optionsInput.AssignValue("");
     }
@@ -80,7 +83,7 @@ const SelectableInput = ({
         type="text"
         id="input"
         inputFields={optionsInput}
-        // value={inputValue}
+        // value={optionsInput.value}
         // onChange={handleInputChange}
         placeholder={placeholder || "Type here..."}
         className="mb-4"
