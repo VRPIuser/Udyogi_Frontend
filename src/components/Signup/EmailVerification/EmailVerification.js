@@ -6,11 +6,11 @@ const inputClass =
 const buttonClass = "h-10 font-bold  rounded";
 
 const EmailVerification = ({ onOTPVerify }) => {
-  const inputRefs = Array.from({ length: 6 }, () => useRef(null));
   const [otp, setOtp] = useState(Array(6).fill(""));
+  const inputRefs = [];
 
   useEffect(() => {
-    inputRefs[0].current.focus();
+    inputRefs[0]?.focus(); // Make sure the ref exists before accessing
   }, []);
 
   const handleChange = (index, e) => {
@@ -18,20 +18,17 @@ const EmailVerification = ({ onOTPVerify }) => {
     newOtp[index] = e.target.value;
     setOtp(newOtp);
     if (e.target.value !== "" && index < 5) {
-      inputRefs[index + 1].current.focus();
+      inputRefs[index + 1]?.focus(); // Make sure the ref exists before accessing
     }
   };
 
   const handleKeyUp = (index, e) => {
     if (e.key === "Backspace" && e.target.value === "" && index > 0) {
-      inputRefs[index - 1].current.focus();
+      inputRefs[index - 1]?.focus(); // Make sure the ref exists before accessing
     }
   };
 
   const handleVerify = () => {
-    // const otpValue = otp.join("");
-    // console.log("OTP:", otpValue);
-
     onOTPVerify(otp.join(""));
   };
 
@@ -58,13 +55,13 @@ const EmailVerification = ({ onOTPVerify }) => {
         </p>
 
         <div className="flex justify-between space-x-2 mb-6">
-          {inputRefs.map((ref, index) => (
+          {[...Array(6)].map((_, index) => (
             <input
               key={index}
               type="text"
               className={inputClass}
               maxLength="1"
-              ref={ref}
+              ref={(el) => (inputRefs[index] = el)}
               value={otp[index]}
               onChange={(e) => handleChange(index, e)}
               onKeyUp={(e) => handleKeyUp(index, e)}
