@@ -1,6 +1,6 @@
-import CustomCheckbox from "@/UI/Checkbox/Checkbox";
-import CustomDatePicker from "@/UI/DatePIcker/DatePIcker";
-import InputWithInvalidText from "@/UI/Input/InputWithInvalidText";
+import CustomCheckbox from "@/components/UI/Checkbox/Checkbox";
+import CustomDatePicker from "@/components/UI/DatePIcker/DatePIcker";
+import InputWithInvalidText from "@/components/UI/Input/InputWithInvalidText";
 import { useEffect } from "react";
 
 const INPUT_CLASS = "form-input mt-1 p-2 border border-zinc-300 rounded w-full";

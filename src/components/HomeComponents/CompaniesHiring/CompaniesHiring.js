@@ -1,8 +1,8 @@
 import { useRef } from "react";
-import Section from "@/UI/Sections/Section";
 import styles from "./CompaniesHiring.module.css";
 import Image from "next/image";
-import CustomImage from "@/UI/Image/Image";
+import Section from "@/components/UI/Sections/Section";
+import CustomImage from "@/components/UI/Image/Image";
 
 const CompaniesHiringData = [
   { index: 1, name: "ABC 1 Company", image: null },

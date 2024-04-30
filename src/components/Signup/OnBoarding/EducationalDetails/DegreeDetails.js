@@ -1,8 +1,9 @@
-import InputWithInvalidText from "@/UI/Input/InputWithInvalidText";
+import InputWithInvalidText from "@/components/UI/Input/InputWithInvalidText";
 import ResumeUploader from "./ResumeUploader";
-import CustomCheckbox from "@/UI/Checkbox/Checkbox";
-import Button from "@/UI/Button/Button";
-import CustomDatePicker from "@/UI/DatePIcker/DatePIcker";
+import CustomCheckbox from "@/components/UI/Checkbox/Checkbox";
+import Button from "@/components/UI/Button/Button";
+import CustomDatePicker from "@/components/UI/DatePIcker/DatePIcker";
+import { BorderContainerClasses } from "@/components/tailwindClasses/ContainerClasses";
 
 const inputClasses = "border border-zinc-300 p-2 rounded";
 const flexClasses = "flex items-center mb-6";
@@ -20,7 +21,9 @@ const DegreeDetails = ({
 }) => {
   return (
     <>
-      <div className="mx-auto p-6 rounded-lg shadow bg-white flex flex-col ">
+      <div
+        className={`mx-auto bg-white flex flex-col ${BorderContainerClasses}`}
+      >
         <h2 className="text-lg font-semibold mb-4">
           Enter your Education Details
         </h2>

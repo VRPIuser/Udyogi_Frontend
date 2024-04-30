@@ -1,11 +1,11 @@
 import SignUpOrLoginContainer from "@/components/SignUpOrLoginContainer/SignUpOrLoginConatainer";
 import styles from "./WorkExperienceForm.module.css";
-import CustomImage from "@/UI/Image/Image";
+import CustomImage from "@/components/UI/Image/Image";
 import BackComponent from "../../BackComponent/BackComponent";
 import HowManyWE from "./HowManyWE";
 import MentionYourNP from "./MentionYourNP";
 import CompanyDetails from "./CompanyDetails";
-import Button from "@/UI/Button/Button";
+import Button from "@/components/UI/Button/Button";
 import { useEffect, useState } from "react";
 import useInput from "@/hooks/use-Input";
 import {
@@ -21,13 +21,14 @@ import {
   yearValidation,
 } from "@/components/InputValidations/InputValidations";
 import { useRouter } from "next/router";
+import { BorderContainerClasses } from "@/components/tailwindClasses/ContainerClasses";
 const loginScreenData = {
   description:
     "In turpis tempor suspendisse malesuada vivamus pellentesque ac blandit. Nulla eu id id diam cras neque id massa in.",
   image: "EnterDetailsScreen.svg",
 };
 
-const Container_Class = "bg-white border border-orange-500 p-6 rounded-2xl";
+// const Container_Class = "bg-white border border-orange-500 p-6 rounded-2xl";
 
 const WorkExperienceForm = ({ onSubmitExperience }) => {
   // Data Manager
@@ -138,12 +139,16 @@ const WorkExperienceForm = ({ onSubmitExperience }) => {
         classForFrame={styles.frame}
       >
         <div className="max-w-xl flex flex-col gap-6 mb-8">
-          <BackComponent backFunction={() => {}} />
-          <div className={Container_Class}>
+          <BackComponent
+            backFunction={() => {
+              router.push("/sign-up/job-seeker/on-boarding");
+            }}
+          />
+          <div className={`${BorderContainerClasses} bg-white`}>
             <HowManyWE monthsInput={monthsInput} yearsInput={yearsInput} />
             <MentionYourNP SNPInput={SNPInput} />
           </div>
-          <div className={Container_Class}>
+          <div className={`${BorderContainerClasses} bg-white`}>
             <CompanyDetails
               FreelancerOrNotInput={FreelancerOrNotInput}
               companyNameInput={companyNameInput}

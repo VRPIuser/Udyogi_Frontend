@@ -1,4 +1,5 @@
-import SelectableInput from "@/UI/Input/SelectableInput";
+import SelectableInput from "@/components/UI/Input/SelectableInput";
+import { BorderContainerClasses } from "@/components/tailwindClasses/ContainerClasses";
 
 const Locations = [
   "Hyderabad",
@@ -40,7 +41,9 @@ const btnEnabledClasses = "bg-black hover:bg-gray-800";
 
 const PreferredLocation = ({ onSelectedLocationsInput, setShowPreference }) => {
   return (
-    <div className="max-w-4xl mx-auto w-full bg-zinc-300 p-6 rounded-lg shadow mb-6">
+    <div
+      className={`flex flex-col gap-4 max-w-4xl mx-auto w-full mb-6 ${BorderContainerClasses}`}
+    >
       <label htmlFor="location" className="block mb-2 font-medium">
         Enter preferred Location
       </label>

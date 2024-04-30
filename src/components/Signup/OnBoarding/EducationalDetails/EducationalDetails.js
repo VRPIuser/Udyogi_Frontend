@@ -1,7 +1,7 @@
 import SignUpOrLoginContainer from "@/components/SignUpOrLoginContainer/SignUpOrLoginConatainer";
 import React, { useEffect, useState } from "react";
 import styles from "./EducationalDetails.module.css";
-import Button from "@/UI/Button/Button";
+import Button from "@/components/UI/Button/Button";
 import SelectDegree from "./SelectDegree";
 import DegreeDetails from "./DegreeDetails";
 import useInput from "@/hooks/use-Input";
@@ -45,7 +45,7 @@ const EducationalDetails = ({ onSubmittingEducationalDetails }) => {
   const [formIsValid, setFormIsValid] = useState(false);
   useEffect(() => {
     let datesValues =
-      StillPursuingInput.value ||
+      (StillPursuingInput.value && degreeStartedOnInput.isValid) ||
       (degreeCompletedOnInput.isValid && degreeStartedOnInput.isValid);
     if (educationDetailsFilled) {
       setFormIsValid(

@@ -1,9 +1,10 @@
-import CustomFileUploader from "@/UI/FileUploader/FileUploader";
-import CustomImage from "@/UI/Image/Image";
+import CustomFileUploader from "@/components/UI/FileUploader/FileUploader";
+import CustomImage from "@/components/UI/Image/Image";
+import { BorderContainerClasses } from "@/components/tailwindClasses/ContainerClasses";
 
 const ResumeUploader = ({ resumeInput }) => {
   return (
-    <div className="my-8 bg-gray-300 p-4 rounded-lg">
+    <div className={`my-8 bg-white ${BorderContainerClasses}`}>
       <h2 className="text-lg font-semibold mb-4">Upload Your Resume</h2>
 
       <CustomFileUploader

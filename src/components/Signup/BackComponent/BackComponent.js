@@ -1,4 +1,4 @@
-const { default: CustomImage } = require("@/UI/Image/Image");
+const { default: CustomImage } = require("@/components/UI/Image/Image");
 import styles from "./BackComponent.module.css";
 const BackComponent = ({ backFunction }) => {
   return (

@@ -1,7 +1,7 @@
-import CustomImage from "@/UI/Image/Image";
+import CustomImage from "@/components/UI/Image/Image";
 import styles from "./FraudAlert.module.css";
-import Section from "@/UI/Sections/Section";
-import HideExtraText from "@/UI/HideExtraText/HideExtraText";
+import Section from "@/components/UI/Sections/Section";
+import HideExtraText from "@/components/UI/HideExtraText/HideExtraText";
 
 const FraudAlertData = {
   DescriptionTitle:

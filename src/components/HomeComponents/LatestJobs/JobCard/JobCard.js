@@ -1,10 +1,10 @@
-import HideExtraText from "@/UI/HideExtraText/HideExtraText";
+import HideExtraText from "@/components/UI/HideExtraText/HideExtraText";
 import styles from "./JobCard.module.css";
-import Button from "@/UI/Button/Button";
+import Button from "@/components/UI/Button/Button";
 
-const JobCard = ({ key, job }) => {
+const JobCard = ({ job }) => {
   return (
-    <div className={styles.card} key={key}>
+    <div className={styles.card}>
       <div className={styles.cardHeader}>
         <div>
           <h3 className={styles.cardTitle}>{job.jobTitle}</h3>
@@ -55,7 +55,6 @@ export default JobCard;
 
 const CurrencySymbol = ({ currency }) => {
   const validatedCurrency = currency.toString().toLowerCase().trim();
-  console.log(validatedCurrency);
   if (validatedCurrency === "inr") {
     return <span className={styles.currencySymbol}>₹</span>;
   } else if (validatedCurrency === "usd") {

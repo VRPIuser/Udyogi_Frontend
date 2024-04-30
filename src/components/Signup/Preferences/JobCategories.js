@@ -15,6 +15,7 @@ const experienceOptions = [
 ];
 
 const workOptions = ["Onsite", "Work from Home", "Hybrid", "Remote"];
+import { BorderContainerClasses } from "@/components/tailwindClasses/ContainerClasses";
 import { useState } from "react";
 
 const JobCategories = ({
@@ -52,7 +53,9 @@ const JobCategories = ({
   };
 
   return (
-    <div className="flex flex-col gap-4 max-w-4xl mx-auto w-full bg-zinc-300 p-6 rounded-lg shadow mb-6">
+    <div
+      className={`flex flex-col gap-4 max-w-4xl mx-auto w-full mb-6 ${BorderContainerClasses}`}
+    >
       <label className="block mb-2 font-medium">Select Job Type</label>
       <div className="flex flex-wrap gap-6">
         {JobTypes.map((jobType, index) => (

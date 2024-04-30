@@ -1,14 +1,17 @@
 import CustomDatePicker from "@/components/UI/DatePIcker/DatePIcker";
 import Dropdown from "@/components/UI/Dropdown/Dropdown";
 import InputWithInvalidText from "@/components/UI/Input/InputWithInvalidText";
-import styles from "./UserSignupFrom.module.css";
+import styles from "./AdminSignUpForm.module.css";
 import useInput from "@/hooks/use-Input";
 import {
+  ValueUndefinedValidations,
+  addressValidation,
   confirmPasswordValidation,
   emailValidation,
   mobileNumberValidation,
   nameValidation,
   passwordValidation,
+  yearValidation,
 } from "@/components/InputValidations/InputValidations";
 import { useEffect, useState } from "react";
 import LoadingButton from "@/components/UI/LoadingButton/LoadingButton";
@@ -21,14 +24,27 @@ const Genders = [
   { value: "others", label: "Others" },
 ];
 
-const UserSignupFrom = ({ onSubmit }) => {
-  const firstNameInput = useInput({ validateValue: nameValidation });
-  const lastNameInput = useInput({ validateValue: nameValidation });
+const AdminSignUpForm = ({ onSubmit }) => {
+  const companyNameInput = useInput({ validateValue: nameValidation });
+  const industryTypeInput = useInput({
+    validateValue: ValueUndefinedValidations,
+  });
 
-  const mobileNumberInput = useInput({ validateValue: mobileNumberValidation });
-  // const DOBInput = useInput({ validateValue: nameValidation });
-  const [gender, setGender] = useState();
   const emailInput = useInput({ validateValue: emailValidation });
+  const mobileNumberInput = useInput({ validateValue: mobileNumberValidation });
+
+  const addressInput = useInput({ validateValue: addressValidation });
+
+  const CompanyURLInput = useInput({ validateValue: nameValidation });
+
+  const employeesInput = useInput({ validateValue: ValueUndefinedValidations });
+
+  const establishedYearInput = useInput({
+    validateValue: ValueUndefinedValidations,
+  });
+
+  const incorporateIdInput = useInput({ validateValue: nameValidation });
+
   const passwordInput = useInput({ validateValue: passwordValidation });
   const confirmPasswordInput = useInput({
     validateValue: (value) =>
@@ -41,22 +57,34 @@ const UserSignupFrom = ({ onSubmit }) => {
 
   useEffect(() => {
     setFormIsValid(
-      firstNameInput.isValid &&
-        lastNameInput.isValid &&
+      companyNameInput.isValid &&
+        industryTypeInput.isValid &&
         mobileNumberInput.isValid &&
         emailInput.isValid &&
+        addressInput.isValid &&
+        employeesInput.isValid &&
+        establishedYearInput.isValid &&
+        incorporateIdInput.isValid &&
         passwordInput.isValid &&
-        confirmPasswordInput.isValid &&
-        gender
+        confirmPasswordInput.isValid
+    );
+
+    console.log(
+      industryTypeInput.isValid,
+      establishedYearInput.isValid,
+      employeesInput.isValid
     );
   }, [
-    firstNameInput.isValid,
-    lastNameInput.isValid,
+    companyNameInput.isValid,
+    industryTypeInput.isValid,
     mobileNumberInput.isValid,
     emailInput.isValid,
     passwordInput.isValid,
     confirmPasswordInput.isValid,
-    gender,
+    addressInput.isValid,
+    employeesInput.isValid,
+    establishedYearInput.isValid,
+    incorporateIdInput.isValid,
   ]);
 
   const submitHandler = () => {
@@ -70,12 +98,16 @@ const UserSignupFrom = ({ onSubmit }) => {
     //   gender
     // );
     onSubmit({
-      firstName: firstNameInput.value,
-      lastName: lastNameInput.value,
+      firstName: companyNameInput.value,
+      lastName: industryTypeInput.value,
       mobileNumber: mobileNumberInput.value,
       email: emailInput.value,
+      address: addressInput.value,
+      CompanyURL: CompanyURLInput.value,
+      employees: employeesInput.value,
+      establishedYear: establishedYearInput.value,
+      incorporateId: incorporateIdInput.value,
       password: passwordInput.value,
-      gender: gender.value,
     });
 
     // router.push("/sign-up/job-seeker/email-OTP-verification");
@@ -84,20 +116,20 @@ const UserSignupFrom = ({ onSubmit }) => {
   const Line1 = (
     <div className={styles.line1}>
       <InputWithInvalidText
-        ErrorMessage={"Invalid First Name"}
+        ErrorMessage={"Invalid Company Name"}
         className={styles.Input}
-        placeholder="First Name"
+        placeholder="Company Name"
         type="text"
-        inputFields={firstNameInput}
+        inputFields={companyNameInput}
         mandatory="true"
       />
-      <InputWithInvalidText
-        ErrorMessage={"Invalid Last Name"}
-        className={styles.Input}
-        placeholder="Last Name"
-        type="text"
-        inputFields={lastNameInput}
-        mandatory="true"
+
+      <Dropdown
+        options={Genders}
+        onSelect={(industryType) => industryTypeInput.AssignValue(industryType)}
+        placeholder="Industry Type"
+        styles={{ marginBottom: "21.6px", width: "100%" }}
+        mandatory
       />
     </div>
   );
@@ -111,13 +143,6 @@ const UserSignupFrom = ({ onSubmit }) => {
         type="text"
         inputFields={mobileNumberInput}
         mandatory="true"
-      />
-      <Dropdown
-        options={Genders}
-        onSelect={(gender) => setGender(gender)}
-        placeholder="Gender"
-        styles={{ marginBottom: "21.6px", width: "100%" }}
-        mandatory
       />
     </div>
   );
@@ -138,6 +163,66 @@ const UserSignupFrom = ({ onSubmit }) => {
   const Line4 = (
     <div className={styles.line4}>
       <InputWithInvalidText
+        ErrorMessage={"Invalid Address"}
+        className={styles.Input}
+        placeholder="Address"
+        type="text"
+        inputFields={addressInput}
+        mandatory="true"
+      />
+    </div>
+  );
+  const Line5 = (
+    <div className={styles.line5}>
+      <InputWithInvalidText
+        ErrorMessage={"Invalid URL"}
+        className={styles.Input}
+        placeholder="Company URL(Optional)"
+        type="text"
+        inputFields={CompanyURLInput}
+        mandatory="true"
+      />
+    </div>
+  );
+
+  const Line6 = (
+    <div className={styles.line6}>
+      <Dropdown
+        options={Genders}
+        onSelect={(industryType) => employeesInput.AssignValue(industryType)}
+        placeholder="No Of Employees"
+        styles={{ marginBottom: "21.6px", width: "100%" }}
+        mandatory
+      />
+
+      <Dropdown
+        options={Genders}
+        onSelect={(industryType) =>
+          establishedYearInput.AssignValue(industryType)
+        }
+        placeholder="Established in Year"
+        styles={{ marginBottom: "21.6px", width: "100%" }}
+        mandatory
+      />
+    </div>
+  );
+
+  const Line7 = (
+    <div className={styles.line4}>
+      <InputWithInvalidText
+        ErrorMessage={"Invalid ID"}
+        className={styles.Input}
+        placeholder="Incorporate-ID"
+        type="text"
+        inputFields={incorporateIdInput}
+        mandatory="true"
+      />
+    </div>
+  );
+
+  const Line8 = (
+    <div className={styles.line4}>
+      <InputWithInvalidText
         ErrorMessage={"Invalid Password"}
         className={`${styles.Input} `}
         placeholder="Password"
@@ -148,7 +233,7 @@ const UserSignupFrom = ({ onSubmit }) => {
     </div>
   );
 
-  const Line5 = (
+  const Line9 = (
     <div className={styles.line5}>
       <InputWithInvalidText
         ErrorMessage={"Invalid Confirm Password"}
@@ -168,6 +253,10 @@ const UserSignupFrom = ({ onSubmit }) => {
       {Line3}
       {Line4}
       {Line5}
+      {Line6}
+      {Line7}
+      {Line8}
+      {Line9}
       <div className={styles.btns}>
         <LoadingButton
           className={formIsValid ? styles.submitBtn : `${styles.disabled}`}
@@ -194,4 +283,4 @@ const UserSignupFrom = ({ onSubmit }) => {
     </div>
   );
 };
-export default UserSignupFrom;
+export default AdminSignUpForm;

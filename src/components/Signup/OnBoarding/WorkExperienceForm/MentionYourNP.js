@@ -1,4 +1,4 @@
-import { optionClasses } from "@/tailwindClasses/ButtonClassess";
+import { optionClasses } from "@/components/tailwindClasses/ButtonClassess";
 import { useState } from "react";
 
 const SNPData = [

@@ -1,5 +1,5 @@
-import Button from "@/UI/Button/Button";
-import CustomImage from "@/UI/Image/Image";
+import Button from "@/components/UI/Button/Button";
+import CustomImage from "@/components/UI/Image/Image";
 import { useRouter } from "next/router";
 import React from "react";
 
@@ -10,7 +10,7 @@ const containerClasses = "";
 const titleClasses = "text-2xl font-bold mb-2";
 const paragraphClasses = "mb-6";
 
-const EmailVerified = () => {
+const EmailVerified = ({ action }) => {
   const router = useRouter();
   return (
     <div className="flex items-center justify-center h-screen">
@@ -27,13 +27,7 @@ const EmailVerified = () => {
           Thank you for creating your account in Udhyogi! Now choose your career
           in Best Companies. All the Best!
         </p>
-        <Button
-          onClick={() => {
-            router.push("/sign-up/job-seeker/onBoarding");
-          }}
-        >
-          Continue
-        </Button>
+        <Button onClick={action}>Continue</Button>
       </div>
     </div>
   );

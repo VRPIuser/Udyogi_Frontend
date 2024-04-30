@@ -1,5 +1,5 @@
-import Dropdown from "@/UI/Dropdown/Dropdown";
-import InputWithInvalidText from "@/UI/Input/InputWithInvalidText";
+import Dropdown from "@/components/UI/Dropdown/Dropdown";
+import InputWithInvalidText from "@/components/UI/Input/InputWithInvalidText";
 import { NoOfYearsValidation } from "@/components/InputValidations/InputValidations";
 import useInput from "@/hooks/use-Input";
 import { useEffect, useState } from "react";

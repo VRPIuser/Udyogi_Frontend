@@ -1,8 +1,7 @@
 import style from "./Footer.module.css";
-import { useEffect, useState } from "react";
-import Image from "next/image";
-import CustomImage from "@/UI/Image/Image";
+
 import VRPILogo from "../VRPILogo/VRPILogo";
+import CustomImage from "../UI/Image/Image";
 // import { useDispatch } from "react-redux";
 // import { NavLink } from "react-router-dom";
 // import { setComingSoon } from "../../../store/ComingSoonSlice";
@@ -50,8 +49,8 @@ const Footer = ({ links, quickLinks, ContactUs, JoinUsBarData }) => {
       {quickLinks.map(
         (link, index) =>
           link.active && (
-            <>
-              <li key={index} className={style.element}>
+            <div key={index}>
+              <li className={style.element}>
                 <a
                   href={link.address}
                   onClick={handleScrollToTop}
@@ -66,7 +65,7 @@ const Footer = ({ links, quickLinks, ContactUs, JoinUsBarData }) => {
                   {link.name}
                 </a>
               </li>
-            </>
+            </div>
           )
       )}
     </div>

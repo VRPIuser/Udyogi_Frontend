@@ -1,4 +1,4 @@
-import CustomImage from "@/UI/Image/Image";
+import CustomImage from "@/components/UI/Image/Image";
 import { useEffect, useRef, useState } from "react";
 
 const inputClass =
@@ -7,11 +7,28 @@ const buttonClass = "h-10 font-bold  rounded";
 
 const EmailVerification = ({ onOTPVerify }) => {
   const [otp, setOtp] = useState(Array(6).fill(""));
+  const [timer, setTimer] = useState(900); // 15 minutes in seconds
   const inputRefs = [];
 
   useEffect(() => {
     inputRefs[0]?.focus(); // Make sure the ref exists before accessing
+
+    const interval = setInterval(() => {
+      setTimer((prevTimer) => prevTimer - 1);
+    }, 1000);
+
+    return () => clearInterval(interval);
   }, []);
+
+  useEffect(() => {
+    if (timer === 0) {
+      const interval = setInterval(() => {
+        setTimer((prevTimer) => prevTimer - 1);
+      }, 1000);
+
+      return () => clearInterval(interval);
+    }
+  }, [timer]);
 
   const handleChange = (index, e) => {
     const newOtp = [...otp];
@@ -30,6 +47,14 @@ const EmailVerification = ({ onOTPVerify }) => {
 
   const handleVerify = () => {
     onOTPVerify(otp.join(""));
+  };
+
+  const formatTime = (time) => {
+    const minutes = Math.floor(time / 60);
+    const seconds = time % 60;
+    return `${minutes < 10 ? "0" + minutes : minutes}mins:${
+      seconds < 10 ? "0" + seconds : seconds
+    }sec`;
   };
 
   return (
@@ -51,7 +76,7 @@ const EmailVerification = ({ onOTPVerify }) => {
           A verification code has been sent to your Email Address{" "}
           <span className="font-semibold">example@gmail.com</span>. Please check
           your inbox and enter the code below. The code expires in{" "}
-          <span className="font-semibold">14mins:59sec</span>
+          <span className="font-semibold">{formatTime(timer)}</span>
         </p>
 
         <div className="flex justify-between space-x-2 mb-6">

@@ -2,6 +2,7 @@ import SignUpOrLoginContainer from "@/components/SignUpOrLoginContainer/SignUpOr
 
 import styles from "./Experience.module.css";
 import { useRouter } from "next/router";
+import { BorderContainerClasses } from "@/components/tailwindClasses/ContainerClasses";
 
 const loginScreenData = {
   description:
@@ -10,7 +11,7 @@ const loginScreenData = {
 };
 
 const boxClasses =
-  "font-medium  max-w-96 w-full max-h-60 h-52 flex items-center justify-center text-xl px-6 text-center cursor-pointer hover:scale-105 hover:bg-orange-500 hover:text-white  transition-all ";
+  "font-medium max-w-96 w-full max-h-60 h-52 flex items-center justify-center text-xl px-6 text-center cursor-pointer hover:scale-105 hover:bg-orange-500 hover:text-white transition-all";
 
 const Experience = () => {
   const router = useRouter();
@@ -28,7 +29,7 @@ const Experience = () => {
           Any Work Experience?
         </h1>
         <div
-          className={`${boxClasses}`}
+          className={`${boxClasses} ${BorderContainerClasses}`}
           onClick={() => {
             router.push("/sign-up/job-seeker/work-experience");
           }}
@@ -36,7 +37,7 @@ const Experience = () => {
           I’ve have an Work Experience
         </div>
         <div
-          className={`${boxClasses} `}
+          className={`${boxClasses} ${BorderContainerClasses}`}
           onClick={() => {
             router.push("/sign-up/job-seeker/education-details");
           }}

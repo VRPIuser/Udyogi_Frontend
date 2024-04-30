@@ -1,5 +1,5 @@
-import Button from "@/UI/Button/Button";
-import CustomImage from "@/UI/Image/Image";
+import Button from "@/components/UI/Button/Button";
+import CustomImage from "@/components/UI/Image/Image";
 import VRPILogo from "@/components/VRPILogo/VRPILogo";
 import styles from "./SignWelcomeScreen.module.css";
 import { useRouter } from "next/router";

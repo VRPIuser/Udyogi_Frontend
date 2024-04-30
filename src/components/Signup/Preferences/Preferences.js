@@ -2,10 +2,10 @@ import React, { useEffect, useState } from "react";
 import JobRoles from "./JobRoles";
 import Skills from "./skills";
 import PreferredLocation from "./PreferredLocation";
-import Button from "@/UI/Button/Button";
+import Button from "@/components/UI/Button/Button";
 import JobCategories from "./JobCategories";
 import useInput from "@/hooks/use-Input";
-import RightSlideAnimation from "@/animations/RightSlideAnimation";
+import RightSlideAnimation from "@/components/animations/RightSlideAnimation";
 
 const inputClasses = "w-full p-2 border rounded-md mb-2";
 const tagClasses = "bg-zinc-200 rounded-full px-3 py-1 text-sm";

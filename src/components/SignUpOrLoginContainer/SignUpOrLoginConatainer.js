@@ -1,4 +1,4 @@
-import CustomImage from "@/UI/Image/Image";
+import CustomImage from "@/components/UI/Image/Image";
 import style from "./SignUpOrLoginContainer.module.css";
 
 const SignUpOrLoginContainer = ({

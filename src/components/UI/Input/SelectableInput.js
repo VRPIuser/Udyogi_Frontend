@@ -1,4 +1,8 @@
 import { useEffect, useState } from "react";
+import InputWithInvalidText from "./InputWithInvalidText";
+import useInput from "@/hooks/use-Input";
+import { nameValidation } from "@/components/InputValidations/InputValidations";
+import { optionClasses } from "@/components/tailwindClasses/ButtonClassess";
 
 const SuggestionClasses =
   "bg-white rounded-full px-3 py-1 text-sm cursor-pointer hover:bg-zinc-100 transition-all";
@@ -9,12 +13,14 @@ const SelectableInput = ({
   onChange,
   minNoOfOptions,
 }) => {
-  const [inputValue, setInputValue] = useState("");
+  // const [inputValue, setInputValue] = useState("");
   const [selectedOptions, setSelectedOptions] = useState([]);
 
-  const handleInputChange = (event) => {
-    setInputValue(event.target.value);
-  };
+  const optionsInput = useInput({ validateValue: nameValidation });
+
+  // const handleInputChange = (event) => {
+  //   setInputValue(event.target.value);
+  // };
 
   const handleOptionClick = (option) => {
     if (!selectedOptions.includes(option)) {
@@ -22,7 +28,7 @@ const SelectableInput = ({
         ...prevSelectedOptions,
         option,
       ]);
-      setInputValue("");
+      optionsInput.AssignValue("");
     }
   };
 
@@ -42,12 +48,14 @@ const SelectableInput = ({
         ...prevSelectedOptions,
         inputValue,
       ]);
-      setInputValue("");
+      optionsInput.AssignValue("");
     }
   };
 
   const filteredOptions = options
-    .filter((option) => option.toLowerCase().includes(inputValue.toLowerCase()))
+    .filter((option) =>
+      option.toLowerCase().includes(optionsInput.value.toLowerCase())
+    )
     .filter((option) => !selectedOptions.includes(option)); // Filter out selected options
 
   return (
@@ -55,7 +63,7 @@ const SelectableInput = ({
       {selectedOptions.length > 0 && (
         <div id="selectedOptions" className="flex flex-wrap gap-2 mb-4">
           {selectedOptions.map((option, index) => (
-            <div key={index} className={SuggestionClasses}>
+            <div key={index} className={optionClasses}>
               <button
                 type="button"
                 onClick={() => handleRemoveOption(index)}
@@ -68,31 +76,33 @@ const SelectableInput = ({
         </div>
       )}
 
-      <input
+      <InputWithInvalidText
         type="text"
         id="input"
-        value={inputValue}
-        onChange={handleInputChange}
+        inputFields={optionsInput}
+        // value={inputValue}
+        // onChange={handleInputChange}
         placeholder={placeholder || "Type here..."}
-        className="w-full p-2 border rounded-md mb-4"
+        className="mb-4"
       />
       <div className="flex flex-wrap gap-2">
         {filteredOptions.slice(0, minNoOfOptions || 6).map((option, index) => (
           <span
             key={index}
             onClick={() => handleOptionClick(option)}
-            className={SuggestionClasses}
+            className={optionClasses}
           >
             {option}
             {" +"}
           </span>
         ))}
-        {inputValue.trim() !== "" && !options.includes(inputValue) && (
-          <span className={SuggestionClasses} onClick={handleAddCustomOption}>
-            {inputValue}
-            {" +"}
-          </span>
-        )}
+        {optionsInput.value.trim() !== "" &&
+          !options.includes(optionsInput.value) && (
+            <span className={optionClasses} onClick={handleAddCustomOption}>
+              {optionsInput.value}
+              {" +"}
+            </span>
+          )}
       </div>
     </div>
   );

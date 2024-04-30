@@ -68,9 +68,7 @@ const CustomFileUploader = ({
   return (
     <div style={{ position: "relative" }}>
       <div
-        className={` ${dragOver && "bg-gray-200 "} ${ContainerClasses} ${
-          style.container
-        }`}
+        className={`${ContainerClasses} ${style.container} h-52`}
         onDrop={handleFileDrop}
         onDragOver={handleDragOver}
         onDragLeave={handleDragLeave}
@@ -87,7 +85,7 @@ const CustomFileUploader = ({
       <div
         className={`${
           dragOver
-            ? "flex flex-col justify-center items-center content-center h-full"
+            ? "flex flex-col justify-center items-center content-center h-52 w-full bg-zinc-100"
             : "hidden"
         } ${style.box}`}
       >
@@ -99,7 +97,7 @@ const CustomFileUploader = ({
         </>
       </div>
       <div
-        className={`flex flex-col justify-center items-center content-center w-full p-4 h-full ${
+        className={`flex flex-col justify-center items-center content-center w-full p-4 h-52 ${
           dragOver ? " hidden" : "flex"
         } ${style.box}`}
       >
@@ -122,12 +120,10 @@ const CustomFileUploader = ({
             ) : (
               <DefaultText buttonText={buttonText} />
             )}
-            <p className="text-xs text-zinc-500">
-              File can be PDF, DOC; of size 5MB
-            </p>
           </>
         )}
       </div>
+      <p className="text-xs text-zinc-500">File can be PDF, DOC; of size 5MB</p>
     </div>
   );
 };
@@ -137,7 +133,12 @@ export default CustomFileUploader;
 const DefaultText = ({ buttonText }) => {
   return (
     <>
-      <span className="text-xl font-semibold text-black ">{buttonText}</span>
+      <HideExtraText
+        lines={1}
+        className="text-xl font-semibold text-black text-center"
+      >
+        {buttonText}
+      </HideExtraText>
       <p className="text-xs ">Drag and Drop the file</p>
     </>
   );

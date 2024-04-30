@@ -1,4 +1,4 @@
-import Section from "@/UI/Sections/Section";
+import Section from "@/components/UI/Sections/Section";
 import styles from "./LatestJobs.module.css";
 import { LatestJobsData } from "@/data/Jobs";
 
