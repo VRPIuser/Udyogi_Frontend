@@ -61,7 +61,7 @@
 }
 
 .checkPasswordContainer {
-  position: absolute;
+  position: absolute !important;
   right: 0.5rem;
   width: 30px;
   top: 0.8rem;

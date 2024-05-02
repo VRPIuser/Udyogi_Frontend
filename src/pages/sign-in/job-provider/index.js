@@ -1,9 +1,8 @@
 import SignUpOrLoginContainer from "@/components/SignUpOrLoginContainer/SignUpOrLoginConatainer";
 import SignWelcomeScreen from "@/components/Signup/SignWelcomeScreen/SignWelcomeScreen";
-import Button from "@/components/UI/Button/Button";
 import Head from "next/head";
-import styles from "./index.module.css";
-const WelcomeToSignUpPage = () => {
+
+const WelcomeToSignInPage = () => {
   const loginScreenData = {
     description:
       "You’re one step away to unlock all the possible features of Udhyogi ",
@@ -11,20 +10,20 @@ const WelcomeToSignUpPage = () => {
   };
 
   const welcomeLinks = {
-    title: "Sign Up",
+    title: "Sign In",
     buttonLinks: [
       {
-        link: "/sign-up/job-seeker",
-        text: "Job Seeker",
+        link: "/sign-in/job-provider/admin",
+        text: "Admin",
       },
       {
-        link: "/sign-up/job-provider",
-        text: "Job Provider",
+        link: "/sign-in/job-provider/recruiter",
+        text: "IT Recruiter",
       },
     ],
     switchLinks: {
-      link: "/sign-in",
-      text: "Sign in",
+      link: "/sign-up",
+      text: "Sign up",
     },
   };
 
@@ -42,4 +41,4 @@ const WelcomeToSignUpPage = () => {
   );
 };
 
-export default WelcomeToSignUpPage;
+export default WelcomeToSignInPage;

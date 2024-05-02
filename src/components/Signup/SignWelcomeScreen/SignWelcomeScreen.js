@@ -3,18 +3,42 @@ import CustomImage from "@/components/UI/Image/Image";
 import VRPILogo from "@/components/VRPILogo/VRPILogo";
 import styles from "./SignWelcomeScreen.module.css";
 import { useRouter } from "next/router";
-const SignWelcomeScreen = () => {
+import BackComponent from "../BackComponent/BackComponent";
+const SignWelcomeScreen = ({ welcomeLinks }) => {
   const router = useRouter();
-
+  // const SignIn = "sign-in";
+  // const SignUp = "sign-up";
+  // const main = signInOrSignOut === "sign-up" ? SignUp : SignIn;
+  // const other = signInOrSignOut !== "sign-up" ? SignUp : SignIn;
   return (
-    <div className={styles.container}>
-      <VRPILogo className={styles.logo} />
+    <div className={styles.mainContainer}>
+      <BackComponent
+        backFunction={() => {
+          router.back();
+        }}
+      />
+      <div className={styles.container}>
+        <VRPILogo className={styles.logo} />
 
-      <h1 className={styles.title}>Sign-up Page</h1>
-      <div className={styles.buttons}>
-        <Button
+        <h1 className={styles.title}>{welcomeLinks.title} Page</h1>
+        <div className={styles.buttons}>
+          {welcomeLinks.buttonLinks.map((link, index) => {
+            return (
+              <Button
+                key={index}
+                onClick={() => {
+                  router.push(link.link);
+                }}
+                className={styles.button}
+              >
+                {link.text}
+              </Button>
+            );
+          })}
+
+          {/* <Button
           onClick={() => {
-            router.push("/sign-up/job-seeker");
+            router.push(`/${main}/job-seeker`);
           }}
           className={styles.button}
         >
@@ -22,12 +46,25 @@ const SignWelcomeScreen = () => {
         </Button>
         <Button
           onClick={() => {
-            router.push("/sign-up/job-provider");
+            router.push(`/${main}/job-provider`);
           }}
           className={styles.button}
         >
           Job Provider
-        </Button>
+        </Button> */}
+          <div className={styles.line}>
+            <div className={styles.lineOn}></div>
+            <span className={styles.or}>Don’t have an Account?</span>
+          </div>
+          <Button
+            onClick={() => {
+              router.push(`/${welcomeLinks.switchLinks.link}`);
+            }}
+            className={styles.signInBtn}
+          >
+            {welcomeLinks.switchLinks.text}
+          </Button>
+        </div>
       </div>
     </div>
   );
