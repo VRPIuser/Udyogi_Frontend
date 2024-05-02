@@ -1,3 +1,6 @@
+import NotificationComponent from "@/components/MainHeader/NotificationsPopover/NotificationPopover";
+import ProfileComponent from "@/components/MainHeader/ProfilePopover/ProfilePopover";
+
 export const RightHeaderLinks = [
   {
     name: "Sign-In",
@@ -13,6 +16,24 @@ export const RightHeaderLinks = [
     name: "Post a Jobs?",
     address: "/postJob",
     active: false,
+  },
+];
+
+export const RightSideIcons = [
+  {
+    image: "message.png",
+    link: "/message",
+    popover: <ProfileComponent />,
+  },
+  {
+    image: "notifications.png",
+    link: "/notifications",
+    popover: <NotificationComponent />,
+  },
+  {
+    image: "profile.png",
+    link: "/profile",
+    popover: <ProfileComponent />,
   },
 ];
 export const LeftHeaderLinks = [

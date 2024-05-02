@@ -3,7 +3,7 @@
   padding: 5px 30px;
   font-size: 1.1rem;
   cursor: pointer;
-  border-radius: 5px;
+  border-radius: 2px;
   background-color: var(--primary);
   transition: all 0.3s ease;
   color: white;
