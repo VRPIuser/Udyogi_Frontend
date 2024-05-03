@@ -31,7 +31,16 @@ const SignInForm = ({ onSubmitCredentials, role }) => {
     setFormIsValid(
       emailInput.isValid && passwordInput.isValid && termsAccepted && rememberMe
     );
-  }, [emailInput.isValid, passwordInput.isValid, termsAccepted, rememberMe]);
+    if (role === "recruiter") {
+      setFormIsValid(emailInput.isValid && passwordInput.isValid);
+    }
+  }, [
+    emailInput.isValid,
+    passwordInput.isValid,
+    termsAccepted,
+    rememberMe,
+    role,
+  ]);
 
   // const dispatch = useDispatch();
 

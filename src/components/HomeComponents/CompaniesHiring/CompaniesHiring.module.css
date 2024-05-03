@@ -14,16 +14,11 @@
 }
 
 .cards {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 150px));
   gap: 1rem;
-  justify-content: flex-start;
-  width: fit-content;
-  overflow-x: auto;
-  overflow-y: hidden;
-  /* white-space: nowrap; */
-  scroll-behavior: auto;
-  scrollbar-width: none;
-  -ms-overflow-style: none;
+  width: 100%;
+  justify-content: center;
 }
 
 .cardContainer {

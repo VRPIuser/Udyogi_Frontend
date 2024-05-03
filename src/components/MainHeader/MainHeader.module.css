@@ -2,7 +2,7 @@
   display: flex;
   width: 100%;
   height: 70px;
-  background-color: var(--U_Primary);
+  background-color: white;
   justify-content: space-between;
   position: fixed;
   top: 0;
@@ -31,10 +31,10 @@
   margin-left: 2rem;
 }
 
-.rightHeaderBar a,
+/* .rightHeaderBar a,
 .leftHeaderBar a {
   font-weight: 500;
   height: 21px;
   font-size: 1.1rem;
   display: block;
-}
+} */

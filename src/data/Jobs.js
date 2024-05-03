@@ -8,8 +8,7 @@ export const LatestJobsData = [
     postedDate: "2022-01-15T08:30:00",
     shortDescriptionData:
       "WNon fringilla nisl rutrum magna et risus dui nulla. Fringilla nisl rutrum magna et risus dui nulla.",
-
-    expectedSkills: ["User interface designing", "UIUX Designing", "Figma"],
+    expectedSkills: ["JavaScript", "React", "Node.js"],
     salaryRange: {
       upperLimit: 6,
       lowerLimit: 3,
@@ -18,34 +17,32 @@ export const LatestJobsData = [
     },
   },
   {
-    jobTitle: "Web Developer",
-    companyName: "XYZ Solutions",
+    jobTitle: "Data Analyst",
+    companyName: "Data Crunchers Inc.",
     location: "Bangalore",
     workType: "On-Site",
-    jobType: "Contract",
+    jobType: "Full-Time",
     postedDate: "2022-01-15T08:30:00",
     shortDescriptionData:
-      "WNon fringilla nisl rutrum magna et risus dui nulla. Fringilla nisl rutrum magna et risus dui nulla.",
-
-    expectedSkills: ["User interface designing", "UIUX Designing", "Figma"],
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer ullamcorper nisl ut nunc ullamcorper, ac consectetur magna luctus.",
+    expectedSkills: ["SQL", "Python", "Data Visualization"],
     salaryRange: {
-      upperLimit: 10,
-      lowerLimit: 5,
+      upperLimit: 90000,
+      lowerLimit: 60000,
       currency: "USD",
-      salaryType: "Per Hour",
+      salaryType: "Per Annum",
     },
   },
   {
-    jobTitle: "Data Scientist",
-    companyName: "Data Innovations Inc.",
-    postedDate: "2022-01-15T08:30:00",
-    shortDescriptionData:
-      "WNon fringilla nisl rutrum magna et risus dui nulla. Fringilla nisl rutrum magna et risus dui nulla.",
-
-    expectedSkills: ["User interface designing", "UIUX Designing", "Figma"],
-    location: "New York",
+    jobTitle: "UX Designer",
+    companyName: "Design Studio Ltd.",
+    location: "Bangalore",
     workType: "Hybrid",
     jobType: "Full-Time",
+    postedDate: "2022-01-15T08:30:00",
+    shortDescriptionData:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer ullamcorper nisl ut nunc ullamcorper, ac consectetur magna luctus.",
+    expectedSkills: ["UI/UX Design", "Wireframing", "Prototyping"],
     salaryRange: {
       upperLimit: 120000,
       lowerLimit: 80000,
@@ -54,129 +51,59 @@ export const LatestJobsData = [
     },
   },
   {
-    jobTitle: "UX/UI Designer",
-    companyName: "Creative Minds Ltd.",
+    jobTitle: "Frontend Developer",
+    companyName: "WebTech Innovations",
+    location: "Bangalore",
+    workType: "Remote",
+    jobType: "Full-Time",
     postedDate: "2022-01-15T08:30:00",
     shortDescriptionData:
-      "WNon fringilla nisl rutrum magna et risus dui nulla. Fringilla nisl rutrum magna et risus dui nulla.",
-
-    expectedSkills: ["User interface designing", "UIUX Designing", "Figma"],
-    location: "London",
-    workType: "On-Site",
-    jobType: "Full-Time",
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer ullamcorper nisl ut nunc ullamcorper, ac consectetur magna luctus.",
+    expectedSkills: ["HTML", "CSS", "JavaScript", "React"],
     salaryRange: {
-      upperLimit: 50000,
-      lowerLimit: 30000,
+      upperLimit: 100000,
+      lowerLimit: 70000,
       currency: "USD",
       salaryType: "Per Annum",
     },
   },
   {
-    jobTitle: "Marketing Manager",
-    companyName: "Growth Ventures",
-    postedDate: "2022-01-15T08:30:00",
-    shortDescriptionData:
-      "WNon fringilla nisl rutrum magna et risus dui nulla. Fringilla nisl rutrum magna et risus dui nulla.",
-
-    expectedSkills: ["User interface designing", "UIUX Designing", "Figma"],
-    location: "San Francisco",
-    workType: "Remote",
-    jobType: "Part-Time",
-    salaryRange: {
-      upperLimit: 80000,
-      lowerLimit: 50000,
-      currency: "USD",
-      salaryType: "Per Year",
-    },
-  },
-  {
-    jobTitle: "Network Engineer",
-    companyName: "ConnectX Inc.",
-    postedDate: "2022-01-15T08:30:00",
-    shortDescriptionData:
-      "WNon fringilla nisl rutrum magna et risus dui nulla. Fringilla nisl rutrum magna et risus dui nulla.",
-
-    expectedSkills: ["User interface designing", "UIUX Designing", "Figma"],
-    location: "Toronto",
-    workType: "On-Site",
-    jobType: "Full-Time",
-    salaryRange: {
-      upperLimit: 1.0,
-      lowerLimit: 7.0,
-      currency: "INR",
-      salaryType: "LPA",
-    },
-  },
-  {
-    jobTitle: "Product Manager",
-    companyName: "InnovateTech",
-    postedDate: "2022-01-15T08:30:00",
-    shortDescriptionData:
-      "WNon fringilla nisl rutrum magna et risus dui nulla. Fringilla nisl rutrum magna et risus dui nulla.",
-
-    expectedSkills: ["User interface designing", "UIUX Designing", "Figma"],
-    location: "Berlin",
-    workType: "Hybrid",
-    jobType: "Full-Time",
-    salaryRange: {
-      upperLimit: 7.5,
-      lowerLimit: 5.5,
-      currency: "INR",
-      salaryType: "LPA",
-    },
-  },
-  {
-    jobTitle: "Graphic Designer",
-    companyName: "Visualize Creations",
-    postedDate: "2022-01-15T08:30:00",
-    shortDescriptionData:
-      "WNon fringilla nisl rutrum magna et risus dui nulla. Fringilla nisl rutrum magna et risus dui nulla.",
-
-    expectedSkills: ["User interface designing", "UIUX Designing", "Figma"],
-    location: "Sydney",
+    jobTitle: "Backend Developer",
+    companyName: "Backend Solutions Inc.",
+    location: "Chennai",
     workType: "On-Site",
     jobType: "Contract",
-    salaryRange: {
-      upperLimit: 6,
-      lowerLimit: 4,
-      currency: "INR",
-      salaryType: "LPA",
-    },
-  },
-  {
-    jobTitle: "Customer Support Specialist",
-    companyName: "Supportify Inc.",
     postedDate: "2022-01-15T08:30:00",
     shortDescriptionData:
-      "WNon fringilla nisl rutrum magna et risus dui nulla. Fringilla nisl rutrum magna et risus dui nulla.",
-
-    expectedSkills: ["User interface designing", "UIUX Designing", "Figma"],
-    location: "Tokyo",
-    workType: "Remote",
-    jobType: "Full-Time",
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer ullamcorper nisl ut nunc ullamcorper, ac consectetur magna luctus.",
+    expectedSkills: ["Java", "Spring", "SQL"],
     salaryRange: {
-      upperLimit: 5000000,
-      lowerLimit: 3500000,
-      currency: "USD",
-      salaryType: "Per Year",
-    },
-  },
-  {
-    jobTitle: "Financial Analyst",
-    companyName: "Investment Strategies Ltd.",
-    postedDate: "2022-01-15T08:30:00",
-    shortDescriptionData:
-      "WNon fringilla nisl rutrum magna et risus dui nulla. Fringilla nisl rutrum magna et risus dui nulla.",
-
-    expectedSkills: ["User interface designing", "UIUX Designing", "Figma"],
-    location: "Singapore",
-    workType: "On-Site",
-    jobType: "Full-Time",
-    salaryRange: {
-      upperLimit: 100000,
+      upperLimit: 120000,
       lowerLimit: 80000,
       currency: "USD",
       salaryType: "Per Annum",
     },
   },
+  {
+    jobTitle: "Product Manager",
+    companyName: "Product Innovations Co.",
+    location: "Gurgaon",
+    workType: "Hybrid",
+    jobType: "Full-Time",
+    postedDate: "2022-01-15T08:30:00",
+    shortDescriptionData:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer ullamcorper nisl ut nunc ullamcorper, ac consectetur magna luctus.",
+    expectedSkills: [
+      "Product Management",
+      "Market Research",
+      "Agile Methodologies",
+    ],
+    salaryRange: {
+      upperLimit: 150000,
+      lowerLimit: 100000,
+      currency: "USD",
+      salaryType: "Per Annum",
+    },
+  },
+  // Add more job data here...
 ];

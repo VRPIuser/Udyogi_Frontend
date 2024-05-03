@@ -1,3 +1,4 @@
+import MessagesPopover from "@/components/MainHeader/MessagesPopover/MessagesPopover";
 import NotificationComponent from "@/components/MainHeader/NotificationsPopover/NotificationPopover";
 import ProfileComponent from "@/components/MainHeader/ProfilePopover/ProfilePopover";
 
@@ -23,7 +24,7 @@ export const RightSideIcons = [
   {
     image: "message.png",
     link: "/message",
-    popover: <ProfileComponent />,
+    popover: <MessagesPopover />,
   },
   {
     image: "notifications.png",

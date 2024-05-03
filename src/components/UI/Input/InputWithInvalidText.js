@@ -10,6 +10,8 @@ const InputWithInvalidText = ({
   mandatory,
   type,
   placeholder,
+  styles,
+  inputStyles,
 }) => {
   const inputRef = useRef(null);
 
@@ -26,7 +28,7 @@ const InputWithInvalidText = ({
   });
 
   return (
-    <div className={`${style.InputContainer}  ${className}`}>
+    <div className={`${style.InputContainer}  ${className}`} style={styles}>
       <CustomInput
         ref={inputRef}
         className={`${style.checkoutFormControl} ${
@@ -38,6 +40,7 @@ const InputWithInvalidText = ({
         onBlur={inputFields.validateValueHandler}
         onChange={inputFields.valueChangeHandler}
         type={`${type === "password" && checkPassword ? "text" : type}`}
+        style={inputStyles}
       />
       {type === "password" && (
         <CustomImage
@@ -61,7 +64,7 @@ const InputWithInvalidText = ({
         {placeholder}{" "}
         {mandatory && <span style={{ color: "red" }}>&nbsp;*</span>}
       </label>
-      {
+      {ErrorMessage && (
         <p
           className={style.invalidText}
           style={{
@@ -70,7 +73,7 @@ const InputWithInvalidText = ({
         >
           {ErrorMessage}
         </p>
-      }
+      )}
     </div>
   );
 };

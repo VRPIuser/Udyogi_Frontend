@@ -10,11 +10,11 @@ const JobCard = ({ job }) => {
           <h3 className={styles.cardTitle}>{job.jobTitle}</h3>
           <h4 className={styles.cardCompany}>{job.companyName}</h4>
 
-          <ul className={styles.jobTags}>
-            <li className={styles.cardLocation}>{job.location}</li>
-            <li className={styles.cardWorkType}>{job.workType}</li>
-            <li className={styles.cardJobType}>{job.jobType}</li>
-          </ul>
+          <HideExtraText className={styles.jobTags} lines={1}>
+            {"  •  "} {job.location} {"  •  "}
+            {job.workType} {"  •  "}
+            {job.jobType}
+          </HideExtraText>
         </div>
         <div className={styles.symbol}>
           <span>v</span>
@@ -25,11 +25,14 @@ const JobCard = ({ job }) => {
           <HideExtraText className={styles.cardDescription} lines={3}>
             {job.shortDescriptionData}
           </HideExtraText>
-          <ul className={styles.jobTags}>
+          <HideExtraText lines={1} className={styles.jobTags}>
             {job.expectedSkills.map((skill, index) => (
-              <li key={index}>{skill}</li>
+              <>
+                {"  •  "}
+                {skill}
+              </>
             ))}
-          </ul>
+          </HideExtraText>
         </div>
         <HideExtraText className={styles.cardSalaryRange} lines={1}>
           {<CurrencySymbol currency={job.salaryRange.currency} />}

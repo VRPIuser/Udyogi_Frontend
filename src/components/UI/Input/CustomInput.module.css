@@ -23,8 +23,14 @@
   outline: none;
 }
 
+.input:focus {
+  border: 1px solid var(--primary);
+  box-shadow: none !important;
+}
+
 .invalid {
   border: 1px solid var(--darkInvalidColor);
+  box-shadow: none !important;
 }
 
 .invalidText {

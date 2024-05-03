@@ -1,6 +1,7 @@
 .container {
   display: flex;
   margin: 1.5rem auto;
+  padding: 1rem;
   gap: 1.5rem;
   justify-content: center;
   max-width: 1200px;
@@ -8,7 +9,7 @@
 }
 
 .UsersOptions {
-  max-width: 350px;
+  max-width: 400px;
   background-color: var(--U_Secondary);
   padding: 1rem;
   padding-right: 2rem;
@@ -17,14 +18,18 @@
   flex-direction: column;
   gap: 1rem;
   align-items: flex-start;
+  position: relative;
+  height: 200px;
 }
 
 .UsersOptions h1 {
   font-weight: 500;
+  color: white;
 }
 .UsersOptions p {
   font-weight: 300;
   font-size: 0.9rem;
+  color: white;
 }
 
 .UsersOptionsLink {

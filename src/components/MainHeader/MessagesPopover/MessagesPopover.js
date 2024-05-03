@@ -3,11 +3,11 @@ import CustomCheckbox from "@/components/UI/Checkbox/Checkbox";
 import useInput from "@/hooks/use-Input";
 import React, { useEffect, useState } from "react";
 
-const NotificationComponent = () => {
-  const [notifications, setNotifications] = useState(() => {
-    const storedNotifications = localStorage.getItem("notifications");
-    return storedNotifications
-      ? JSON.parse(storedNotifications)
+const MessagePopover = () => {
+  const [messages, setMessages] = useState(() => {
+    const storedMessages = localStorage.getItem("messages");
+    return storedMessages
+      ? JSON.parse(storedMessages)
       : [
           {
             id: 1,
@@ -37,39 +37,35 @@ const NotificationComponent = () => {
   const allReadInput = useInput({ validateValue: BooleanValidation });
 
   useEffect(() => {
-    localStorage.setItem("notifications", JSON.stringify(notifications));
-  }, [notifications]);
+    localStorage.setItem("messages", JSON.stringify(messages));
+  }, [messages]);
 
   const handleMarkAsRead = () => {
-    const updatedNotifications = notifications.map((notification) => ({
-      ...notification,
+    const updatedMessages = messages.map((message) => ({
+      ...message,
       seen: true,
     }));
-    setNotifications(updatedNotifications);
+    setMessages(updatedMessages);
   };
 
   const handleNotificationClick = (id) => {
-    const updatedNotifications = notifications.map((notification) =>
-      notification.id === id ? { ...notification, seen: true } : notification
+    const updatedMessages = messages.map((message) =>
+      message.id === id ? { ...message, seen: true } : message
     );
-    setNotifications(updatedNotifications);
+    setMessages(updatedMessages);
   };
 
   const isNotificationSeen = (id) => {
-    const notification = notifications.find(
-      (notification) => notification.id === id
-    );
-    return notification ? notification.seen : false;
+    const message = messages.find((message) => message.id === id);
+    return message ? message.seen : false;
   };
 
-  const unseenNotifications = notifications.filter(
-    (notification) => !notification.seen
-  );
+  const unseenNotifications = messages.filter((message) => !message.seen);
 
   return (
     <div className="bg-zinc-400 p-4 rounded-lg max-w-sm mx-auto">
       <div className="flex justify-between items-center mb-4">
-        <h2 className="text-lg font-semibold">Notifications</h2>
+        <h2 className="text-lg font-semibold">messages</h2>
         <CustomCheckbox
           onChange={allReadInput.AssignValue}
           label={"Mark all as Read"}
@@ -79,26 +75,24 @@ const NotificationComponent = () => {
       </div>
       <div className="space-y-2 mb-2">
         {unseenNotifications.length > 0 ? (
-          unseenNotifications.map((notification) => (
+          unseenNotifications.map((message) => (
             <div
-              key={notification.id}
+              key={message.id}
               className={`bg-white p-2 rounded shadow-sm flex  justify-between items-start cursor-pointer  relative ${
-                isNotificationSeen(notification.id) ? "bg-gray-300" : ""
+                isNotificationSeen(message.id) ? "bg-gray-300" : ""
               }`}
-              onClick={() => handleNotificationClick(notification.id)}
+              onClick={() => handleNotificationClick(message.id)}
             >
               <button
                 className="text-zinc-400 text-xl hover:text-zinc-600 absolute top-0 right-2"
-                onClick={() => handleNotificationClick(notification.id)}
+                onClick={() => handleNotificationClick(message.id)}
               >
                 ×
               </button>
               <div className="pr-4">
-                <p className="text-sm text-zinc-600">{notification.title}</p>
-                <p className="text-xs text-zinc-500">{notification.content}</p>
-                <p className="text-xs text-zinc-400">
-                  {notification.timestamp}
-                </p>
+                <p className="text-sm text-zinc-600">{message.title}</p>
+                <p className="text-xs text-zinc-500">{message.content}</p>
+                <p className="text-xs text-zinc-400">{message.timestamp}</p>
               </div>
             </div>
           ))
@@ -107,16 +101,16 @@ const NotificationComponent = () => {
             <div className="w-full h-24 my-4 bg-zinc-300"></div>
             <p className="text-center text-zinc-600 text-sm">
               You’re all Caught up!! Do click on below button for further past
-              notifications.
+              messages.
             </p>
           </div>
         )}
       </div>
       <div className="p-2 bg-white">
-        <button className="w-full font-semibold">View all Notifications</button>
+        <button className="w-full font-semibold">View all Messages</button>
       </div>
     </div>
   );
 };
 
-export default NotificationComponent;
+export default MessagePopover;

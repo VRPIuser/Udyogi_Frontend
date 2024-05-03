@@ -15,6 +15,7 @@ const CustomImage = ({
   onMouseEnter,
   width,
   height,
+  divStyles,
 }) => {
   const [loading, setLoading] = useState(true);
 
@@ -23,7 +24,10 @@ const CustomImage = ({
   };
 
   return (
-    <div className={`${styles.customImageWrapper} ${classForDiv}`}>
+    <div
+      className={`${styles.customImageWrapper} ${classForDiv}`}
+      style={divStyles}
+    >
       {loading && (
         // <GhostLoading count={1} />
         <div className={styles.loadingState}>

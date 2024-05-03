@@ -2,7 +2,8 @@ import React from "react";
 import CustomImage from "@/components/UI/Image/Image";
 
 // Define shared tailwind classes
-const flexItemsCenter = "flex items-center";
+const flexItemsCenter =
+  "flex items-center cursor-pointer px-4 py-2 mb-0 hover:bg-zinc-200 transition-all";
 const textZinc500 = "text-zinc-500";
 const roundedFull = "rounded-full";
 const bgBlue500 = "bg-blue-500";
@@ -39,7 +40,7 @@ const ProfileComponent = () => {
           View Profile
         </button>
       </div>
-      <ul class="space-y-2 p-4 bg-zinc-100">
+      <ul class=" bg-zinc-100">
         {profileData.map((item, index) => (
           <li key={index} className={`${flexItemsCenter}`}>
             <CustomImage

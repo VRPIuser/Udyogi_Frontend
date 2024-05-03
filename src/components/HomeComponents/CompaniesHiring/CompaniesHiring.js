@@ -42,33 +42,17 @@ const CompaniesHiring = () => {
   };
 
   return (
-    <div className={styles.container}>
-      <Section
-        title={"Top Companies Who are Hiring"}
-        style={{ margin: "2rem 0" }}
-      >
-        <div className={styles.cardsSection}>
-          <CustomImage
-            className={styles.previousBtn}
-            onClick={scrollPrevious}
-            alt="arrow icon"
-            src="/assets/home/leftArrowIcon.png"
-          />
-
-          <div className={styles.cards} ref={cardsContainerRef}>
-            {CompaniesHiringData.map((company, index) => (
-              <CompanyCard key={index} company={company} />
-            ))}
-          </div>
-
-          <CustomImage
-            className={styles.nextBtn}
-            onClick={scrollNext}
-            alt="arrow icon"
-            src="/assets/home/rightArrowIcon.png"
-          />
+    <div className={` bg-gray-200 bg-opacity-75 px-4 py-12`}>
+      <div className="max-w-5xl mx-auto">
+        <h1 className="text-2xl w-full p-8 text-center font-medium">
+          Top Hiring
+        </h1>
+        <div className={styles.cards} ref={cardsContainerRef}>
+          {CompaniesHiringData.map((company, index) => (
+            <CompanyCard key={index} company={company} />
+          ))}
         </div>
-      </Section>
+      </div>
     </div>
   );
 };

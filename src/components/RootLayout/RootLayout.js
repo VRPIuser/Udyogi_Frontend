@@ -9,11 +9,11 @@ import { ReactNode } from "react";
 import MainHeader from "../MainHeader/MainHeader";
 import styles from "./RootLayout.module.css";
 
-const RootLayout = ({ children }) => {
+const RootLayout = ({ children, classForMain }) => {
   return (
     <div className={styles.layout}>
       <MainHeader />
-      <main className={styles.Main}>{children}</main>
+      <main className={`${styles.Main} ${classForMain}`}>{children}</main>
       <Footer
         links={footerLinks}
         quickLinks={quickLinks}
