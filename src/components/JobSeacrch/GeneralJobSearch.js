@@ -13,7 +13,7 @@ const inputClasses =
   "mt-1 block w-full px-3 py-2 bg-white border border-zinc-300 rounded-md shadow-sm focus:outline-none focus:ring-orange-500 focus:border-orange-500 sm:text-sm";
 const labelClasses = "block text-sm font-medium text-white";
 const buttonClasses =
-  "w-full  font-bold py-2 px-4 rounded-full transition duration-300";
+  "w-fit font-bold py-2 sm:px-8 px-4 rounded-full transition duration-300";
 
 const Experience = [
   { label: "Fresher", value: "fresher" },
@@ -63,23 +63,25 @@ const GeneralJobSearch = ({ className, onSearch }) => {
 
   return (
     <div
-      className="relative bg-cover bg-center h-96  py-10 px-4 flex items-center"
+      className="relative bg-cover bg-center h-96  py-10 sm:px-4 px-1 flex items-center"
       style={{ backgroundImage: `url(/assets/jobs/jobSearchFrame.avif)` }}
     >
-      <div className="max-w-7xl mx-auto">
+      <div className="w-full max-w-5xl mx-auto">
         <h1 className="text-3xl font-semibold text-white mb-6 text-center">
           Find Your Dream Jobs
         </h1>
         <div
-          className={`bg-white px-4 py-2 rounded-full shadow-lg max-w-7xl mx-auto ${className}`}
+          className={`bg-white sm:px-4 px-2 py-4 md:rounded-full shadow-lg mx-auto ${className} flex flex-wrap gap-4 items-center justify-around w-full`}
         >
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-x-4 items-center">
-            <div className="border-r flex gap-2 items-center px-2">
+          <div className="flex md:flex-nowrap flex-wrap gap-4 justify-center items-center w-fit">
+            <div className="md:border-r flex gap-2 items-center px-2 w-full max-w-64">
               <CustomImage
                 src="/assets/icons/searchIcon.png"
                 width={20}
                 height={20}
                 alt="search icon"
+                className="min-w-4 sm:block hidden"
+                // className="md:block hidden"
               />
               <InputWithInvalidText
                 type="text"
@@ -87,7 +89,7 @@ const GeneralJobSearch = ({ className, onSearch }) => {
                 inputFields={skillRoleCompany}
                 placeholder="Skills / Job Role / Company"
                 className={""}
-                styles={{ minWidth: "220px" }}
+                styles={{ minWidth: "200px" }}
                 inputStyles={{
                   border: "0px solid black",
                   borderBottom: "1px solid black",
@@ -95,12 +97,15 @@ const GeneralJobSearch = ({ className, onSearch }) => {
                 }}
               />
             </div>
-            <div className="border-r flex gap-2 items-center px-2">
+            <div className="md:border-r flex gap-2 items-center px-2 w-full max-w-64">
               <CustomImage
                 src="/assets/icons/locationIcon.png"
                 width={20}
                 height={20}
                 alt="search icon"
+                className="min-w-4 sm:block hidden"
+
+                // className="md:block hidden"
               />
               {experienceInput.value === "other" ? (
                 <InputWithInvalidText
@@ -109,7 +114,7 @@ const GeneralJobSearch = ({ className, onSearch }) => {
                   inputFields={experienceInput}
                   placeholder="Experience"
                   className={""}
-                  styles={{ minWidth: "220px" }}
+                  styles={{ minWidth: "200px" }}
                   inputStyles={{
                     border: "0px solid black",
                     borderBottom: "1px solid black",
@@ -135,12 +140,15 @@ const GeneralJobSearch = ({ className, onSearch }) => {
                 />
               )}
             </div>
-            <div className="border-r flex gap-2 items-center px-2">
+            <div className="md:border-r flex gap-2 items-center px-2 w-full max-w-64">
               <CustomImage
                 src="/assets/icons/experienceIcon.png"
                 width={20}
                 height={20}
                 alt="search icon"
+                className="min-w-4 sm:block hidden"
+
+                // className="md:block hidden"
               />
               <Dropdown
                 onSelect={(location) => locationInput.AssignValue(location)}
@@ -158,42 +166,44 @@ const GeneralJobSearch = ({ className, onSearch }) => {
                 onDeselect={locationInput.value === ""}
               />
             </div>
-            <div className="flex items-end h-full gap-4">
-              <button
-                className={`${buttonClasses} ${"hover:bg-gray-200 active:scale-90 transition-all"}`}
-                onClick={() => {
-                  skillRoleCompany.reset();
-                  experienceInput.reset();
-                  locationInput.reset();
-                  onSearch(null);
-                }}
-                style={{
-                  height: "50px",
-                  //   backgroundColor: !formIsValid ? "#ccc" : "white",
-                }}
-              >
-                Clear
-              </button>
+          </div>
 
-              <button
-                className={`${buttonClasses} ${
-                  formIsValid
-                    ? "hover:bg-orange-600 text-white active:scale-90 transition-all bg-orange-500"
-                    : "bg-gray-200"
-                }`}
-                onClick={searchHandler}
-                style={{
-                  height: "50px",
-                  //   backgroundColor: !formIsValid ? "#ccc" : "white",
-                }}
-                disabled={!formIsValid}
-              >
-                Search
-              </button>
-            </div>
-          </div>{" "}
-        </div>
+          <div className="flex items-end h-full gap-4 w-fit">
+            <button
+              className={`${buttonClasses} ${"hover:bg-gray-200 active:scale-90 transition-all"}`}
+              onClick={() => {
+                skillRoleCompany.reset();
+                experienceInput.reset();
+                locationInput.reset();
+                onSearch(null);
+              }}
+              style={{
+                height: "50px",
+                //   backgroundColor: !formIsValid ? "#ccc" : "white",
+              }}
+            >
+              Clear
+            </button>
+
+            <button
+              className={`${buttonClasses} ${
+                formIsValid
+                  ? "hover:bg-orange-600 text-white active:scale-90 transition-all bg-orange-500"
+                  : "bg-gray-200"
+              }`}
+              onClick={searchHandler}
+              style={{
+                height: "50px",
+                //   backgroundColor: !formIsValid ? "#ccc" : "white",
+              }}
+              disabled={!formIsValid}
+            >
+              Search
+            </button>
+          </div>
+        </div>{" "}
       </div>
+      {/* </div> */}
     </div>
   );
 };

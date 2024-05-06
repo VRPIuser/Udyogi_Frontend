@@ -10,11 +10,11 @@ import { useEffect, useState } from "react";
 export default function Home() {
   const [searchData, setSearchData] = useState();
 
-  useEffect(() => {
-    if (searchData) {
-      console.log(searchData);
-    }
-  }, [searchData]);
+  // useEffect(() => {
+  //   if (searchData) {
+  //     console.log(searchData);
+  //   }
+  // }, [searchData]);
   return (
     <RootLayout classForMain={"bg-zinc-100"}>
       <Head>
@@ -24,6 +24,7 @@ export default function Home() {
       </Head>
 
       <MainScreen onSearch={setSearchData} />
+
       <LatestJobs searchData={searchData} />
       <CompaniesHiring />
       <UsersOptions />

@@ -27,9 +27,9 @@ const MainHeader = () => {
     setPopoverIndex(null);
   };
 
-  useEffect(() => {
-    console.log(loginData);
-  }, [loginData]);
+  // useEffect(() => {
+  //   console.log(loginData);
+  // }, [loginData]);
 
   useEffect(() => {
     const handleClickOutside = (event) => {
