@@ -66,7 +66,7 @@ const MainCompanyCard = ({ company }) => {
             alt=""
             width={250}
             height={250}
-            className="w-24 h-24 object-cover cursor-pointer hover:scale-110 transition-all"
+            className="w-16 h-16 object-cover cursor-pointer hover:scale-110 transition-all"
             onClick={() => {
               router.push(`/companies/${company.companyId}`);
             }}
@@ -83,8 +83,9 @@ const MainCompanyCard = ({ company }) => {
               <CustomImage
                 src={`/assets/icons/location_b.png`}
                 alt=""
-                width={10}
-                height={10}
+                width={20}
+                height={20}
+                className="w-4 h-4"
                 classForDiv="inline"
               />
               {company.location}
@@ -93,8 +94,9 @@ const MainCompanyCard = ({ company }) => {
               <CustomImage
                 src={`/assets/icons/quantity_b.png`}
                 alt=""
-                width={10}
-                height={10}
+                width={20}
+                height={20}
+                className="w-4 h-4"
                 classForDiv="inline"
               />
               {company.companySize.lowerLimit +
