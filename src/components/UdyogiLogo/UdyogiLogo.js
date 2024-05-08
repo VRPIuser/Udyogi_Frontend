@@ -3,7 +3,6 @@ import CustomImage from "../UI/Image/Image";
 import style from "./UdyogiLogo.module.css";
 
 const UdyogiLogo = ({ className }) => {
-  // const navigate = useNavigate();
   const Router = useRouter();
 
   return (
