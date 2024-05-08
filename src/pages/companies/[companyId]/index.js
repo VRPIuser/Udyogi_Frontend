@@ -12,14 +12,11 @@ const CompanyDetailsPage = () => {
   const query = router.query;
   const [company, setCompany] = useState();
   useEffect(() => {
-    // console.log(query.jobId);
-
     setCompany(
       AllCompaniesData.find(
         (company) => company.companyId.toString().trim() === query?.companyId
       )
     );
-    // console.log(job);
   }, [query]);
 
   const linkData = [
