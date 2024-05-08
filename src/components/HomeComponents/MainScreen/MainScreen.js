@@ -1,7 +1,6 @@
-import Image from "next/image";
-import styles from "./MainScreen.module.css";
 import CustomImage from "@/components/UI/Image/Image";
-import JobSearch from "@/components/JobSeacrch/JobSearch";
+import JobSearch from "@/components/jobs/JobSeacrch/JobSearch";
+
 import { useEffect, useState } from "react";
 
 const MainScreenData = {

@@ -50,7 +50,7 @@ const UsersOptions = () => {
                 position: "absolute",
                 top: 0,
                 right: 0,
-                height: "200",
+                height: "200px",
               }}
               className="h-full object-cover"
               width={200}

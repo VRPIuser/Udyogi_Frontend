@@ -13,7 +13,9 @@ const RootLayout = ({ children, classForMain }) => {
   return (
     <div className={styles.layout}>
       <MainHeader />
-      <main className={`${styles.Main} ${classForMain}`}>{children}</main>
+      <main className={`${styles.Main} ${classForMain} bg-zinc-100`}>
+        {children}
+      </main>
       <Footer
         links={footerLinks}
         quickLinks={quickLinks}

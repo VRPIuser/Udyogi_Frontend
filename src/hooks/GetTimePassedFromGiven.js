@@ -18,6 +18,6 @@ export default function GetTimePassedFromGiven(dateString) {
     return `${monthsPassed} mon${monthsPassed !== 1 ? "s" : ""} ago`;
   } else {
     const yearsPassed = Math.floor(daysPassed / 365);
-    return `${yearsPassed} y${yearsPassed !== 1 ? "s" : ""} ago`;
+    return `${yearsPassed} yr${yearsPassed !== 1 ? "s" : ""} ago`;
   }
 }

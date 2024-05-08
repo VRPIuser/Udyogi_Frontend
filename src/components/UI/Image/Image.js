@@ -16,6 +16,7 @@ const CustomImage = ({
   width,
   height,
   divStyles,
+  divClick,
 }) => {
   const [loading, setLoading] = useState(true);
 
@@ -27,6 +28,7 @@ const CustomImage = ({
     <div
       className={`${styles.customImageWrapper} ${classForDiv}`}
       style={divStyles}
+      onClick={divClick}
     >
       {loading && (
         // <GhostLoading count={1} />

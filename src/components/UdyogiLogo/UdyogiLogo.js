@@ -10,11 +10,13 @@ const UdyogiLogo = ({ className }) => {
     <CustomImage
       className={`${style.logo}`}
       classForDiv={className}
-      src="/assets/UdyogiLogo.jpg"
+      src="/assets/UdyogiLogo.png"
       alt="logo"
       onClick={() => {
         Router.push("/");
       }}
+      width={500}
+      height={200}
     />
   );
 };

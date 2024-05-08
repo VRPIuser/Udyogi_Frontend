@@ -1,5 +1,5 @@
-const GetCurrentDate = () => {
-  const currentDate = new Date();
+const GetCurrentDate = (date) => {
+  const currentDate = !date && new Date();
 
   // Get the current year, month, and day
   const year = currentDate.getFullYear();

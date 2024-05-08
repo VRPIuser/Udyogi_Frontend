@@ -1,12 +1,13 @@
 import useInput from "@/hooks/use-Input";
-import Dropdown from "../UI/Dropdown/Dropdown";
-import InputWithInvalidText from "../UI/Input/InputWithInvalidText";
+
+import { Locations } from "@/data/DropdownData";
+import { useEffect, useState } from "react";
 import {
   ValueUndefinedValidations,
   fullNameValidation,
-} from "../InputValidations/InputValidations";
-import { Locations } from "@/data/DropdownData";
-import { useEffect, useState } from "react";
+} from "@/components/InputValidations/InputValidations";
+import InputWithInvalidText from "@/components/UI/Input/InputWithInvalidText";
+import Dropdown from "@/components/UI/Dropdown/Dropdown";
 
 const inputClasses =
   "mt-1 block w-full px-3 py-2 bg-white border border-zinc-300 rounded-md shadow-sm focus:outline-none focus:ring-orange-500 focus:border-orange-500 sm:text-sm";

@@ -1,14 +1,16 @@
 import HideExtraText from "@/components/UI/HideExtraText/HideExtraText";
 import styles from "./JobCard.module.css";
 import Button from "@/components/UI/Button/Button";
+import { useRouter } from "next/router";
 
 const JobCard = ({ job }) => {
+  const router = useRouter();
   return (
     <div className={styles.card}>
       <div className={styles.cardHeader}>
         <div>
           <h3 className={styles.cardTitle}>{job.jobTitle}</h3>
-          <h4 className={styles.cardCompany}>{job.companyName}</h4>
+          <h4 className={styles.cardCompany}>{job.companyDetails.name}</h4>
 
           <HideExtraText className={styles.jobTags} lines={1}>
             {"  •  "} {job.location} {"  •  "}
@@ -17,12 +19,12 @@ const JobCard = ({ job }) => {
           </HideExtraText>
         </div>
         <div className={styles.symbol}>
-          <span>v</span>
+          <span>{job.companyDetails.name[0]}</span>
         </div>
       </div>
       <div className={styles.cardBody}>
         <div>
-          <HideExtraText className={styles.cardDescription} lines={3}>
+          <HideExtraText className={styles.cardDescription} lines={2}>
             {job.shortDescriptionData}
           </HideExtraText>
           <HideExtraText lines={1} className={styles.jobTags}>
@@ -45,7 +47,12 @@ const JobCard = ({ job }) => {
           <Button onClick={() => {}} className={styles.showJobBtn}>
             Save Job
           </Button>
-          <Button onClick={() => {}} className={styles.viewJobBtn}>
+          <Button
+            onClick={() => {
+              router.push(`/jobs/${job.jobId}`);
+            }}
+            className={styles.viewJobBtn}
+          >
             View Job
           </Button>
         </div>

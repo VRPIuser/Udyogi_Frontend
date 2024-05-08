@@ -1,8 +1,8 @@
 import { useEffect, useState, useMemo } from "react";
 import JobFilter from "../JobFilter/JobFilter";
 import { JobFiltersData } from "@/data/filtersData";
-import JobCard from "../HomeComponents/LatestJobs/JobCard/JobCard";
-import CustomImage from "../UI/Image/Image";
+import JobCard from "../../HomeComponents/LatestJobs/JobCard/JobCard";
+import CustomImage from "../../UI/Image/Image";
 
 const JobFilteredResults = ({ jobs, searchData }) => {
   const [filters, setFilters] = useState(JobFiltersData);

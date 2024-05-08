@@ -1,13 +1,14 @@
 import useInput from "@/hooks/use-Input";
-import Dropdown from "../UI/Dropdown/Dropdown";
-import InputWithInvalidText from "../UI/Input/InputWithInvalidText";
+
+import { Locations } from "@/data/DropdownData";
+import { useEffect, useState } from "react";
 import {
   ValueUndefinedValidations,
   fullNameValidation,
-} from "../InputValidations/InputValidations";
-import { Locations } from "@/data/DropdownData";
-import { useEffect, useState } from "react";
-import CustomImage from "../UI/Image/Image";
+} from "@/components/InputValidations/InputValidations";
+import CustomImage from "@/components/UI/Image/Image";
+import InputWithInvalidText from "@/components/UI/Input/InputWithInvalidText";
+import Dropdown from "@/components/UI/Dropdown/Dropdown";
 
 const inputClasses =
   "mt-1 block w-full px-3 py-2 bg-white border border-zinc-300 rounded-md shadow-sm focus:outline-none focus:ring-orange-500 focus:border-orange-500 sm:text-sm";
@@ -23,7 +24,7 @@ const Experience = [
   { label: "10+ years", value: "10+" },
 ];
 
-const GeneralJobSearch = ({ className, onSearch }) => {
+const GeneralJobSearch = ({ className, onSearch, onlyCompany }) => {
   const skillRoleCompany = useInput({ validateValue: fullNameValidation });
   const experienceInput = useInput({
     validateValue: ValueUndefinedValidations,
@@ -54,11 +55,13 @@ const GeneralJobSearch = ({ className, onSearch }) => {
   });
 
   const searchHandler = () => {
-    onSearch({
+    const mainSearchQuery = {
       skillRoleCompany: skillRoleCompany.value,
       experience: experienceInput.value,
       location: locationInput.value,
-    });
+    };
+
+    onSearch(onlyCompany ? skillRoleCompany.value : mainSearchQuery);
   };
 
   return (
@@ -71,10 +74,10 @@ const GeneralJobSearch = ({ className, onSearch }) => {
           Find Your Dream Jobs
         </h1>
         <div
-          className={`bg-white sm:px-4 px-2 py-4 md:rounded-full shadow-lg mx-auto ${className} flex flex-wrap gap-4 items-center justify-around w-full`}
+          className={`bg-white sm:px-4 px-2 py-4 md:rounded-full rounded-md shadow-lg mx-auto ${className} flex flex-wrap gap-4 items-center justify-around w-full`}
         >
-          <div className="flex md:flex-nowrap flex-wrap gap-4 justify-center items-center w-fit">
-            <div className="md:border-r flex gap-2 items-center px-2 w-full max-w-64">
+          {onlyCompany ? (
+            <div className="flex gap-2 items-center px-2 w-full max-w-64">
               <CustomImage
                 src="/assets/icons/searchIcon.png"
                 width={20}
@@ -87,7 +90,7 @@ const GeneralJobSearch = ({ className, onSearch }) => {
                 type="text"
                 id="keyword"
                 inputFields={skillRoleCompany}
-                placeholder="Skills / Job Role / Company"
+                placeholder="Find the Company"
                 className={""}
                 styles={{ minWidth: "200px" }}
                 inputStyles={{
@@ -97,22 +100,22 @@ const GeneralJobSearch = ({ className, onSearch }) => {
                 }}
               />
             </div>
-            <div className="md:border-r flex gap-2 items-center px-2 w-full max-w-64">
-              <CustomImage
-                src="/assets/icons/locationIcon.png"
-                width={20}
-                height={20}
-                alt="search icon"
-                className="min-w-4 sm:block hidden"
-
-                // className="md:block hidden"
-              />
-              {experienceInput.value === "other" ? (
+          ) : (
+            <div className="flex md:flex-nowrap flex-wrap gap-4 justify-center items-center w-fit">
+              <div className="md:border-r flex gap-2 items-center px-2 w-full max-w-64">
+                <CustomImage
+                  src="/assets/icons/searchIcon.png"
+                  width={20}
+                  height={20}
+                  alt="search icon"
+                  className="min-w-4 sm:block hidden"
+                  // className="md:block hidden"
+                />
                 <InputWithInvalidText
                   type="text"
-                  id="experience"
-                  inputFields={experienceInput}
-                  placeholder="Experience"
+                  id="keyword"
+                  inputFields={skillRoleCompany}
+                  placeholder="Skills / Job Role / Company"
                   className={""}
                   styles={{ minWidth: "200px" }}
                   inputStyles={{
@@ -121,52 +124,78 @@ const GeneralJobSearch = ({ className, onSearch }) => {
                     borderRadius: "0",
                   }}
                 />
-              ) : (
+              </div>
+              <div className="md:border-r flex gap-2 items-center px-2 w-full max-w-64">
+                <CustomImage
+                  src="/assets/icons/locationIcon.png"
+                  width={20}
+                  height={20}
+                  alt="search icon"
+                  className="min-w-4 sm:block hidden"
+
+                  // className="md:block hidden"
+                />
+                {experienceInput.value === "other" ? (
+                  <InputWithInvalidText
+                    type="text"
+                    id="experience"
+                    inputFields={experienceInput}
+                    placeholder="Experience"
+                    className={""}
+                    styles={{ minWidth: "200px" }}
+                    inputStyles={{
+                      border: "0px solid black",
+                      borderBottom: "1px solid black",
+                      borderRadius: "0",
+                    }}
+                  />
+                ) : (
+                  <Dropdown
+                    onSelect={(experience) =>
+                      experienceInput.AssignValue(experience)
+                    }
+                    placeholder={"Experience"}
+                    options={Experience}
+                    inputStyles={{
+                      margin: "0",
+                      border: "0px solid black",
+                      borderBottom: "1px solid black",
+                      borderRadius: "0",
+                    }}
+                    optionStyles={{ top: "100%" }}
+                    value={experienceInput.value}
+                    onDeselect={experienceInput.value === ""}
+                  />
+                )}
+              </div>
+              <div className="md:border-r flex gap-2 items-center px-2 w-full max-w-64">
+                <CustomImage
+                  src="/assets/icons/experienceIcon.png"
+                  width={20}
+                  height={20}
+                  alt="search icon"
+                  className="min-w-4 sm:block hidden"
+
+                  // className="md:block hidden"
+                />
                 <Dropdown
-                  onSelect={(experience) =>
-                    experienceInput.AssignValue(experience)
-                  }
-                  placeholder={"Experience"}
-                  options={Experience}
+                  onSelect={(location) => locationInput.AssignValue(location)}
+                  placeholder={"Location"}
+                  options={Locations}
                   inputStyles={{
                     margin: "0",
+
                     border: "0px solid black",
                     borderBottom: "1px solid black",
                     borderRadius: "0",
                   }}
                   optionStyles={{ top: "100%" }}
-                  value={experienceInput.value}
-                  onDeselect={experienceInput.value === ""}
+                  value={locationInput.value}
+                  onDeselect={locationInput.value === ""}
                 />
-              )}
+              </div>
             </div>
-            <div className="md:border-r flex gap-2 items-center px-2 w-full max-w-64">
-              <CustomImage
-                src="/assets/icons/experienceIcon.png"
-                width={20}
-                height={20}
-                alt="search icon"
-                className="min-w-4 sm:block hidden"
-
-                // className="md:block hidden"
-              />
-              <Dropdown
-                onSelect={(location) => locationInput.AssignValue(location)}
-                placeholder={"Location"}
-                options={Locations}
-                inputStyles={{
-                  margin: "0",
-
-                  border: "0px solid black",
-                  borderBottom: "1px solid black",
-                  borderRadius: "0",
-                }}
-                optionStyles={{ top: "100%" }}
-                value={locationInput.value}
-                onDeselect={locationInput.value === ""}
-              />
-            </div>
-          </div>
+          )}
 
           <div className="flex items-end h-full gap-4 w-fit">
             <button

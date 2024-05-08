@@ -1,11 +1,9 @@
-import Section from "@/components/UI/Sections/Section";
-import styles from "./LatestJobs.module.css";
 import { LatestJobsData } from "@/data/Jobs";
 
-import JobCard from "./JobCard/JobCard";
-import JobFiltereredResults from "@/components/JobFiltereredResults/JobFiltereredResults";
 import { useEffect } from "react";
 import { useRouter } from "next/router";
+import JobsComponent from "@/components/jobs/JobsComponent/JobsComponent";
+import JobFiltereredResults from "@/components/jobs/JobFiltereredResults/JobFiltereredResults";
 
 const LatestJobs = ({ searchData }) => {
   const router = useRouter();
@@ -19,11 +17,12 @@ const LatestJobs = ({ searchData }) => {
           <h1 className="text-2xl w-full p-8 text-start font-medium">
             Latest Jobs
           </h1>
-          <div className={styles.cardContainer}>
+          {/* <div className={styles.cardContainer}>
             {LatestJobsData.map((job, index) => (
               <JobCard key={index} job={job} />
             ))}
-          </div>
+          </div> */}
+          <JobsComponent jobs={LatestJobsData} />
         </div>
       ) : (
         <>
