@@ -10,7 +10,7 @@ import HideExtraText from "@/components/UI/HideExtraText/HideExtraText";
 
 const sharedClasses = {
   button: "bg-orange-500 text-white w-full py-2 rounded-lg",
-  border: "border-zinc-200 mt-4 pt-4",
+  border: "border-zinc-200 pt-4",
   flexItems: "flex items-center space-x-2 pb-2",
   companyLogo: "bg-orange-100 p-2 rounded-full",
   companyProfile: "text-orange-500 font-medium text-sm",
@@ -22,41 +22,45 @@ const sharedClasses = {
   flexCenter: "flex justify-center space-x-2 mt-4",
 };
 
-const CompanyCard = ({ job }) => {
+const CompanyCard = ({ job, isApplied }) => {
   const router = useRouter();
 
   const [showQuestions, setShowQuestions] = useState(false);
 
-  useEffect(() => {
-    console.log(showQuestions);
-  });
+  // useEffect(() => {
+  //   console.log(showQuestions);
+  // });
 
   return (
     <div className="w-full lg:max-w-sm h-fit max-w-3xl">
-      <div className="bg-orange-100 rounded-lg shadow-lg p-4 ">
-        <div className=" text-2xl font-semibold py-2 text-center">
-          Interested in this job?
+      {!isApplied && (
+        <div className="bg-orange-100 rounded-lg shadow-lg p-4 mb-4">
+          <div className=" text-2xl font-semibold py-2 text-center">
+            Interested in this job?
+          </div>
+          <div className="text-sm font-medium pb-4 text-center text-orange-500">
+            {GetTimePassedFromGiven(job.postedDate)}
+          </div>
+          <button className={sharedClasses.button}>Apply now</button>
         </div>
-        <div className="text-sm font-medium pb-4 text-center text-orange-500">
-          {GetTimePassedFromGiven(job.postedDate)}
-        </div>
-        <button className={sharedClasses.button}>Apply now</button>
-      </div>
+      )}
 
       <div
         className={`${sharedClasses.border} bg-white rounded-lg shadow-lg p-4  `}
       >
         <div className={sharedClasses.flexItems}>
-          {/* <div className={sharedClasses.companyLogo}> */}
-          {/* <Image
-              src="https://placehold.co/20x20"
-              alt="Company Logo"
-              className="w-4 h-4"
-              width={100}
-              height={100}
-            /> */}
-          <UdyogiLogo />
-          {/* </div> */}
+          <CustomImage
+            src={`/assets/logos/${job.companyDetails.image}`}
+            alt=""
+            width={250}
+            height={250}
+            className="w-16 h-16 object-cover cursor-pointer hover:scale-110 transition-all"
+            onClick={() => {
+              router.push(`/companies/${job.companyDetails.companyId}`);
+            }}
+            title={job.companyDetails.name}
+          />
+
           <div className="">
             <div className="flex gap-2 items-center">
               <span className="text-sm font-semibold">
@@ -86,7 +90,13 @@ const CompanyCard = ({ job }) => {
             <h3 className="font-semibold pb-1 border-b-2 border-black">
               Overview
             </h3>
-            <div className="font-semibold pb-1 text-zinc-500">
+            <div
+              className="font-semibold pb-1 text-zinc-500 cursor-pointer"
+              onClick={() => {
+                router.push(`/companies/${job.companyDetails.companyId}`);
+              }}
+              title={"Jobs at " + job.companyDetails.name}
+            >
               Jobs
               <span className="rounded-full ml-2 px-2 text-orange-500 bg-orange-50">
                 {job.companyDetails.jobs}

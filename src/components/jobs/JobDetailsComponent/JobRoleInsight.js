@@ -73,7 +73,7 @@ const JobInfo = ({ insights }) => {
         height={30}
         classForDiv={`p-2 rounded-full bg-orange-200`}
         divStyles={{ height: "auto" }}
-        className="w-5 h-5"
+        className="w-5 h-5 object-contain"
       />
       <div>
         <p className={""}>{insights.title}</p>

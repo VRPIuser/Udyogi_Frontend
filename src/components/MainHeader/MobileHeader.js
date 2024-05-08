@@ -14,7 +14,7 @@ import { useRouter } from "next/router";
 import CustomImage from "../UI/Image/Image";
 
 const MobileHeader = ({ setShowSideBar, showSideBar }) => {
-  const loginData = useSelector((state) => state.login);
+  const isLoggedIn = useSelector((state) => state.login.isUdyogiUserLoggedIn);
 
   const router = useRouter();
 
@@ -69,7 +69,7 @@ const MobileHeader = ({ setShowSideBar, showSideBar }) => {
               ))}
             </ul>
             <div className={`flex gap-4 w-full justify-end`}>
-              {true ? (
+              {isLoggedIn ? (
                 RightSideIcons.map((link, index) => (
                   <div key={index} className="">
                     <CustomImage

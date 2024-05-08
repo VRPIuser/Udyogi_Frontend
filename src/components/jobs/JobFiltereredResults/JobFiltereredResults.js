@@ -71,7 +71,7 @@ const JobFilteredResults = ({ jobs, searchData }) => {
         searchData.skillRoleCompany
       );
       const isCompanyMatched = matchSearchData(
-        job.companyName,
+        job.companyDetails.name,
         searchData.skillRoleCompany
       );
       // Check if salary falls within the specified range

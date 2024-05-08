@@ -1,9 +1,13 @@
 import RootLayout from "@/components/RootLayout/RootLayout";
+import AppliedJobsComponent from "@/components/jobs/AppliedJobsComponent/AppliedJobsComponent";
+import UserData from "@/data/user";
 
 const AppliedJobs = () => {
   return (
     <RootLayout>
-      <div>Applied Jobs</div>
+      {UserData.jobApplications && (
+        <AppliedJobsComponent jobApplications={UserData.jobApplications} />
+      )}
     </RootLayout>
   );
 };

@@ -16,6 +16,7 @@ const UdyogiLogo = ({ className }) => {
       }}
       width={500}
       height={200}
+      title={"Home Page"}
     />
   );
 };

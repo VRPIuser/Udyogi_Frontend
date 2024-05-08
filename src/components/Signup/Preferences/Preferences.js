@@ -6,6 +6,7 @@ import Button from "@/components/UI/Button/Button";
 import JobCategories from "./JobCategories";
 import useInput from "@/hooks/use-Input";
 import RightSlideAnimation from "@/components/animations/RightSlideAnimation";
+import { useRouter } from "next/router";
 
 const inputClasses = "w-full p-2 border rounded-md mb-2";
 const tagClasses = "bg-zinc-200 rounded-full px-3 py-1 text-sm";
@@ -58,6 +59,8 @@ const JobPreferences = () => {
     selectedLocationsInput.isValid,
   ]);
 
+  const router = useRouter();
+
   useEffect(() => {
     setFormIsValid(
       selectedJobRolesInput.isValid &&
@@ -85,6 +88,7 @@ const JobPreferences = () => {
       selectedSkillsInput.value,
       selectedLocationsInput.value
     );
+    router.push("/jobs");
   };
 
   return (

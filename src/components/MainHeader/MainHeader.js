@@ -12,7 +12,7 @@ import UserRightSideElementCard from "./UserRightSideElementCard";
 import MobileHeader from "./MobileHeader";
 
 const MainHeader = () => {
-  const loginData = useSelector((state) => state.login);
+  const isLoggedIn = useSelector((state) => state.login.isUdyogiUserLoggedIn);
   const [popoverIndex, setPopoverIndex] = useState(null);
   const router = useRouter();
   const popoverRef = useRef(null);
@@ -77,7 +77,7 @@ const MainHeader = () => {
             </div>
 
             <div className={`${styles.leftHeaderBar} `}>
-              {true ? (
+              {isLoggedIn ? (
                 RightSideIcons.map((link, index) => (
                   <UserRightSideElementCard
                     key={index}
