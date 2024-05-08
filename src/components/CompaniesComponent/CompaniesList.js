@@ -92,7 +92,7 @@ const MainCompanyCard = ({ company }) => {
             </span>
             <span className=" text-zinc-500 text-sm font-medium px-0 py-1 rounded-full flex w-fit gap-2 items-center">
               <CustomImage
-                src={`/assets/icons/quantity_b.png`}
+                src={`/assets/icons/quantity_bl.png`}
                 alt=""
                 width={20}
                 height={20}
