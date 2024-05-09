@@ -13,6 +13,7 @@ const CustomInput = React.forwardRef(
       onBlur,
       onFocus,
       mandatory, // Add a prop to indicate if the input is mandatory
+      name,
     },
     ref
   ) => {
@@ -30,7 +31,8 @@ const CustomInput = React.forwardRef(
           ref={ref}
           className={inputClasses}
           type={type}
-          // placeholder={placeholder}
+          placeholder={placeholder || ""}
+          name={name}
           value={value}
           onChange={onChange}
           style={style} // Don't wrap style in another object

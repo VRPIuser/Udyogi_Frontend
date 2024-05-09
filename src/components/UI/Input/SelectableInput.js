@@ -13,15 +13,12 @@ const SelectableInput = ({
   onChange,
   minNoOfOptions,
   initialValue,
+  cancelInput,
 }) => {
   // const [optionsInput.value, setInputValue] = useState("");
   const [selectedOptions, setSelectedOptions] = useState(initialValue || []);
 
   const optionsInput = useInput({ validateValue: nameValidation });
-
-  // const handleInputChange = (event) => {
-  //   setInputValue(event.target.value);
-  // };
 
   const handleOptionClick = (option) => {
     if (!selectedOptions.includes(option)) {
@@ -35,7 +32,11 @@ const SelectableInput = ({
 
   useEffect(() => {
     onChange(selectedOptions);
-  }, [selectedOptions]);
+  }, [selectedOptions, onChange]);
+
+  useEffect(() => {
+    setSelectedOptions(initialValue);
+  }, [cancelInput?.value]);
 
   const handleRemoveOption = (index) => {
     setSelectedOptions((prevSelectedOptions) =>

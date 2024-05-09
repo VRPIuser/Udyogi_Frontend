@@ -14,6 +14,7 @@ const CustomDatePicker = ({
   disabled,
   divStyles,
   formatSpanStyles,
+  name,
 }) => {
   const [isFocused, setIsFocused] = useState(false);
 
@@ -44,6 +45,7 @@ const CustomDatePicker = ({
         customInput={<input />}
         ref={datePickerRef}
         disabled={disabled}
+        name={name}
       />
       <label
         className={`${

@@ -201,8 +201,9 @@ const BasicInfo = () => {
   };
 
   return (
-    <div className="bg-white p-4 rounded-md shadow-sm">
-      <h1 className="text-xl font-medium">Basic Information</h1>
+    // <div className={`${profileContainerClasses}`}>
+    //   <h1 className={`${profileHeadingClasses}`}>Basic Information</h1>
+    <>
       <ProfileDocs
         resumeInput={resumeInput}
         profilePhotoInput={profilePhotoInput}
@@ -250,7 +251,7 @@ const BasicInfo = () => {
           Submit
         </Button>
       </div>
-    </div>
+    </>
   );
 };
 export default BasicInfo;

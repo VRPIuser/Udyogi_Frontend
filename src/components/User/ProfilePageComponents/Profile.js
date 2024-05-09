@@ -1,36 +1,45 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import BasicInfo from "./BasicInfo/BasicInfo";
 import Education from "./Education";
 import ExperienceOrInternship from "./ExperienceOrInternship";
-import Skills from "./Skills";
+import UpdateSkills from "./UpdateSkills";
+import PercentageDisplay from "./PercentageDisplay";
 
 const Profile = () => {
   const profileNavData = [
     {
       label: "Basic Info",
-      value: "basicInfo",
+      value: "Basic Information",
       component: <BasicInfo />,
     },
     {
       label: "Education",
-      value: "education",
+      value: "Education",
       component: <Education />,
     },
     {
       label: "Experience/Internship",
-      value: "experience-internship",
+      value: "Experience / Internship",
       component: <ExperienceOrInternship />,
     },
     {
       label: "Skills",
-      value: "skills",
-      component: <Skills />,
+      value: "Skills",
+      component: <UpdateSkills />,
     },
   ];
   const [currentProfileNavIndex, setCurrentProfileNavIndex] = useState(0);
 
+  const [prevPercentage, setPrevPercentage] = useState(80);
+
+  const profileContainerClasses = "bg-white p-4 rounded-md shadow-sm w-full";
+  const profileHeadingClasses = "text-xl font-medium";
+
   return (
-    <div className="max-w-4xl mx-auto pb-8">
+    <div
+      className="max-w-5xl mx-auto pb-8 px-4 "
+      style={{ minHeight: "700px" }}
+    >
       <div className="flex gap-8 py-8">
         {profileNavData.map((item, index) => {
           return (
@@ -50,7 +59,15 @@ const Profile = () => {
           );
         })}
       </div>
-      <div>{profileNavData[currentProfileNavIndex].component}</div>
+      <div className="flex gap-8 w-full">
+        <div className={`${profileContainerClasses}`}>
+          <h1 className={`${profileHeadingClasses}`}>
+            {profileNavData[currentProfileNavIndex].value}
+          </h1>
+          {profileNavData[currentProfileNavIndex].component}
+        </div>
+        <PercentageDisplay percentage={prevPercentage} />
+      </div>
     </div>
   );
 };

@@ -34,7 +34,7 @@ const InputWithInvalidText = ({
         className={`${style.checkoutFormControl} ${
           inputFields.hasError && style.invalid
         }`}
-        placeholder={placeholder}
+        // placeholder={placeholder}
         value={inputFields.value}
         onFocus={inputFields.focusHandler}
         onBlur={inputFields.validateValueHandler}
