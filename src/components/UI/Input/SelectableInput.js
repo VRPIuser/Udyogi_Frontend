@@ -12,9 +12,10 @@ const SelectableInput = ({
   placeholder,
   onChange,
   minNoOfOptions,
+  initialValue,
 }) => {
   // const [optionsInput.value, setInputValue] = useState("");
-  const [selectedOptions, setSelectedOptions] = useState([]);
+  const [selectedOptions, setSelectedOptions] = useState(initialValue || []);
 
   const optionsInput = useInput({ validateValue: nameValidation });
 
@@ -87,6 +88,7 @@ const SelectableInput = ({
         // onChange={handleInputChange}
         placeholder={placeholder || "Type here..."}
         className="mb-4"
+        inputStyles={{ borderColor: "#00000021" }}
       />
       <div className="flex flex-wrap gap-2">
         {filteredOptions.slice(0, minNoOfOptions || 6).map((option, index) => (

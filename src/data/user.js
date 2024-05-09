@@ -21,6 +21,7 @@ const UserData = {
         salary: "3.76",
         startDate: "2022-01-27",
         endDate: "2024-08-01",
+        latestExperience: true,
       },
     ],
   },
@@ -32,8 +33,14 @@ const UserData = {
       specializedIn: "Mechanical Engineering",
       startDate: "2022-01-27",
       endDate: "2024-08-01",
+      latestDegree: true,
     },
   ],
+
+  resume: {
+    fileName: "resume.pdf",
+    updatedOn: "2024-08-01",
+  },
 
   preference: {
     jobRole: ["UI Designer", "Frontend Developer"],
@@ -47,7 +54,7 @@ const UserData = {
     location: ["Bangalore", "Gurgaon", "Delhi", "Pune", "Lucknow", "Mumbai"],
     jobType: ["Contractual", "Permanent"],
     experience: {
-      upperLimit: 2,
+      upperLimit: 3,
       lowerLimit: 1,
       experienceMetrics: "years",
     },

@@ -21,11 +21,11 @@ export const RightHeaderLinks = [
 ];
 
 export const RightSideIcons = [
-  {
-    image: "message.png",
-    link: "/message",
-    popover: <MessagesPopover />,
-  },
+  // {
+  //   image: "message.png",
+  //   link: "/message",
+  //   popover: <MessagesPopover />,
+  // },
   {
     image: "notifications.png",
     link: "/notifications",

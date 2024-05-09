@@ -5,19 +5,24 @@ import HideExtraText from "../HideExtraText/HideExtraText";
 import LoadingBar from "../loadingBar/loadingBar";
 
 const ContainerClasses =
-  "border-2 border-dashed border-black rounded-lg text-center mb-2 cursor-pointer w-44 relative z-10 overflow-hidden";
+  "border border-dashed rounded-lg text-center cursor-pointer w-full relative z-10 overflow-hidden";
 
 const CustomFileUploader = ({
   onChange,
   buttonText,
   acceptedFileType,
   mandatory,
+  className,
+  borderColor,
+  height,
 }) => {
   const inputRef = useRef(null);
   const [fileName, setFileName] = useState(null);
   const [fileSize, setFileSize] = useState(null);
   const [dragOver, setDragOver] = useState(false);
-  const [isLoading, setIsLoading] = useState(false); // New loading state
+  const [isLoading, setIsLoading] = useState(false);
+
+  const loadingTime = 1;
 
   const handleFileChange = (e) => {
     const file = e.target.files[0];
@@ -42,7 +47,7 @@ const CustomFileUploader = ({
         setFileName(file.name);
         setFileSize(file.size);
         setIsLoading(false); // Set loading state to false when file upload completes
-      }, 2000); // Simulated delay of 2 seconds
+      }, loadingTime * 1000); // Simulated delay of 2 seconds
     } else {
       setIsLoading(false); // Set loading state to false if file is invalid
       // Handle invalid file
@@ -66,13 +71,17 @@ const CustomFileUploader = ({
   };
 
   return (
-    <div style={{ position: "relative" }}>
+    <div
+      style={{ position: "relative", width: "100%" }}
+      className={`${height} ${className}`}
+    >
       <div
-        className={`${ContainerClasses} ${style.container} h-52`}
+        className={`${ContainerClasses} ${style.container} ${height}`}
         onDrop={handleFileDrop}
         onDragOver={handleDragOver}
         onDragLeave={handleDragLeave}
         onClick={handleButtonClick}
+        style={{ borderColor: borderColor || "#ff6501" }}
       >
         <input
           type="file"
@@ -82,63 +91,91 @@ const CustomFileUploader = ({
           accept={acceptedFileType.join(",")}
         />
       </div>
-      <div
-        className={`${
-          dragOver
-            ? "flex flex-col justify-center items-center content-center h-52 w-full bg-zinc-100"
-            : "hidden"
-        } ${style.box}`}
-      >
-        <>
-          <span className="">{"Drag and Drop the file here"}</span>
-          <p className="text-xs text-zinc-500">
-            File can be PDF, DOC; of size 5MB
-          </p>
-        </>
-      </div>
-      <div
-        className={`flex flex-col justify-center items-center content-center w-full p-4 h-52 ${
-          dragOver ? " hidden" : "flex"
-        } ${style.box}`}
-      >
-        {isLoading ? (
-          <LoadingBar />
-        ) : (
-          <>
-            <CustomImage
-              src={`/assets/icons/${
-                fileName ? "fileReplaceIcon.png" : "fileUploaderIcon.png"
-              }`}
-              alt=""
-              width={80}
-              classForDiv={style.imageContainer}
-            />
-            {fileName ? (
-              <HideExtraText lines={1} className="">
-                {fileName} {fileSize && ` (${(fileSize / 1024).toFixed(2)} KB)`}
-              </HideExtraText>
-            ) : (
-              <DefaultText buttonText={buttonText} />
-            )}
-          </>
-        )}
-      </div>
-      <p className="text-xs text-zinc-500">File can be PDF, DOC; of size 5MB</p>
+
+      <DragComponent height={height} dragOver={dragOver} />
+      <ContentComponent
+        height={height}
+        dragOver={dragOver}
+        fileName={fileName}
+        isLoading={isLoading}
+        buttonText={buttonText}
+        fileSize={fileSize}
+        loadingTime={loadingTime}
+      />
     </div>
   );
 };
 
 export default CustomFileUploader;
 
+const ContentComponent = ({
+  height,
+  fileName,
+  dragOver,
+  isLoading,
+  buttonText,
+  fileSize,
+  loadingTime,
+}) => {
+  return (
+    <div
+      className={`flex flex-col justify-center items-center content-center w-full p-4 ${height} ${
+        dragOver ? " hidden" : "flex"
+      } ${style.box}`}
+    >
+      {isLoading ? (
+        <LoadingBar loadingTime={loadingTime} />
+      ) : (
+        <>
+          <CustomImage
+            src={`/assets/icons/${
+              fileName ? "fileReplaceIcon.png" : "fileUploaderIcon.png"
+            }`}
+            alt=""
+            width={60}
+            height={60}
+            classForDiv={style.imageContainer}
+          />
+          {fileName ? (
+            <HideExtraText lines={2} className="">
+              {fileName} {fileSize && ` (${(fileSize / 1024).toFixed(2)} KB)`}
+            </HideExtraText>
+          ) : (
+            <DefaultText buttonText={buttonText} />
+          )}
+        </>
+      )}
+    </div>
+  );
+};
+
+const DragComponent = ({ height, dragOver }) => {
+  return (
+    <div
+      className={`${
+        dragOver
+          ? "flex flex-col justify-center items-center content-center w-full bg-zinc-100 "
+          : "hidden"
+      } ${style.box} ${height}`}
+    >
+      <>
+        <span className="sm:text-base text-sm">
+          {"Drag and Drop the file here"}
+        </span>
+        <p className="text-xs text-zinc-500">
+          File can be PDF, DOC; of size 5MB
+        </p>
+      </>
+    </div>
+  );
+};
+
 const DefaultText = ({ buttonText }) => {
   return (
     <>
-      <HideExtraText
-        lines={1}
-        className="text-xl font-semibold text-black text-center"
-      >
+      <p lines={1} className="sm:text-xl font-semibold text-black text-center">
         {buttonText}
-      </HideExtraText>
+      </p>
       <p className="text-xs ">Drag and Drop the file</p>
     </>
   );

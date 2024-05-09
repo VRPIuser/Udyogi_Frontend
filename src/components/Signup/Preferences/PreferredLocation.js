@@ -43,7 +43,7 @@ const btnEnabledClasses = "bg-black hover:bg-gray-800";
 const PreferredLocation = ({ onSelectedLocationsInput, setShowPreference }) => {
   return (
     <div
-      className={`flex flex-col gap-4 max-w-4xl mx-auto w-full mb-6 ${BorderContainerClasses}`}
+      className={`flex flex-col max-w-4xl mx-auto w-full mb-6 ${BorderContainerClasses}`}
     >
       <label htmlFor="location" className="block mb-2 font-medium">
         Enter preferred Location
@@ -53,20 +53,23 @@ const PreferredLocation = ({ onSelectedLocationsInput, setShowPreference }) => {
         options={Locations}
         placeholder="E.g.: Hyderabad"
         onChange={onSelectedLocationsInput.AssignValue}
+        initialValue={onSelectedLocationsInput.value}
       />
-      <div className={nextBtnContainerClasses}>
-        <button
-          className={`${nextBtnClasses} ${
-            !onSelectedLocationsInput.isValid
-              ? btnDisabledClasses
-              : btnEnabledClasses
-          }`}
-          disabled={!onSelectedLocationsInput.isValid}
-          onClick={() => setShowPreference(true)}
-        >
-          Next
-        </button>
-      </div>
+      {setShowPreference && (
+        <div className={nextBtnContainerClasses}>
+          <button
+            className={`${nextBtnClasses} ${
+              !onSelectedLocationsInput.isValid
+                ? btnDisabledClasses
+                : btnEnabledClasses
+            }`}
+            disabled={!onSelectedLocationsInput.isValid}
+            onClick={() => setShowPreference(true)}
+          >
+            Next
+          </button>
+        </div>
+      )}
     </div>
   );
 };

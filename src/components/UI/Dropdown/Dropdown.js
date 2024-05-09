@@ -13,10 +13,10 @@ const Dropdown = ({
   mandatory,
   inputStyles,
   optionStyles,
-  value,
+  initialValue,
 }) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [selectedOption, setSelectedOption] = useState(null);
+  const [selectedOption, setSelectedOption] = useState(initialValue);
 
   const toggleDropdown = () => {
     setIsOpen(!isOpen);

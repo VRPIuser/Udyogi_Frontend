@@ -12,6 +12,8 @@ const CustomDatePicker = ({
   placeholderText,
   mandatory,
   disabled,
+  divStyles,
+  formatSpanStyles,
 }) => {
   const [isFocused, setIsFocused] = useState(false);
 
@@ -31,7 +33,7 @@ const CustomDatePicker = ({
   // Function to format the date as "yyyy-MM-dd"
 
   return (
-    <div className={style.container}>
+    <div className={style.container} style={divStyles}>
       <DatePicker
         selected={selectedDate}
         onChange={onChange}
@@ -52,7 +54,9 @@ const CustomDatePicker = ({
         {placeholderText}{" "}
         {mandatory && <span style={{ color: "red" }}>&nbsp;*</span>}
       </label>
-      <span className={style.format}>yyyy-mm-dd</span>
+      <span className={style.format} style={formatSpanStyles}>
+        yyyy-mm-dd
+      </span>
     </div>
   );
 };

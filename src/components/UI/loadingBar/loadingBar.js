@@ -1,24 +1,30 @@
 import { useState, useEffect } from "react";
 import styles from "./loadingBar.module.css";
 
-const LoadingBar = () => {
+const LoadingBar = ({ loadingTime }) => {
   const [progress, setProgress] = useState(0);
+
+  const progressBarStyles = {
+    width: `${progress}%`,
+    height: "100%",
+    backgroundColor: "#007bff",
+    animation: `progressAnimation ${loadingTime} linear forwards`,
+  };
 
   useEffect(() => {
     const interval = setInterval(() => {
       setProgress((prevProgress) => {
         if (prevProgress < 100) {
-          return prevProgress + 1; // Increment progress by 10% every 200ms (total of 10 increments)
+          return prevProgress + 1;
         } else {
-          clearInterval(interval); // Stop the interval when progress reaches 100%
+          clearInterval(interval);
           return prevProgress;
         }
       });
-    }, 20);
+    }, loadingTime * 10);
 
-    // Clean up interval on component unmount
     return () => clearInterval(interval);
-  }, []);
+  }, [loadingTime]);
 
   return (
     <div className={styles.loadingBar}>
@@ -27,8 +33,8 @@ const LoadingBar = () => {
         {" %"}
       </div>
       <div
-        className={styles.progressBar}
-        style={{ width: `${progress}%` }}
+        // className={styles.progressBar}
+        style={progressBarStyles}
       ></div>
     </div>
   );

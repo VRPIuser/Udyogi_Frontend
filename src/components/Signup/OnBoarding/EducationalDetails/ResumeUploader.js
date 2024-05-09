@@ -6,7 +6,7 @@ const ResumeUploader = ({ resumeInput }) => {
   return (
     <div className={`my-8 bg-white ${BorderContainerClasses}`}>
       <h2 className="text-lg font-semibold mb-4">Upload Your Resume</h2>
-
+      {/* <div className="h-44"> */}
       <CustomFileUploader
         onChange={resumeInput.AssignValue}
         acceptedFileType={[
@@ -17,7 +17,9 @@ const ResumeUploader = ({ resumeInput }) => {
           "application/octet-stream",
         ]}
         buttonText={"Upload your Resume"}
+        height="min-h-44"
       />
+      {/* </div> */}
     </div>
   );
 };

@@ -26,20 +26,23 @@ const JobRoles = ({ onSelectedJobRolesInput, setShowSkills }) => {
         options={JobRollesData}
         placeholder="E.g.: UI/UX Designer"
         onChange={onSelectedJobRolesInput.AssignValue}
+        initialValue={onSelectedJobRolesInput.value}
       />
-      <div className={nextBtnContainerClasses}>
-        <button
-          className={`${nextBtnClasses} ${
-            !onSelectedJobRolesInput.isValid
-              ? btnDisabledClasses
-              : btnEnabledClasses
-          }`}
-          disabled={!onSelectedJobRolesInput.isValid}
-          onClick={() => setShowSkills(true)}
-        >
-          Next
-        </button>
-      </div>
+      {setShowSkills && (
+        <div className={nextBtnContainerClasses}>
+          <button
+            className={`${nextBtnClasses} ${
+              !onSelectedJobRolesInput.isValid
+                ? btnDisabledClasses
+                : btnEnabledClasses
+            }`}
+            disabled={!onSelectedJobRolesInput.isValid}
+            onClick={() => setShowSkills(true)}
+          >
+            Next
+          </button>
+        </div>
+      )}
     </div>
   );
 };

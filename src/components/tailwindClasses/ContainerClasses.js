@@ -1,2 +1,2 @@
 export const BorderContainerClasses =
-  "border p-4 shadow border-orange-500 rounded-xl";
+  "border p-4 shadow border-zinc-200 rounded-xl";
