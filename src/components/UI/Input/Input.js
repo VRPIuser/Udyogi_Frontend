@@ -10,8 +10,8 @@ const CustomInput = React.forwardRef(
       type = "text",
       className,
       style,
-      onBlur,
-      onFocus,
+      onBlur = () => {},
+      onFocus = () => {},
       mandatory, // Add a prop to indicate if the input is mandatory
       name,
       colorTheme,
@@ -53,6 +53,27 @@ const CustomInput = React.forwardRef(
       borderColor: colorTheme,
     };
 
+    const HandleFocus = () => {
+      onFocus();
+      handleInputFocus();
+    };
+
+    const HandleBlur = () => {
+      onBlur();
+      handleInputBlur();
+    };
+
+    // useEffect(() => {
+    //   if (onFocus) {
+    //     setIsTouched(true);
+    //     inputRef.current.focus();
+    //   }
+    //   if (onBlur) {
+    //     setIsTouched(false);
+    //     inputRef.current.blur();
+    //   }
+    // }, [onBlur, onFocus]);
+
     return (
       <div style={{ position: "relative" }}>
         <input
@@ -64,7 +85,7 @@ const CustomInput = React.forwardRef(
           value={value}
           onChange={onChange}
           style={InputStyles} // Don't wrap style in another object
-          onFocus={handleInputFocus}
+          onFocus={HandleFocus}
           onBlur={handleInputBlur}
         />
         <label

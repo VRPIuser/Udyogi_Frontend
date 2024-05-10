@@ -22,31 +22,23 @@ const Experience = [
     value: {
       experienceMetrics: "years",
       lowerLimit: 0,
-      upperLimit: 0,
-    },
-  },
-  {
-    label: "1-2 years",
-    value: {
-      experienceMetrics: "years",
-      lowerLimit: 1,
       upperLimit: 2,
     },
   },
   {
-    label: "2-5 years",
+    label: "2+ years",
     value: {
       experienceMetrics: "years",
       lowerLimit: 2,
-      upperLimit: 5,
+      upperLimit: Number.MAX_VALUE,
     },
   },
   {
-    label: "5-10 years",
+    label: "5+ years",
     value: {
       experienceMetrics: "years",
       lowerLimit: 5,
-      upperLimit: 10,
+      upperLimit: Number.MAX_VALUE,
     },
   },
   {
@@ -54,6 +46,14 @@ const Experience = [
     value: {
       experienceMetrics: "years",
       lowerLimit: 10,
+      upperLimit: Number.MAX_VALUE,
+    },
+  },
+  {
+    label: "20+ years",
+    value: {
+      experienceMetrics: "years",
+      lowerLimit: 20,
       upperLimit: Number.MAX_VALUE,
     },
   },

@@ -88,7 +88,7 @@ const JobFilter = ({
     <>
       {
         <div
-          className={`bg-white p-4 shadow-md rounded-lg min-w-xl w-full max-w-5xl mb-4 ${
+          className={`bg-white p-4 shadow-md rounded-lg min-w-60 w-full max-w-96 mb-4 h-fit ${
             showFilter ? "block" : "hidden"
           }`}
         >
@@ -102,7 +102,7 @@ const JobFilter = ({
               }
             />
           ))}
-          <div className="mb-6">
+          <div className="mb-3">
             <h2 className="font-semibold mb-2">Salary Range</h2>
             <div className="flex items-center gap-4">
               <label className="w-10">Min</label>
@@ -141,7 +141,7 @@ const JobFilter = ({
 };
 
 const FilterSection = ({ title, buttons, onCheckboxChange }) => (
-  <div className="mb-6">
+  <div className="mb-3">
     <h2 className="font-semibold mb-2">{title}</h2>
     <div className="grid grid-cols-2 gap-2">
       {buttons.map(({ label, checked, count }, buttonIndex) => (

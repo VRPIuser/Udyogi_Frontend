@@ -15,7 +15,6 @@ const experienceOptions = [
 ];
 
 const workOptions = ["Onsite", "Work from Home", "Hybrid", "Remote"];
-import CustomCheckbox from "@/components/UI/Checkbox/Checkbox";
 import { BorderContainerClasses } from "@/components/tailwindClasses/ContainerClasses";
 
 const JobCategories = ({
@@ -23,7 +22,8 @@ const JobCategories = ({
   onSelectedExperience,
   onSelectedWorkOptions,
 }) => {
-  const handleJobTypeChange = (value) => {
+  const handleJobTypeChange = (event) => {
+    const { value } = event.target;
     if (onSelectedJobType.value.includes(value)) {
       onSelectedJobType.AssignValue(
         onSelectedJobType.value.filter((type) => type !== value)
@@ -37,7 +37,8 @@ const JobCategories = ({
     onSelectedExperience.AssignValue(event.target.value);
   };
 
-  const handleWorkOptionsChange = (value) => {
+  const handleWorkOptionsChange = (event) => {
+    const { value } = event.target;
     if (onSelectedWorkOptions.value.includes(value)) {
       onSelectedWorkOptions.AssignValue(
         onSelectedWorkOptions.value.filter((option) => option !== value)
@@ -58,11 +59,16 @@ const JobCategories = ({
       <div className="flex flex-wrap gap-6">
         {JobTypes.map((jobType, index) => (
           <div key={index} className="mb-2">
-            <CustomCheckbox
-              label={jobType}
-              onChange={(value) => handleJobTypeChange(value)}
+            <input
+              type="checkbox"
+              value={jobType}
+              checked={onSelectedJobType.value.includes(jobType)}
+              onChange={handleJobTypeChange}
+              className="mr-2"
               id={jobType.toLowerCase()}
             />
+
+            <label htmlFor={jobType.toLowerCase()}>{jobType}</label>
           </div>
         ))}
       </div>
@@ -89,14 +95,26 @@ const JobCategories = ({
         <div className="flex flex-wrap gap-6">
           {workOptions.map((workOption, index) => (
             <div key={index} className="mb-2">
-              <CustomCheckbox
-                onChange={(value) => handleWorkOptionsChange(value)}
-                label={workOption}
+              <input
+                type="checkbox"
+                value={workOption}
+                checked={onSelectedWorkOptions.value.includes(workOption)}
+                onChange={handleWorkOptionsChange}
+                className="mr-2"
+                id={workOption.toLowerCase()}
               />
+              <label htmlFor={workOption.toLowerCase()}>{workOption}</label>
             </div>
           ))}
         </div>
       </div>
+      {/* <span
+        onClick={() => {
+          console.log(selectedJobType, selectedExperience, selectedWorkOptions);
+        }}
+      >
+        Done
+      </span> */}
     </div>
   );
 };

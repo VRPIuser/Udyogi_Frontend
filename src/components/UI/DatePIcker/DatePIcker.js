@@ -16,6 +16,8 @@ const CustomDatePicker = ({
   formatSpanStyles,
   name,
   colorTheme,
+  onBlur = () => {},
+  onFocus = () => {},
 }) => {
   const [isFocused, setIsFocused] = useState(false);
 
@@ -24,12 +26,21 @@ const CustomDatePicker = ({
   const handleLabelClick = () => {
     setIsFocused(true);
     datePickerRef.current.input.focus();
-    // datePickerRef.current.setOpen(true);
-    // datePickerRef.current.click();
   };
 
   const handleDatePickerBlur = () => {
     setIsFocused(false);
+  };
+
+  const HandleFocus = () => {
+    onFocus();
+    handleLabelClick();
+    console.log(FormatSpanStyles);
+  };
+
+  const HandleBlur = () => {
+    onBlur();
+    handleDatePickerBlur();
   };
 
   // Function to format the date as "yyyy-MM-dd"
@@ -42,7 +53,7 @@ const CustomDatePicker = ({
   const FormatSpanStyles = {
     ...formatSpanStyles,
     backgroundColor: colorTheme,
-    borderLeft: "1px solid" + colorTheme,
+    borderLeft: `1px solid ${colorTheme}`,
   };
 
   return (
@@ -52,8 +63,8 @@ const CustomDatePicker = ({
         onChange={onChange}
         dateFormat="yyyy-MM-dd"
         className={`${className} ${style.date}`}
-        onFocus={handleLabelClick}
-        onBlur={handleDatePickerBlur}
+        onFocus={HandleFocus}
+        onBlur={HandleBlur}
         customInput={<input />}
         ref={datePickerRef}
         disabled={disabled}

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import BasicInfo from "./BasicInfo/BasicInfo";
-import Education from "./Education";
-import ExperienceOrInternship from "./ExperienceOrInternship";
+import Education from "./Educations/Education";
+import ExperienceOrInternship from "./ExpOrIntern/ExperienceOrInternship";
 import UpdateSkills from "./UpdateSkills";
 import PercentageDisplay from "./PercentageDisplay";
 

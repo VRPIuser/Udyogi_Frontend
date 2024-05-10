@@ -76,49 +76,10 @@ const JobFilteredResults = ({ jobs, searchData }) => {
         "shift"
       );
 
-      // console.log(
-      //   job.expectedExperience?.lowerLimit >=
-      //     searchData.experience?.value.lowerLimit,
-      //   job.expectedExperience?.upperLimit <=
-      //     searchData.experience?.value.upperLimit,
-      //   job.expectedExperience?.lowerLimit,
-      //   searchData.experience?.value.lowerLimit,
-      //   job.expectedExperience?.upperLimit,
-      //   searchData.experience?.value.upperLimit,
-      //   searchData
-      // );
-
       const isExperienceMatch = checkTheExperience(
         job.expectedExperience,
         searchData.experience?.value
       );
-      // if (!searchData.experience.value) {
-      //   isExperienceMatch = true;
-      // } else
-      // if (
-      //   (job.expectedExperience &&
-      //     job.expectedExperience.lowerLimit >=
-      //       searchData.experience.value?.lowerLimit) ||
-      //   (0 &&
-      //     job.expectedExperience.upperLimit <=
-      //       searchData.experience.value?.upperLimit) ||
-      //   0
-      // ) {
-      //   isExperienceMatch = true;
-      // }
-
-      // else {
-      //   isExperienceMatch = false;
-      // }
-
-      // matchSearchData(
-      //   job.expectedExperience?.lowerLimit +
-      //     "-" +
-      //     job.expectedExperience?.upperLimit +
-      //     " " +
-      //     job.expectedExperience?.experienceMetrics,
-      //   searchData.experience
-      // );
 
       const isLocationMatch = matchSearchData(
         job.location,
@@ -156,43 +117,52 @@ const JobFilteredResults = ({ jobs, searchData }) => {
   const [showFilter, setShowFilter] = useState(false);
 
   return (
-    <div
-      className={
-        "max-w-full mx-auto px-4 py-8 flex gap-4 flex-wrap justify-center"
-      }
-    >
-      <div className="max-w-5xl w-full">
-        <div className="flex items-center">
-          <h1 className="text-2xl w-full p-4 text-start font-medium">
+    <div className={"max-w-full mx-auto px-4 py-8 flex gap-4 justify-center"}>
+      <div className="max-w-screen-2xl w-full">
+        <div className="flex items-center bg-white shadow rounded-lg mb-4">
+          <h1 className=" w-full p-4 text-start font-medium ">
             Search results - {filteredJobs.length} Jobs
           </h1>
-          <span
+          <div
             onClick={() => setShowFilter(!showFilter)}
-            className="cursor-pointer hover:bg-zinc-100 px-4 py-2 transition-all rounded-full flex gap-2 items-center"
+            className="cursor-pointer hover:bg-zinc-100 px-4 py-2 transition-all rounded-full flex gap-2 items-center mr-2 justify-end"
           >
-            Filter
+            <span className="sm:block hidden">Filter</span>
             <CustomImage
               src="/assets/icons/filterIcon.png"
-              width={25}
-              height={25}
+              width={100}
+              height={60}
+              className="min-w-6 min-h-6 w-6 h-6 object-contain"
             />
-          </span>
-        </div>
-        <JobFilter
-          onFiltering={setFilters}
-          filters={filters}
-          filteredJobs={filteredJobs}
-          onSettingSalaryRange={setSalaryRange}
-          salaryRange={salaryRange}
-          showFilter={showFilter}
-        />
-        {filteredJobs.length > 0 && (
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-4">
-            {filteredJobs.map((job) => (
-              <JobCard key={job.id} job={job} />
-            ))}
           </div>
-        )}
+        </div>
+        <div className="flex gap-4 md:flex-row flex-col-reverse items-center md:items-start">
+          {filteredJobs.length > 0 && (
+            // <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-4">
+            <div
+              // className="flex flex-wrap gap-4"
+              style={{
+                display: "grid",
+                gap: "1rem",
+                width: "100%",
+                justifyContent: "center",
+                gridTemplateColumns: "repeat(auto-fill, minmax(250px, 350px))",
+              }}
+            >
+              {filteredJobs.map((job) => (
+                <JobCard key={job.id} job={job} />
+              ))}
+            </div>
+          )}
+          <JobFilter
+            onFiltering={setFilters}
+            filters={filters}
+            filteredJobs={filteredJobs}
+            onSettingSalaryRange={setSalaryRange}
+            salaryRange={salaryRange}
+            showFilter={showFilter}
+          />
+        </div>
       </div>
     </div>
   );
