@@ -17,11 +17,46 @@ const buttonClasses =
   "w-fit font-bold py-2 sm:px-8 px-4 rounded-full transition duration-300";
 
 const Experience = [
-  { label: "Fresher", value: "fresher" },
-  { label: "1-2 years", value: "1-2" },
-  { label: "2-5 years", value: "2-5" },
-  { label: "5-10 years", value: "5-10" },
-  { label: "10+ years", value: "10+" },
+  {
+    label: "Fresher",
+    value: {
+      experienceMetrics: "years",
+      lowerLimit: 0,
+      upperLimit: 0,
+    },
+  },
+  {
+    label: "1-2 years",
+    value: {
+      experienceMetrics: "years",
+      lowerLimit: 1,
+      upperLimit: 2,
+    },
+  },
+  {
+    label: "2-5 years",
+    value: {
+      experienceMetrics: "years",
+      lowerLimit: 2,
+      upperLimit: 5,
+    },
+  },
+  {
+    label: "5-10 years",
+    value: {
+      experienceMetrics: "years",
+      lowerLimit: 5,
+      upperLimit: 10,
+    },
+  },
+  {
+    label: "10+ years",
+    value: {
+      experienceMetrics: "years",
+      lowerLimit: 10,
+      upperLimit: Number.MAX_VALUE,
+    },
+  },
 ];
 
 const GeneralJobSearch = ({ className, onSearch, onlyCompany }) => {

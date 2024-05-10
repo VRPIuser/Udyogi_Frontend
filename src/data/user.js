@@ -25,7 +25,6 @@ const UserData = {
       },
     ],
   },
-
   educationDetails: [
     {
       degree: "Bachelor of Technology",

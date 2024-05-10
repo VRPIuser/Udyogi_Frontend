@@ -2,7 +2,10 @@ import { useEffect, useState } from "react";
 import InputWithInvalidText from "./InputWithInvalidText";
 import useInput from "@/hooks/use-Input";
 import { nameValidation } from "@/components/InputValidations/InputValidations";
-import { optionClasses } from "@/components/tailwindClasses/ButtonClassess";
+import {
+  optionClasses,
+  selectedOptionClasses,
+} from "@/components/tailwindClasses/ButtonClassess";
 
 const SuggestionClasses =
   "bg-white rounded-full px-3 py-1 text-sm cursor-pointer hover:bg-zinc-100 transition-all";
@@ -65,38 +68,32 @@ const SelectableInput = ({
 
   return (
     <div className="max-w-4xl mx-auto mt-4 w-full ">
-      {selectedOptions.length > 0 && (
-        <div id="selectedOptions" className="flex flex-wrap gap-2 mb-4">
-          {selectedOptions.map((option, index) => (
-            <div key={index} className={optionClasses}>
-              <button
-                type="button"
-                onClick={() => handleRemoveOption(index)}
-                className="ml-1"
-              >
-                {option} &#x2715;
-              </button>
-            </div>
-          ))}
-        </div>
-      )}
+      <div id="selectedOptions" className="flex flex-wrap gap-2 mb-4 min-h-8">
+        {selectedOptions.map((option, index) => (
+          <div
+            key={index}
+            className={selectedOptionClasses}
+            onClick={() => handleRemoveOption(index)}
+          >
+            {option} &#x2715;
+          </div>
+        ))}
+      </div>
 
       <InputWithInvalidText
         type="text"
         id="input"
         inputFields={optionsInput}
-        // value={optionsInput.value}
-        // onChange={handleInputChange}
         placeholder={placeholder || "Type here..."}
         className="mb-4"
-        inputStyles={{ borderColor: "#00000021" }}
+        colorTheme="#00000021"
       />
       <div className="flex flex-wrap gap-2">
         {filteredOptions.slice(0, minNoOfOptions || 6).map((option, index) => (
           <span
             key={index}
             onClick={() => handleOptionClick(option)}
-            className={optionClasses}
+            className={`${optionClasses} min-w-fit`}
           >
             {option}
             {" +"}

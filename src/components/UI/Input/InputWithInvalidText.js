@@ -1,7 +1,6 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useState } from "react";
 import CustomInput from "./Input";
 import style from "./CustomInput.module.css";
-import Image from "next/image";
 import CustomImage from "../Image/Image";
 const InputWithInvalidText = ({
   ErrorMessage,
@@ -12,35 +11,37 @@ const InputWithInvalidText = ({
   placeholder,
   styles,
   inputStyles,
+  colorTheme,
 }) => {
-  const inputRef = useRef(null);
+  // const inputRef = useRef(null);
 
   const [checkPassword, setCheckPassword] = useState(false);
 
-  const handleLabelClick = () => {
-    inputRef.current.focus();
-  };
+  // const handleLabelClick = () => {
+  //   inputRef.current.focus();
+  // };
 
-  useEffect(() => {
-    if (inputFields.value) {
-      inputFields.focusHandler();
-    }
-  });
+  // useEffect(() => {
+  //   if (inputFields.value) {
+  //     inputFields.focusHandler();
+  //   }
+  // });
 
   return (
     <div className={`${style.InputContainer}  ${className}`} style={styles}>
       <CustomInput
-        ref={inputRef}
         className={`${style.checkoutFormControl} ${
           inputFields.hasError && style.invalid
         }`}
-        // placeholder={placeholder}
+        placeholder={placeholder}
         value={inputFields.value}
-        onFocus={inputFields.focusHandler}
-        onBlur={inputFields.validateValueHandler}
+        colorTheme={colorTheme}
+        // onFocus={inputFields.focusHandler}
+        // onBlur={inputFields.validateValueHandler}
         onChange={inputFields.valueChangeHandler}
         type={`${type === "password" && checkPassword ? "text" : type}`}
         style={inputStyles}
+        mandatory={mandatory}
       />
       {type === "password" && (
         <CustomImage
@@ -48,22 +49,12 @@ const InputWithInvalidText = ({
             checkPassword ? "showPassword.png" : "hidePassword.png"
           }`}
           alt=""
-          className={style.checkPassword}
+          className={`${style.checkPassword} ${colorTheme && "grayscale"}`}
           classForDiv={style.checkPasswordContainer}
           onClick={() => setCheckPassword(!checkPassword)}
         />
       )}
-      <label
-        className={` ${
-          inputFields.isFocused || inputFields.value !== ""
-            ? style.transition
-            : style.placeholder
-        }`}
-        onClick={handleLabelClick}
-      >
-        {placeholder}{" "}
-        {mandatory && <span style={{ color: "red" }}>&nbsp;*</span>}
-      </label>
+
       {ErrorMessage && (
         <p
           className={style.invalidText}

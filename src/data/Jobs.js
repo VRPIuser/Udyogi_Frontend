@@ -65,8 +65,8 @@ export const LatestJobsData = [
 
     applicants: ["1", "2", "3", "4", "5", "6"],
     expectedExperience: {
-      upperLimit: 6,
-      lowerLimit: 3,
+      upperLimit: 0,
+      lowerLimit: 0,
       experienceMetrics: "years",
     },
 
@@ -108,7 +108,7 @@ export const LatestJobsData = [
 
     applicants: ["1", "2", "3", "4", "5", "6"],
     expectedExperience: {
-      upperLimit: 6,
+      upperLimit: 8,
       lowerLimit: 3,
       experienceMetrics: "years",
     },
@@ -150,8 +150,8 @@ export const LatestJobsData = [
 
     applicants: ["1", "2", "3", "4", "5", "6"],
     expectedExperience: {
-      upperLimit: 6,
-      lowerLimit: 3,
+      upperLimit: 10,
+      lowerLimit: 5,
       experienceMetrics: "years",
     },
     jobDescription: {
@@ -192,8 +192,8 @@ export const LatestJobsData = [
 
     applicants: ["1", "2", "3", "4", "5", "6"],
     expectedExperience: {
-      upperLimit: 6,
-      lowerLimit: 3,
+      upperLimit: 15,
+      lowerLimit: 10,
       experienceMetrics: "years",
     },
     jobDescription: {
@@ -230,8 +230,8 @@ export const LatestJobsData = [
     },
     applicants: ["1", "2", "3", "4", "5", "6"],
     expectedExperience: {
-      upperLimit: 6,
-      lowerLimit: 3,
+      upperLimit: 2,
+      lowerLimit: 1,
       experienceMetrics: "years",
     },
     jobDescription: {

@@ -26,6 +26,7 @@ const Education = () => {
   const handleAddEducation = () => {
     const newEducation = {
       id: educationDetails.length + 1,
+      degree: "",
       collegeName: "",
       specializedIn: "",
       from: "",
@@ -60,7 +61,7 @@ const Education = () => {
     console.log(educationDetails);
   };
 
-  const line = "flex gap-4 mb-4";
+  const line = "flex gap-4 mb-4 px-4";
   const inputContainer = "w-full flex flex-col gap-2";
   const inputLabel = "font-semibold";
 
@@ -68,10 +69,10 @@ const Education = () => {
     <div className="w-full flex flex-col gap-4 mt-4">
       {educationDetails.map((education, index) => (
         <div key={education.id} className="">
-          <div className="flex gap-4 justify-between items-center">
+          <div className="flex gap-4 justify-between items-center mb-4 ">
             <div
               style={{ width: "calc(100% )" }}
-              className="pl-4 p-2 border border-gray-100 mb-4 rounded-md shadow-md shadow-gray-100 flex justify-between items-center hover:bg-zinc-50 transition-all cursor-pointer"
+              className="pl-4 p-2 border border-gray-100 rounded-md shadow-md shadow-gray-100 flex justify-between items-center hover:bg-zinc-50 transition-all cursor-pointer"
               onClick={() => handleToggleExpand(index)} // Toggle expand/collapse on click
             >
               <h3>Education{" " + Number(index + 1)}</h3>
@@ -105,7 +106,7 @@ const Education = () => {
                   <CustomInput
                     type="text"
                     name="degree"
-                    placeholder="Degree"
+                    placeholder="Eg. B.Tech"
                     value={education.degree}
                     onChange={(e) =>
                       handleInputChange(index, e.target.value, "degree")
@@ -120,7 +121,7 @@ const Education = () => {
                   <CustomInput
                     type="text"
                     name="collegeName"
-                    placeholder="collegeName"
+                    placeholder="Eg. Harvard University"
                     value={education.collegeName}
                     onChange={(e) =>
                       handleInputChange(index, e.target.value, "collegeName")
@@ -130,11 +131,11 @@ const Education = () => {
                 </div>
 
                 <div className={`${inputContainer}`}>
-                  <label className={`${inputLabel}`}>specializedIn in</label>
+                  <label className={`${inputLabel}`}>SpecializedIn in</label>
                   <CustomInput
                     type="text"
                     name="specializedIn"
-                    placeholder="specializedIn"
+                    placeholder="Eg. Mechanical Engineering"
                     value={education.specializedIn}
                     onChange={(e) =>
                       handleInputChange(index, e.target.value, "specializedIn")
@@ -149,7 +150,7 @@ const Education = () => {
                   <label className={`${inputLabel}`}>From</label>
                   <CustomDatePicker
                     name="from"
-                    placeholderText="yyyy-MM-dd"
+                    placeholderText="Eg. 20017-06-02"
                     selectedDate={education.from}
                     onChange={(value) =>
                       handleInputChange(index, value, "from")
@@ -165,7 +166,7 @@ const Education = () => {
                   <label className={`${inputLabel}`}>To</label>
                   <CustomDatePicker
                     name="to"
-                    placeholderText="yyyy-MM-dd"
+                    placeholderText="Eg. 2021-04-02"
                     selectedDate={education.to}
                     onChange={(value) => handleInputChange(index, value, "to")}
                     divStyles={{ borderColor: "#00000021" }}

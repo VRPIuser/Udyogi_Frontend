@@ -10,3 +10,7 @@ export const url = {
   shippingLink: "https://merchant.razorpay.com/policy/NaFsnQOzqL4ESZ/shipping",
   privacyPolicyLink: "/privacy-policy",
 };
+
+export const colorTheme = {
+  input: "#00000021",
+};

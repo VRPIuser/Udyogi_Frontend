@@ -14,7 +14,7 @@ const ProfileDocs = ({ resumeInput, profilePhotoInput }) => {
           acceptedFileType={["image/jpeg", "image/png"]}
           buttonText={"Upload Image"}
           className="bg-white rounded-lg"
-          borderColor={"#ccc"}
+          colorTheme="#ccc"
           height="min-h-56"
         />
       </div>
@@ -60,7 +60,7 @@ const ProfileDocs = ({ resumeInput, profilePhotoInput }) => {
             ]}
             buttonText={"Update Resume"}
             className="bg-white rounded-lg"
-            borderColor={"#ccc"}
+            colorTheme="#ccc"
             height="min-h-36"
           />
         </div>

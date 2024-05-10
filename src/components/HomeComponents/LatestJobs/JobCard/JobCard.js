@@ -10,6 +10,7 @@ const JobCard = ({ job }) => {
       <div className={styles.cardHeader}>
         <div>
           <h3 className={styles.cardTitle}>{job.jobTitle}</h3>
+
           <h4 className={styles.cardCompany}>{job.companyDetails.name}</h4>
 
           <HideExtraText className={styles.jobTags} lines={1}>
@@ -18,8 +19,20 @@ const JobCard = ({ job }) => {
             {job.jobType}
           </HideExtraText>
         </div>
-        <div className={styles.symbol}>
-          <span>{job.companyDetails.name[0]}</span>
+        <div className="flex flex-col center-end">
+          <div className={`${styles.symbol} mx-auto`}>
+            <span className="">{job.companyDetails.name[0]}</span>
+          </div>
+          <HideExtraText
+            className={`font-medium text-end w-full text-sm`}
+            lines={1}
+          >
+            {/* {<CurrencySymbol currency={job.salaryRange.currency} />}
+          {""} */}
+            {job.expectedExperience.lowerLimit} -{" "}
+            {job.expectedExperience.upperLimit}{" "}
+            {job.expectedExperience.experienceMetrics}
+          </HideExtraText>
         </div>
       </div>
       <div className={styles.cardBody}>

@@ -48,7 +48,7 @@ const Profile = () => {
               className={`flex justify-center items-center cursor-pointer text-lg font-medium transition-all ${
                 index === currentProfileNavIndex
                   ? "text-orange-500 border-b-2 border-orange-500 text-lg font-medium"
-                  : "text-gray-400 border-b-2 border-transparent"
+                  : "text-gray-400 border-b-2 border-transparent hover:text-gray-600"
               }`}
               onClick={() => {
                 setCurrentProfileNavIndex(index);

@@ -4,7 +4,7 @@ const CustomCheckbox = ({ label, onChange, id }) => {
   const [checked, setChecked] = useState(false);
 
   const handleChange = () => {
-    console.log("Check");
+    // console.log("Check");
     const newChecked = !checked;
     setChecked(newChecked);
     if (onChange) {
@@ -23,7 +23,7 @@ const CustomCheckbox = ({ label, onChange, id }) => {
       />
       <div
         className={
-          checked ? `${styles.checkmark} ${styles.checked}` : styles.checkmark
+          checked ? `${styles.checkMark} ${styles.checked}` : styles.checkMark
         }
       />
       <label className={styles["checkbox-label"]}>{label}</label>

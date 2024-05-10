@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import styles from "./CustomInput.module.css"; // Import the CSS Module
 
 const CustomInput = React.forwardRef(
@@ -14,6 +14,7 @@ const CustomInput = React.forwardRef(
       onFocus,
       mandatory, // Add a prop to indicate if the input is mandatory
       name,
+      colorTheme,
     },
     ref
   ) => {
@@ -25,21 +26,57 @@ const CustomInput = React.forwardRef(
       ? `${combinedClassName} ${styles.mandatorySign}`
       : combinedClassName;
 
+    useEffect(() => {
+      if (value && value.trim() === "") {
+        setIsTouched(false);
+      }
+    }, [value]);
+
+    const inputRef = useRef();
+
+    const [isTouched, setIsTouched] = useState(false);
+
+    const handleInputFocus = () => {
+      setIsTouched(true);
+    };
+
+    const handleInputBlur = () => {
+      setIsTouched(false);
+    };
+
+    const handleLabelClick = () => {
+      inputRef.current.focus();
+    };
+
+    const InputStyles = {
+      ...style,
+      borderColor: colorTheme,
+    };
+
     return (
-      <>
+      <div style={{ position: "relative" }}>
         <input
-          ref={ref}
+          ref={inputRef}
           className={inputClasses}
           type={type}
-          placeholder={placeholder || ""}
+          // placeholder={placeholder || ""}
           name={name}
           value={value}
           onChange={onChange}
-          style={style} // Don't wrap style in another object
-          onFocus={onFocus}
-          onBlur={onBlur}
+          style={InputStyles} // Don't wrap style in another object
+          onFocus={handleInputFocus}
+          onBlur={handleInputBlur}
         />
-      </>
+        <label
+          className={` ${
+            isTouched || value !== "" ? styles.transition : styles.placeholder
+          }`}
+          onClick={handleLabelClick}
+        >
+          {placeholder}{" "}
+          {mandatory && <span style={{ color: "red" }}>&nbsp;*</span>}
+        </label>
+      </div>
     );
   }
 );

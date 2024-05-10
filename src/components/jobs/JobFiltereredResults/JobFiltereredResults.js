@@ -25,13 +25,31 @@ const JobFilteredResults = ({ jobs, searchData }) => {
   const matchSearchData = (jobField, searchDataField) => {
     if (!searchDataField) return true; // No search data provided
     if (!jobField) return false; // Job field is empty
-    return jobField.toLowerCase().includes(searchDataField.toLowerCase());
+    return jobField
+      .toString()
+      .trim()
+      .toLowerCase()
+      .includes(searchDataField.toString().trim().toLowerCase());
+  };
+
+  const checkTheExperience = (expected, given) => {
+    if (!given) return true;
+    if (!expected) return false;
+
+    return (
+      expected.lowerLimit >= given.lowerLimit &&
+      expected.upperLimit <= given.upperLimit
+    );
   };
 
   const matchExpectedSkills = (expectedSkills, searchDataField) => {
     if (!searchDataField) return true; // No search data provided
     return expectedSkills.some((skill) =>
-      skill.toLowerCase().includes(searchDataField.toLowerCase())
+      skill
+        .toString()
+        .trim()
+        .toLowerCase()
+        .includes(searchDataField.toString().trim().toLowerCase())
     );
   };
 
@@ -58,6 +76,50 @@ const JobFilteredResults = ({ jobs, searchData }) => {
         "shift"
       );
 
+      // console.log(
+      //   job.expectedExperience?.lowerLimit >=
+      //     searchData.experience?.value.lowerLimit,
+      //   job.expectedExperience?.upperLimit <=
+      //     searchData.experience?.value.upperLimit,
+      //   job.expectedExperience?.lowerLimit,
+      //   searchData.experience?.value.lowerLimit,
+      //   job.expectedExperience?.upperLimit,
+      //   searchData.experience?.value.upperLimit,
+      //   searchData
+      // );
+
+      const isExperienceMatch = checkTheExperience(
+        job.expectedExperience,
+        searchData.experience?.value
+      );
+      // if (!searchData.experience.value) {
+      //   isExperienceMatch = true;
+      // } else
+      // if (
+      //   (job.expectedExperience &&
+      //     job.expectedExperience.lowerLimit >=
+      //       searchData.experience.value?.lowerLimit) ||
+      //   (0 &&
+      //     job.expectedExperience.upperLimit <=
+      //       searchData.experience.value?.upperLimit) ||
+      //   0
+      // ) {
+      //   isExperienceMatch = true;
+      // }
+
+      // else {
+      //   isExperienceMatch = false;
+      // }
+
+      // matchSearchData(
+      //   job.expectedExperience?.lowerLimit +
+      //     "-" +
+      //     job.expectedExperience?.upperLimit +
+      //     " " +
+      //     job.expectedExperience?.experienceMetrics,
+      //   searchData.experience
+      // );
+
       const isLocationMatch = matchSearchData(
         job.location,
         searchData.location
@@ -81,6 +143,7 @@ const JobFilteredResults = ({ jobs, searchData }) => {
 
       return (
         isLocationMatch &&
+        isExperienceMatch &&
         (isJobTitleMatch || isSkillMatch || isCompanyMatched) &&
         jobTypeMatches &&
         jobModeMatches &&
@@ -98,7 +161,7 @@ const JobFilteredResults = ({ jobs, searchData }) => {
         "max-w-full mx-auto px-4 py-8 flex gap-4 flex-wrap justify-center"
       }
     >
-      <div className="max-w-5xl">
+      <div className="max-w-5xl w-full">
         <div className="flex items-center">
           <h1 className="text-2xl w-full p-4 text-start font-medium">
             Search results - {filteredJobs.length} Jobs

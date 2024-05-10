@@ -12,7 +12,7 @@ import CustomCheckbox from "@/components/UI/Checkbox/Checkbox";
 import Link from "next/link";
 import useInput from "@/hooks/use-Input";
 import style from "./SignInForm.module.css";
-import { url } from "../../../../constants";
+import { colorTheme, url } from "../../../../constants";
 
 const SignInForm = ({ onSubmitCredentials, role }) => {
   const [formIsValid, setFormIsValid] = useState(false);
@@ -63,6 +63,8 @@ const SignInForm = ({ onSubmitCredentials, role }) => {
         placeholder="Enter your Password"
         inputFields={passwordInput}
         type="password"
+        colorTheme={colorTheme.input}
+
         // mandatory="true"
       />
       {passwordInput.isFocused && passwordInput.hasError && (
@@ -78,6 +80,8 @@ const SignInForm = ({ onSubmitCredentials, role }) => {
       className={`${style.Input} `}
       inputFields={emailInput}
       type="email"
+      colorTheme={colorTheme.input}
+
       // mandatory="true"
     />
   );

@@ -3,11 +3,13 @@ import InputWithInvalidText from "@/components/UI/Input/InputWithInvalidText";
 import { NoOfYearsValidation } from "@/components/InputValidations/InputValidations";
 import useInput from "@/hooks/use-Input";
 import { useEffect, useState } from "react";
+import { colorTheme } from "../../../../../constants";
+import { twoInputContainerClasses } from "@/components/tailwindClasses/InputClasses";
 
 const INPUT_CLASS = "form-input mt-1 p-2 border border-zinc-300 rounded w-full";
 const BUTTON_CLASS = "px-4 py-2 border border-zinc-300 rounded";
 
-const InputAndLabelClasses = "flex w-full flex-col gap-4";
+const InputAndLabelClasses = "flex w-full flex-col gap-2";
 
 const HowManyWE = ({ monthsInput, yearsInput }) => {
   useEffect(() => {});
@@ -33,12 +35,10 @@ const HowManyWE = ({ monthsInput, yearsInput }) => {
         How many years of work Experience do you have?
       </h2>
 
-      <div className="flex flex-col sm:flex-row sm:gap-4 gap-0 ">
+      <div className={twoInputContainerClasses}>
         <div className={InputAndLabelClasses}>
           <label className="block text-zinc-700">In Years</label>
-          {/* <select className={INPUT_CLASS}>
-            <option>E.g 2 Years</option>
-          </select> */}
+
           <InputWithInvalidText
             ErrorMessage={"Invalid Year"}
             placeholder="E.g 2 years"
@@ -46,6 +46,7 @@ const HowManyWE = ({ monthsInput, yearsInput }) => {
             inputFields={yearsInput}
             type="text"
             mandatory="true"
+            colorTheme={colorTheme.input}
           />
         </div>
         <div className={InputAndLabelClasses}>
@@ -56,6 +57,7 @@ const HowManyWE = ({ monthsInput, yearsInput }) => {
             placeholder="Months"
             styles={{ marginBottom: "21.6px", width: "100%" }}
             mandatory
+            colorTheme={colorTheme.input}
           />
         </div>
       </div>

@@ -1,6 +1,7 @@
 import CustomFileUploader from "@/components/UI/FileUploader/FileUploader";
 import CustomImage from "@/components/UI/Image/Image";
 import { BorderContainerClasses } from "@/components/tailwindClasses/ContainerClasses";
+import { colorTheme } from "../../../../../constants";
 
 const ResumeUploader = ({ resumeInput }) => {
   return (

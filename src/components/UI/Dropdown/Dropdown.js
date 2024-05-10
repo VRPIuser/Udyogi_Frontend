@@ -14,6 +14,7 @@ const Dropdown = ({
   inputStyles,
   optionStyles,
   initialValue,
+  colorTheme,
 }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedOption, setSelectedOption] = useState(initialValue);
@@ -40,12 +41,22 @@ const Dropdown = ({
     setIsOpen(false);
   };
 
+  const InputStyles = {
+    ...inputStyles,
+    borderColor: colorTheme,
+  };
+
+  const OptionStyles = {
+    ...optionStyles,
+    borderColor: colorTheme,
+  };
+
   return (
     <div className={`${styles.customDropdown} ${className}`} style={style}>
       <div
         className={styles.selectedOption}
         onClick={toggleDropdown}
-        style={inputStyles}
+        style={InputStyles}
       >
         <span
           className={`${
@@ -61,7 +72,7 @@ const Dropdown = ({
           src={`/assets/icons/${
             isOpen ? "arrowUpPrimary.png" : "arrowDownPrimary.png"
           }`}
-          className={`${styles.arrow} `}
+          className={`${styles.arrow} ${colorTheme && "grayscale"}`}
           classForDiv={`${styles.arrowContainer} `}
           alt=""
         />
@@ -70,7 +81,7 @@ const Dropdown = ({
       {options && options.length > 0 && (
         <ul
           className={`${styles.options} ${isOpen && styles.optionsActive}`}
-          style={optionStyles}
+          style={OptionStyles}
         >
           {options.map((option) => (
             <li

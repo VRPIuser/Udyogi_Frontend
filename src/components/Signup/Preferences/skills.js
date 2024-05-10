@@ -30,7 +30,7 @@ const Skills = ({ onSelectedSkillsInput, setShowLocations, cancelInput }) => {
         options={SkillsData}
         placeholder="E.g.: Communication skills"
         onChange={onSelectedSkillsInput.AssignValue}
-        initialValue={onSelectedSkillsInput.value}
+        initialValue={onSelectedSkillsInput.value || []}
         cancelInput={cancelInput}
       />
       {setShowLocations && (

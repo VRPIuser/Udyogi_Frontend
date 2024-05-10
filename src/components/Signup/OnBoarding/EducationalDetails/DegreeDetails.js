@@ -4,6 +4,7 @@ import CustomCheckbox from "@/components/UI/Checkbox/Checkbox";
 import Button from "@/components/UI/Button/Button";
 import CustomDatePicker from "@/components/UI/DatePIcker/DatePIcker";
 import { BorderContainerClasses } from "@/components/tailwindClasses/ContainerClasses";
+import { colorTheme } from "../../../../../constants";
 
 const inputClasses = "border border-zinc-300 p-2 rounded";
 const flexClasses = "flex items-center mb-6";
@@ -34,6 +35,7 @@ const DegreeDetails = ({
             placeholder="Institute Name"
             mandatory={true}
             ErrorMessage={"Invalid Institute Name"}
+            colorTheme={colorTheme.input}
           />
           <InputWithInvalidText
             inputFields={SpecializationInInput}
@@ -41,6 +43,7 @@ const DegreeDetails = ({
             placeholder="Specialization in"
             mandatory={true}
             ErrorMessage={"Invalid Specialization In"}
+            colorTheme={colorTheme.input}
           />
         </div>
 
@@ -59,6 +62,7 @@ const DegreeDetails = ({
             placeholderText="From"
             mandatory={true}
             selectedDate={degreeStartedOnInput.value}
+            colorTheme={colorTheme.input}
           />
           {!StillPursuingInput.value && (
             <CustomDatePicker
@@ -66,6 +70,7 @@ const DegreeDetails = ({
               placeholderText="To"
               mandatory={true}
               selectedDate={degreeCompletedOnInput.value}
+              colorTheme={colorTheme.input}
             />
           )}
         </div>

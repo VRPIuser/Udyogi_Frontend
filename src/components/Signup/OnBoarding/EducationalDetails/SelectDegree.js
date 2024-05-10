@@ -1,5 +1,8 @@
 import Button from "@/components/UI/Button/Button";
-import { optionClasses } from "@/components/tailwindClasses/ButtonClassess";
+import {
+  optionClasses,
+  selectedOptionClasses,
+} from "@/components/tailwindClasses/ButtonClassess";
 import { BorderContainerClasses } from "@/components/tailwindClasses/ContainerClasses";
 import { useState } from "react";
 
@@ -42,8 +45,8 @@ const SelectDegree = ({ setEducationDetailsFilled }) => {
             key={index}
             className={`${optionClasses} ${
               selectedEducation === index
-                ? "bg-orange-500 text-white"
-                : "bg-zinc-50"
+                ? selectedOptionClasses
+                : optionClasses
             }`}
             onClick={() => {
               setSelectedEducation(index);

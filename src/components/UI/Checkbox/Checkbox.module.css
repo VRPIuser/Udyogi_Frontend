@@ -8,10 +8,10 @@
   display: none;
 }
 
-.checkmark {
+.checkMark {
   width: 1rem;
   height: 1rem;
-  border: 1.5px solid var(--primary);
+  border: 1.5px solid;
   border-radius: 3px;
   margin-right: 10px;
   display: flex;

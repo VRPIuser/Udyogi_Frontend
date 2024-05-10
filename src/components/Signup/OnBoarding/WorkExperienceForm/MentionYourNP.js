@@ -1,4 +1,7 @@
-import { optionClasses } from "@/components/tailwindClasses/ButtonClassess";
+import {
+  optionClasses,
+  selectedOptionClasses,
+} from "@/components/tailwindClasses/ButtonClassess";
 import { useState } from "react";
 
 const SNPData = [
@@ -26,9 +29,9 @@ const MentionYourNP = ({ SNPInput }) => {
           <button
             key={index}
             className={`${optionClasses} ${
-              selected === index
-                ? "bg-orange-500 text-white"
-                : "bg-white text-orange-500"
+              selected === index ? selectedOptionClasses : optionClasses
+              // ? "bg-orange-500 text-white"
+              // : "bg-white text-orange-500"
             }`}
             onClick={() => {
               //   console.log(data);

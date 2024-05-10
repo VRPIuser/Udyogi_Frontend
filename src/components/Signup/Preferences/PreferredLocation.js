@@ -53,7 +53,7 @@ const PreferredLocation = ({ onSelectedLocationsInput, setShowPreference }) => {
         options={Locations}
         placeholder="E.g.: Hyderabad"
         onChange={onSelectedLocationsInput.AssignValue}
-        initialValue={onSelectedLocationsInput.value}
+        initialValue={onSelectedLocationsInput.value || []}
       />
       {setShowPreference && (
         <div className={nextBtnContainerClasses}>

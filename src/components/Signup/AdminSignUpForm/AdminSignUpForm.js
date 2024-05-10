@@ -17,6 +17,7 @@ import { useEffect, useState } from "react";
 import LoadingButton from "@/components/UI/LoadingButton/LoadingButton";
 import Button from "@/components/UI/Button/Button";
 import { useRouter } from "next/router";
+import { colorTheme } from "../../../../constants";
 
 const Genders = [
   { value: "female", label: "Female" },
@@ -122,6 +123,7 @@ const AdminSignUpForm = ({ onSubmit }) => {
         type="text"
         inputFields={companyNameInput}
         mandatory="true"
+        colorTheme={colorTheme.input}
       />
 
       <Dropdown
@@ -130,6 +132,7 @@ const AdminSignUpForm = ({ onSubmit }) => {
         placeholder="Industry Type"
         styles={{ marginBottom: "21.6px", width: "100%" }}
         mandatory
+        colorTheme={colorTheme.input}
       />
     </div>
   );
@@ -143,6 +146,7 @@ const AdminSignUpForm = ({ onSubmit }) => {
         type="text"
         inputFields={mobileNumberInput}
         mandatory="true"
+        colorTheme={colorTheme.input}
       />
     </div>
   );
@@ -156,6 +160,7 @@ const AdminSignUpForm = ({ onSubmit }) => {
         inputFields={emailInput}
         type="email"
         mandatory="true"
+        colorTheme={colorTheme.input}
       />
     </div>
   );
@@ -169,6 +174,7 @@ const AdminSignUpForm = ({ onSubmit }) => {
         type="text"
         inputFields={addressInput}
         mandatory="true"
+        colorTheme={colorTheme.input}
       />
     </div>
   );
@@ -181,6 +187,7 @@ const AdminSignUpForm = ({ onSubmit }) => {
         type="text"
         inputFields={CompanyURLInput}
         mandatory="true"
+        colorTheme={colorTheme.input}
       />
     </div>
   );
@@ -193,6 +200,7 @@ const AdminSignUpForm = ({ onSubmit }) => {
         placeholder="No Of Employees"
         styles={{ marginBottom: "21.6px", width: "100%" }}
         mandatory
+        colorTheme={colorTheme.input}
       />
 
       <Dropdown
@@ -203,6 +211,7 @@ const AdminSignUpForm = ({ onSubmit }) => {
         placeholder="Established in Year"
         styles={{ marginBottom: "21.6px", width: "100%" }}
         mandatory
+        colorTheme={colorTheme.input}
       />
     </div>
   );
@@ -216,6 +225,7 @@ const AdminSignUpForm = ({ onSubmit }) => {
         type="text"
         inputFields={incorporateIdInput}
         mandatory="true"
+        colorTheme={colorTheme.input}
       />
     </div>
   );
@@ -229,6 +239,7 @@ const AdminSignUpForm = ({ onSubmit }) => {
         inputFields={passwordInput}
         type="password"
         mandatory="true"
+        colorTheme={colorTheme.input}
       />
     </div>
   );
@@ -242,6 +253,7 @@ const AdminSignUpForm = ({ onSubmit }) => {
         inputFields={confirmPasswordInput}
         type="password"
         mandatory="true"
+        colorTheme={colorTheme.input}
       />
     </div>
   );

@@ -14,6 +14,7 @@ import { useEffect, useState } from "react";
 import LoadingButton from "@/components/UI/LoadingButton/LoadingButton";
 import Button from "@/components/UI/Button/Button";
 import { useRouter } from "next/router";
+import { colorTheme } from "../../../../constants";
 
 const Genders = [
   { value: "female", label: "Female" },
@@ -90,6 +91,7 @@ const UserSignupFrom = ({ onSubmit }) => {
         type="text"
         inputFields={firstNameInput}
         mandatory="true"
+        colorTheme={colorTheme.input}
       />
       <InputWithInvalidText
         ErrorMessage={"Invalid Last Name"}
@@ -98,6 +100,7 @@ const UserSignupFrom = ({ onSubmit }) => {
         type="text"
         inputFields={lastNameInput}
         mandatory="true"
+        colorTheme={colorTheme.input}
       />
     </div>
   );
@@ -111,6 +114,7 @@ const UserSignupFrom = ({ onSubmit }) => {
         type="text"
         inputFields={mobileNumberInput}
         mandatory="true"
+        colorTheme={colorTheme.input}
       />
       <Dropdown
         options={Genders}
@@ -118,6 +122,7 @@ const UserSignupFrom = ({ onSubmit }) => {
         placeholder="Gender"
         styles={{ marginBottom: "21.6px", width: "100%" }}
         mandatory
+        colorTheme={colorTheme.input}
       />
     </div>
   );
@@ -131,6 +136,7 @@ const UserSignupFrom = ({ onSubmit }) => {
         inputFields={emailInput}
         type="email"
         mandatory="true"
+        colorTheme={colorTheme.input}
       />
     </div>
   );
@@ -144,6 +150,7 @@ const UserSignupFrom = ({ onSubmit }) => {
         inputFields={passwordInput}
         type="password"
         mandatory="true"
+        colorTheme={colorTheme.input}
       />
     </div>
   );
@@ -157,6 +164,7 @@ const UserSignupFrom = ({ onSubmit }) => {
         inputFields={confirmPasswordInput}
         type="password"
         mandatory="true"
+        colorTheme={colorTheme.input}
       />
     </div>
   );

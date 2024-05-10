@@ -15,6 +15,7 @@ const CustomFileUploader = ({
   className,
   borderColor,
   height,
+  colorTheme,
 }) => {
   const inputRef = useRef(null);
   const [fileName, setFileName] = useState(null);
@@ -81,7 +82,7 @@ const CustomFileUploader = ({
         onDragOver={handleDragOver}
         onDragLeave={handleDragLeave}
         onClick={handleButtonClick}
-        style={{ borderColor: borderColor || "#ff6501" }}
+        style={{ borderColor: colorTheme || "#ff6501" }}
       >
         <input
           type="file"

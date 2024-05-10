@@ -30,7 +30,7 @@ export const JobFiltersData = [
       {
         label: "Freelancer",
         checked: false,
-        value: "freelance",
+        value: "freelancer",
         count: 0,
       },
     ],

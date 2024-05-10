@@ -18,7 +18,6 @@ import JobCategories from "@/components/Signup/Preferences/JobCategories";
 import { useEffect, useState } from "react";
 import Button from "@/components/UI/Button/Button";
 import { useRouter } from "next/router";
-import GetCurrentDate from "@/hooks/GetCurrentData";
 
 const BasicInfo = () => {
   const resumeInput = useInput({ validateValue: ValueUndefinedValidations });
@@ -42,33 +41,18 @@ const BasicInfo = () => {
     validateValue: mobileNumberValidation,
     initialValue: UserData?.mobileNumber,
   });
-  // const [gender, setGender] = useState();
   const genderInput = useInput({
     validateValue: ValueUndefinedValidations,
 
     initialValue: UserData?.gender,
   });
-  const emailInput = useInput({
-    validateValue: emailValidation,
-    initialValue: UserData?.email,
-  });
-  const dateOfBirthInput = useInput({
-    validateValue: DOBValidation,
-    initialValue: UserData?.dateOfBirth,
-  });
 
   // form-2
 
-  const higherEducation = UserData?.educationDetails.find(
-    (degree) => degree.latestDegree
-  );
   const latestExperience = UserData?.WorkExperience.experiencesDetails.find(
     (experience) => experience.latestExperience
   );
-  const higherEducationInput = useInput({
-    validateValue: ValueUndefinedValidations,
-    initialValue: higherEducation ? higherEducation.degree : "",
-  });
+
   const noticePeriodInput = useInput({
     validateValue: ValueUndefinedValidations,
     initialValue: UserData?.WorkExperience.noticePeriod,
@@ -125,9 +109,6 @@ const BasicInfo = () => {
         lastNameInput.isValid &&
         mobileNumberInput.isValid &&
         genderInput.isValid &&
-        emailInput.isValid &&
-        dateOfBirthInput.isValid &&
-        higherEducationInput.isValid &&
         noticePeriodInput.isValid &&
         currentSalaryInput.isValid &&
         expectedSalaryInput.isValid &&
@@ -142,9 +123,7 @@ const BasicInfo = () => {
     lastNameInput.isValid,
     mobileNumberInput.isValid,
     genderInput.isValid,
-    emailInput.isValid,
-    dateOfBirthInput.isValid,
-    higherEducationInput.isValid,
+
     noticePeriodInput.isValid,
     currentSalaryInput.isValid,
     expectedSalaryInput.isValid,
@@ -164,9 +143,6 @@ const BasicInfo = () => {
       lastName: lastNameInput.value,
       mobileNumber: mobileNumberInput.value,
       gender: genderInput.value,
-      email: emailInput.value,
-      dateOfBirth: dateOfBirthInput.value,
-      higherEducation: higherEducationInput.value,
       noticePeriod: noticePeriodInput.value,
       currentSalary: currentSalaryInput.value,
       expectedSalary: expectedSalaryInput.value,
@@ -185,9 +161,7 @@ const BasicInfo = () => {
     lastNameInput.reset();
     mobileNumberInput.reset();
     genderInput.reset();
-    emailInput.reset();
-    dateOfBirthInput.reset();
-    higherEducationInput.reset();
+
     noticePeriodInput.reset();
     currentSalaryInput.reset();
     expectedSalaryInput.reset();
@@ -201,8 +175,6 @@ const BasicInfo = () => {
   };
 
   return (
-    // <div className={`${profileContainerClasses}`}>
-    //   <h1 className={`${profileHeadingClasses}`}>Basic Information</h1>
     <>
       <ProfileDocs
         resumeInput={resumeInput}
@@ -214,17 +186,12 @@ const BasicInfo = () => {
           lastNameInput,
           mobileNumberInput,
           genderInput,
-          emailInput,
-          dateOfBirthInput,
         }}
       />
       <ProfileDetailsUpdateForm2
         profileInputs={{
-          higherEducationInput,
-          totalExperienceInput,
           noticePeriodInput,
-          jobTypeInput,
-          workModeInput,
+
           currentSalaryInput,
           expectedSalaryInput,
         }}

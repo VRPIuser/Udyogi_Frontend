@@ -26,7 +26,7 @@ const JobRoles = ({ onSelectedJobRolesInput, setShowSkills }) => {
         options={JobRollesData}
         placeholder="E.g.: UI/UX Designer"
         onChange={onSelectedJobRolesInput.AssignValue}
-        initialValue={onSelectedJobRolesInput.value}
+        initialValue={onSelectedJobRolesInput.value || []}
       />
       {setShowSkills && (
         <div className={nextBtnContainerClasses}>
