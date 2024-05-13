@@ -2,9 +2,6 @@ import style from "./Footer.module.css";
 
 import VRPILogo from "../VRPILogo/VRPILogo";
 import CustomImage from "../UI/Image/Image";
-// import { useDispatch } from "react-redux";
-// import { NavLink } from "react-router-dom";
-// import { setComingSoon } from "../../../store/ComingSoonSlice";
 
 const Footer = ({ links, quickLinks, ContactUs, JoinUsBarData }) => {
   // const [width, setWidth] = useState(window.innerWidth);

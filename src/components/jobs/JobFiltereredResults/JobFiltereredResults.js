@@ -136,8 +136,16 @@ const JobFilteredResults = ({ jobs, searchData }) => {
             />
           </div>
         </div>
-        <div className="flex gap-4 md:flex-row flex-col-reverse items-center md:items-start">
-          {filteredJobs.length > 0 && (
+        <div className="flex gap-4 md:flex-row flex-col items-center md:items-start">
+          <JobFilter
+            onFiltering={setFilters}
+            filters={filters}
+            filteredJobs={filteredJobs}
+            onSettingSalaryRange={setSalaryRange}
+            salaryRange={salaryRange}
+            showFilter={showFilter}
+          />
+          {filteredJobs.length > 0 ? (
             // <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-4">
             <div
               // className="flex flex-wrap gap-4"
@@ -153,15 +161,9 @@ const JobFilteredResults = ({ jobs, searchData }) => {
                 <JobCard key={job.id} job={job} />
               ))}
             </div>
+          ) : (
+            <div>No jobs</div>
           )}
-          <JobFilter
-            onFiltering={setFilters}
-            filters={filters}
-            filteredJobs={filteredJobs}
-            onSettingSalaryRange={setSalaryRange}
-            salaryRange={salaryRange}
-            showFilter={showFilter}
-          />
         </div>
       </div>
     </div>
