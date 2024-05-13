@@ -67,9 +67,9 @@ const SignInForm = ({ onSubmitCredentials, role }) => {
 
         // mandatory="true"
       />
-      {passwordInput.isFocused && passwordInput.hasError && (
+      {/* {passwordInput.isFocused && passwordInput.hasError && (
         <PasswordValidationBox enteredPassword={passwordInput.value} />
-      )}
+      )} */}
     </div>
   );
 

@@ -1,9 +1,15 @@
 import CustomImage from "@/components/UI/Image/Image";
 import style from "./PasswordValidationBox.module.css";
-
-const PasswordValidationBox = ({ enteredPassword }) => {
+import { passwordValidation } from "@/components/InputValidations/InputValidations";
+const PasswordValidationBox = ({ enteredPassword, isTouched }) => {
   return (
-    <div className={style.passwordValidationContainer}>
+    <div
+      className={`${
+        !passwordValidation(enteredPassword) && isTouched
+          ? "opacity-100 z-20"
+          : "opacity-0 translate-y-full -z-50"
+      } ${style.passwordValidationContainer} transition-all `}
+    >
       {[
         {
           condition: enteredPassword.length >= 8,

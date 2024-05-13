@@ -1,12 +1,13 @@
 import CustomCheckbox from "@/components/UI/Checkbox/Checkbox";
 import { colorTheme } from "../../../../../constants";
 import CustomInput from "@/components/UI/Input/Input";
+import { ValueUndefinedValidations } from "@/components/InputValidations/InputValidations";
 
 const {
   default: CustomDatePicker,
 } = require("@/components/UI/DatePIcker/DatePIcker");
 
-const line = "flex gap-4 mb-4 px-4";
+const line = "flex gap-4 my-4 px-4";
 const inputContainer = "w-full flex flex-col gap-2";
 const inputLabel = "font-semibold";
 
@@ -89,11 +90,14 @@ const ExperienceForm = ({
           <label className={`${inputLabel}`}>From</label>
           <CustomDatePicker
             name="from"
-            placeholderText="Eg. 20017-06-02"
+            placeholderText="Eg. 2017-06-02"
             selectedDate={experience.from}
             onChange={(value) => handleInputChange(index, value, "from")}
             onFocus={HandleFormValidation}
             colorTheme={colorTheme.input}
+            errorMessage={
+              !ValueUndefinedValidations(experience.from) && "Invalid date"
+            }
           />
         </div>
         {!experience.stillWorking && ( // Render "To" date component only if not still pursuing
@@ -112,6 +116,10 @@ const ExperienceForm = ({
               }
               onFocus={HandleFormValidation}
               colorTheme={colorTheme.input}
+              errorMessage={
+                !ValueUndefinedValidations(experience.to, experience.from) &&
+                "Invalid date"
+              }
             />
           </div>
         )}

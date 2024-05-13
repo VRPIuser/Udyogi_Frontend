@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import CustomInput from "./Input";
 import style from "./CustomInput.module.css";
 import CustomImage from "../Image/Image";
+import PasswordValidationBox from "@/components/SignIn/PasswordValidationBox/PasswordValidationBox";
 const InputWithInvalidText = ({
   ErrorMessage,
   inputFields,
@@ -49,7 +50,9 @@ const InputWithInvalidText = ({
             checkPassword ? "showPassword.png" : "hidePassword.png"
           }`}
           alt=""
-          className={`${style.checkPassword} ${colorTheme && "grayscale"}`}
+          className={`${style.checkPassword} ${
+            colorTheme && "grayscale"
+          } transition-all`}
           classForDiv={style.checkPasswordContainer}
           onClick={() => setCheckPassword(!checkPassword)}
         />

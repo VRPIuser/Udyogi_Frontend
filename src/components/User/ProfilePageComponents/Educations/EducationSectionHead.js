@@ -9,7 +9,7 @@ const EducationSectionHead = ({
   handleRemoveEducation,
 }) => {
   return (
-    <div className="flex gap-4 justify-between items-center mb-4 ">
+    <div className="flex gap-4 justify-between items-center ">
       <div
         style={{ width: "calc(100% )" }}
         className="pl-4 p-2 border border-gray-100 rounded-md shadow-md shadow-gray-100 flex justify-between items-center hover:bg-zinc-50 transition-all cursor-pointer"

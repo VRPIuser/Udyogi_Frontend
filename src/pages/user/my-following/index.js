@@ -1,9 +1,10 @@
 import RootLayout from "@/components/RootLayout/RootLayout";
+import MyFollowingComponent from "@/components/User/MyFollowingComponents/MyFollowingComponent";
 
 const FollowingPage = () => {
   return (
     <RootLayout>
-      <h1>FollowingPage</h1>
+      <MyFollowingComponent />
     </RootLayout>
   );
 };

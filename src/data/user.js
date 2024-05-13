@@ -133,6 +133,20 @@ const UserData = {
     },
     // Add more job applications as needed...
   ],
+  savedJobs: [
+    {
+      jobId: "3",
+      savedOn: "2024-04-01",
+    },
+    {
+      jobId: "5",
+      savedOn: "2024-02-01",
+    },
+    {
+      jobId: "6",
+      savedOn: "2024-01-01",
+    },
+  ],
 };
 
 export default UserData;

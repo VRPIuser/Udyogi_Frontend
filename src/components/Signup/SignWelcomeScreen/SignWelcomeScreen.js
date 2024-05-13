@@ -54,7 +54,7 @@ const SignWelcomeScreen = ({ welcomeLinks }) => {
         </Button> */}
           <div className={styles.line}>
             <div className={styles.lineOn}></div>
-            <span className={styles.or}>Don’t have an Account?</span>
+            <span className={styles.or}>Already have an Account?</span>
           </div>
           <Button
             onClick={() => {

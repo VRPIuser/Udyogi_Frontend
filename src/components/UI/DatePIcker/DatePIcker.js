@@ -18,6 +18,7 @@ const CustomDatePicker = ({
   colorTheme,
   onBlur = () => {},
   onFocus = () => {},
+  errorMessage,
 }) => {
   const [isFocused, setIsFocused] = useState(false);
 
@@ -57,31 +58,36 @@ const CustomDatePicker = ({
   };
 
   return (
-    <div className={style.container} style={DivStyles}>
-      <DatePicker
-        selected={selectedDate}
-        onChange={onChange}
-        dateFormat="yyyy-MM-dd"
-        className={`${className} ${style.date}`}
-        onFocus={HandleFocus}
-        onBlur={HandleBlur}
-        customInput={<input />}
-        ref={datePickerRef}
-        disabled={disabled}
-        name={name}
-      />
-      <label
-        className={`${
-          isFocused || selectedDate ? style.transition : style.placeholder
-        }`}
-        onClick={() => setIsFocused(true)}
-      >
-        {placeholderText}{" "}
-        {mandatory && <span style={{ color: "red" }}>&nbsp;*</span>}
-      </label>
-      <span className={style.format} style={FormatSpanStyles}>
-        yyyy-mm-dd
-      </span>
+    <div>
+      <div className={style.container} style={DivStyles}>
+        <DatePicker
+          selected={selectedDate}
+          onChange={onChange}
+          dateFormat="yyyy-MM-dd"
+          className={`${className} ${style.date}`}
+          onFocus={HandleFocus}
+          onBlur={HandleBlur}
+          customInput={<input />}
+          ref={datePickerRef}
+          disabled={disabled}
+          name={name}
+        />
+        <label
+          className={`${
+            isFocused || selectedDate ? style.transition : style.placeholder
+          }`}
+          onClick={() => setIsFocused(true)}
+        >
+          {placeholderText}{" "}
+          {mandatory && <span style={{ color: "red" }}>&nbsp;*</span>}
+        </label>
+        <span className={style.format} style={FormatSpanStyles}>
+          yyyy-mm-dd
+        </span>
+      </div>
+      {errorMessage && (
+        <span className="pl-2 text-red-500">{errorMessage}</span>
+      )}
     </div>
   );
 };

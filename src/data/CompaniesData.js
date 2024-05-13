@@ -10,7 +10,7 @@ export const VRPIGroup = {
     upperLimit: 50,
   },
   image: "vrpiLogo.png",
-  foundedIn: "2022-01-15T08:30:00",
+  foundedIn: "2022-01-15",
   location: "Hyderabad",
   companyWebsite: "https://www.vrpigroup.com",
   socialMediaLinks: [
@@ -42,7 +42,7 @@ export const ABCTechnologies = {
     upperLimit: 50,
   },
   image: "dummyLogo.png",
-  foundedIn: "2022-01-15T08:30:00",
+  foundedIn: "2022-01-15",
   location: "Chennai",
   companyWebsite: "https://www.vrpigroup.com",
   socialMediaLinks: [
@@ -75,7 +75,7 @@ export const DataCrunchersInc = {
     lowerLimit: 10,
     upperLimit: 50,
   },
-  foundedIn: "2022-01-15T08:30:00",
+  foundedIn: "2022-01-15",
   location: "Chennai",
   companyWebsite: "https://www.vrpigroup.com",
   socialMediaLinks: [

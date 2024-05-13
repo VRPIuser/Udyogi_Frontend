@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import styles from "./CustomInput.module.css"; // Import the CSS Module
+import PasswordValidationBox from "@/components/SignIn/PasswordValidationBox/PasswordValidationBox";
 
 const CustomInput = React.forwardRef(
   (
@@ -91,12 +92,18 @@ const CustomInput = React.forwardRef(
         <label
           className={` ${
             isTouched || value !== "" ? styles.transition : styles.placeholder
-          }`}
+          } transition-all `}
           onClick={handleLabelClick}
         >
           {placeholder}{" "}
           {mandatory && <span style={{ color: "red" }}>&nbsp;*</span>}
         </label>
+        {type === "password" && (
+          <PasswordValidationBox
+            enteredPassword={value}
+            isTouched={isTouched}
+          />
+        )}
       </div>
     );
   }

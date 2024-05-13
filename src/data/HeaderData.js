@@ -49,8 +49,8 @@ export const LeftHeaderLinks = [
     active: false,
   },
   {
-    name: "Applied Jobs",
-    address: "/applied-jobs",
+    name: "My Jobs",
+    address: "/user/my-jobs",
     active: false,
   },
 ];
