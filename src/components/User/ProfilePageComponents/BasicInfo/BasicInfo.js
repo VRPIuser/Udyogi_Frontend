@@ -1,7 +1,5 @@
 import {
-  DOBValidation,
   ValueUndefinedValidations,
-  emailValidation,
   fullNameValidation,
   mobileNumberValidation,
 } from "@/components/InputValidations/InputValidations";
