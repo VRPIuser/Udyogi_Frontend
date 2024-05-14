@@ -1,8 +1,5 @@
-import Dropdown from "@/components/UI/Dropdown/Dropdown";
 import InputWithInvalidText from "@/components/UI/Input/InputWithInvalidText";
 import styles from "./BasicInfo.module.css";
-
-import CustomDatePicker from "@/components/UI/DatePIcker/DatePIcker";
 
 const Genders = [
   { value: "female", label: "Female" },
