@@ -3,7 +3,6 @@ import CustomImage from "@/components/UI/Image/Image";
 import { hoverBgClasses } from "@/components/tailwindClasses/ButtonClassess";
 import UserData from "@/data/user";
 import formatDate from "@/hooks/formatDate";
-import PercentageDisplay from "../PercentageDisplay";
 
 const ProfileDocs = ({ resumeInput, profilePhotoInput }) => {
   return (
