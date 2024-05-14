@@ -1,5 +1,5 @@
 import InputWithInvalidText from "@/components/UI/Input/InputWithInvalidText";
-import styles from "./BasicInfo.module.css";
+import styles from "./ProfileStyles.module.css";
 
 const Genders = [
   { value: "female", label: "Female" },
