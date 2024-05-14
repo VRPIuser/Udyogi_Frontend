@@ -36,7 +36,7 @@ const CompaniesList = ({ searchData }) => {
           );
       });
       setFilteredCompanies(filtered);
-      console.log(filteredCompanies);
+      // console.log(filteredCompanies);
     } else {
       setFilteredCompanies(AllCompaniesData);
     }

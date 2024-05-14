@@ -81,7 +81,6 @@ export const ChatHead = ({ receiver, IsReceiverIsCompany }) => {
   if (IsReceiverIsCompany) {
     return (
       <div className="p-4 bg-white dark:bg-gray-900 flex justify-between items-center border-b dark:border-gray-700">
-        {console.log(receiver)}
         <div className="flex items-center gap-2">
           <div>
             <span

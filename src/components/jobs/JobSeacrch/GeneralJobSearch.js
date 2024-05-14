@@ -85,7 +85,7 @@ const GeneralJobSearch = ({ className, onSearch, onlyCompany }) => {
   ]);
 
   useEffect(() => {
-    console.log(experienceInput.value, locationInput.value);
+    // console.log(experienceInput.value, locationInput.value);
     // console.log(locationInput.value, lo.value);
   });
 

@@ -36,7 +36,7 @@ const CustomDatePicker = ({
   const HandleFocus = () => {
     onFocus();
     handleLabelClick();
-    console.log(FormatSpanStyles);
+    // console.log(FormatSpanStyles);
   };
 
   const HandleBlur = () => {
