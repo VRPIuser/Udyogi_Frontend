@@ -28,7 +28,7 @@ const PercentageDisplay = ({ percentage }) => {
   }
 
   return (
-    <div className="flex flex-col items-start justify-start p-4">
+    <div className="flex flex-col items-start justify-start">
       <div className={circleContainerClass}>
         <svg className={circleSvgClass} width="150" height="150">
           <circle

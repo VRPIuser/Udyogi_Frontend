@@ -1,5 +1,5 @@
 export const VRPIGroup = {
-  companyId: "1",
+  id: "1",
   name: "VR PI group",
   overview:
     "vrpi group is the first design and hosting platform built from the ground up for the mobile age. It is the only hosted service that allows… We are Uxper. With a presence in more than 60 countries, we’re a growing global organization that helps amazing companies engage with customers through mobilemessaging, email, voice and video. We are Uxper. With a presence in more than 60 countries, we’re a growing globalorganization that helps amazing companies engage with customers through mobilemessaging, email, voice and video.",
@@ -30,7 +30,7 @@ export const VRPIGroup = {
   ],
 };
 export const ABCTechnologies = {
-  companyId: "2",
+  id: "2",
 
   name: "ABC Technologies",
   overview:
@@ -62,7 +62,7 @@ export const ABCTechnologies = {
   ],
 };
 export const DataCrunchersInc = {
-  companyId: "3",
+  id: "3",
 
   name: "Data Crunchers Inc.",
   overview:

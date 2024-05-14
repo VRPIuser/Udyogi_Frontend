@@ -3,10 +3,11 @@ import CustomImage from "@/components/UI/Image/Image";
 import { hoverBgClasses } from "@/components/tailwindClasses/ButtonClassess";
 import UserData from "@/data/user";
 import formatDate from "@/hooks/formatDate";
+import PercentageDisplay from "../PercentageDisplay";
 
 const ProfileDocs = ({ resumeInput, profilePhotoInput }) => {
   return (
-    <div className="flex gap-6 mt-4 sm:flex-row sm:items-start flex-col items-center">
+    <div className="flex gap-6 mt-4 sm:flex-row sm:items-start flex-col">
       <div className="w-full max-w-56 flex flex-col gap-2">
         <label className="">Upload your photo</label>
         <CustomFileUploader
@@ -25,7 +26,7 @@ const ProfileDocs = ({ resumeInput, profilePhotoInput }) => {
             <div className="flex flex-col pb-2">
               <span className="font-semibold">{UserData?.resume.fileName}</span>
               <span className="text-xs text-zinc-500">
-                {formatDate(UserData?.resume.updatedOn)}
+                {formatDate(UserData?.resume.updatedOn).date}
               </span>
             </div>
 

@@ -6,18 +6,18 @@ const CompanyJobs = ({ company }) => {
   const [jobs, setJobs] = useState([]);
 
   useEffect(() => {
-    // Filter jobs based on the companyId
+    // Filter jobs based on the id
     console.log(company);
     const filteredJobs = LatestJobsData.filter(
       (job) =>
-        job.companyDetails.companyId.toString().trim().toLowerCase() ===
-        company?.companyId.toString().trim().toLowerCase()
+        job.companyDetails.id.toString().trim().toLowerCase() ===
+        company?.id.toString().trim().toLowerCase()
     );
 
     setJobs(filteredJobs);
 
     console.log(filteredJobs);
-  }, [company?.companyId]);
+  }, [company?.id]);
 
   return (
     <div>

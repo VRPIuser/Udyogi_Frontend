@@ -8,7 +8,7 @@ import BackComponent from "@/components/Signup/BackComponent/BackComponent";
 import Head from "next/head";
 import AdminSignUpForm from "@/components/Signup/AdminSignUpForm/AdminSignUpForm";
 import { useDispatch } from "react-redux";
-import { loginWithUserId } from "@/store/LoginState/LoginStateActions";
+import { loginWithid } from "@/store/LoginState/LoginStateActions";
 const loginScreenData = {
   description:
     "You’re one step away to unlock all the possible features of Udhyogi ",
@@ -76,7 +76,7 @@ const AdminSignUpPage = () => {
           </Head>
           <EmailVerified
             action={() => {
-              dispatch(loginWithUserId(1, user));
+              dispatch(loginWithid(1, user));
 
               router.push("/admin/dashboard");
             }}

@@ -45,7 +45,7 @@ const CompaniesList = ({ searchData }) => {
   return (
     <div className="flex flex-wrap gap-4 items-center justify-center pb-8">
       {filteredCompanies.map((company) => (
-        <MainCompanyCard key={company.companyId} company={company} />
+        <MainCompanyCard key={company.id} company={company} />
       ))}
     </div>
   );
@@ -68,11 +68,11 @@ const MainCompanyCard = ({ company }) => {
             height={250}
             className="w-16 h-16 object-cover cursor-pointer hover:scale-110 transition-all"
             onClick={() => {
-              router.push(`/companies/${company.companyId}`);
+              router.push(`/companies/${company.id}`);
             }}
           />
 
-          <FollowCompany companyId={company.companyId} />
+          <FollowCompany id={company.id} />
         </div>
         <div>
           <h2 className="text-xl font-semibold text-zinc-900 dark:text-white mt-0 mb-0">
@@ -130,7 +130,7 @@ const MainCompanyCard = ({ company }) => {
       <div
         className="text-zinc-600 dark:text-zinc-300 text-xs hover:underline cursor-pointer"
         onClick={() => {
-          router.push(`/companies/${company.companyId}`);
+          router.push(`/companies/${company.id}`);
         }}
       >
         <span className="text-orange-500 pr-1">{company.jobs}</span> jobs

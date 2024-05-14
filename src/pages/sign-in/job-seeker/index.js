@@ -13,7 +13,7 @@ import { useRouter } from "next/router";
 import styles from "./index.module.css";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { loginWithUserId } from "@/store/LoginState/LoginStateActions";
+import { loginWithid } from "@/store/LoginState/LoginStateActions";
 
 const UserSignIn = () => {
   const router = useRouter();
@@ -30,7 +30,7 @@ const UserSignIn = () => {
   const SignUpDataHandler = (data) => {
     setSignUpData(data);
     console.log(data);
-    dispatch(loginWithUserId(1, "user"));
+    dispatch(loginWithid(1, "user"));
     router.push("/");
   };
 

@@ -13,7 +13,7 @@ import { useRouter } from "next/router";
 import styles from "./index.module.css";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { loginWithUserId } from "@/store/LoginState/LoginStateActions";
+import { loginWithid } from "@/store/LoginState/LoginStateActions";
 
 const AdminSignIn = () => {
   const router = useRouter();
@@ -29,7 +29,7 @@ const AdminSignIn = () => {
 
   const SignUpDataHandler = (data) => {
     setSignUpData(data);
-    dispatch(loginWithUserId(1, "admin"));
+    dispatch(loginWithid(1, "admin"));
     router.push("/admin/dashboard");
     console.log(data);
   };

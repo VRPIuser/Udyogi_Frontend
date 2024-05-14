@@ -84,7 +84,7 @@ const JobRow = ({ job, savedJob }) => {
           </div>
         </div>
       </td>
-      <td className={TABLE_CELL_CLASS}>{formatDate(savedJob?.savedOn)}</td>
+      <td className={TABLE_CELL_CLASS}>{formatDate(savedJob?.savedOn).date}</td>
       <td className={`${TABLE_CELL_CLASS} text-right relative`}>
         <button
           className={`text-zinc-400 w-6 h-6 flex items-center justify-center pb-5 text-2xl hover:text-zinc-500 ${hoverBgClasses}`}

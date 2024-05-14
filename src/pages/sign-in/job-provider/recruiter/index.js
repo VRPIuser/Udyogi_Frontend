@@ -13,7 +13,7 @@ import { useRouter } from "next/router";
 import styles from "./index.module.css";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { loginWithUserId } from "@/store/LoginState/LoginStateActions";
+import { loginWithid } from "@/store/LoginState/LoginStateActions";
 
 const RecruiterSignIn = () => {
   const router = useRouter();
@@ -31,7 +31,7 @@ const RecruiterSignIn = () => {
   const SignUpDataHandler = (data) => {
     setSignUpData(data);
     console.log(data);
-    dispatch(loginWithUserId(1, "recruiter"));
+    dispatch(loginWithid(1, "recruiter"));
     router.push("/recruiter/dashboard");
   };
 

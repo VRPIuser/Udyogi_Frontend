@@ -7,7 +7,7 @@ const initialUserState = {
   isUdyogiUserLoggedIn:
     typeof window !== "undefined" &&
     localStorage.getItem("isUdyogiUserLoggedIn") === "true",
-  userId: typeof window !== "undefined" ? localStorage.getItem("userId") : null,
+  id: typeof window !== "undefined" ? localStorage.getItem("id") : null,
   role: typeof window !== "undefined" ? localStorage.getItem("role") : null,
 };
 
@@ -16,25 +16,25 @@ const UserStateReducer = (state = initialUserState, action) => {
     case LOGIN:
       if (typeof window !== "undefined") {
         localStorage.setItem("isUdyogiUserLoggedIn", "true");
-        localStorage.setItem("userId", action.payload.userId);
+        localStorage.setItem("id", action.payload.id);
         localStorage.setItem("role", action.payload.role);
       }
       return {
         ...state,
         isUdyogiUserLoggedIn: true,
-        userId: action.payload.userId,
+        id: action.payload.id,
         role: action.payload.role,
       };
     case LOGOUT:
       if (typeof window !== "undefined") {
         localStorage.setItem("isUdyogiUserLoggedIn", "false");
-        localStorage.removeItem("userId");
+        localStorage.removeItem("id");
         localStorage.removeItem("role");
       }
       return {
         ...state,
         isUdyogiUserLoggedIn: false,
-        userId: null,
+        id: null,
         role: null,
       };
     default:

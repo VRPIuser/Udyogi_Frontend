@@ -1,6 +1,6 @@
 const buttonClasses =
   "h-8 border-red-500 border bg-white text-orange-500 px-3 py-2 rounded-full text-sm flex items-center hover:scale-105 transition-all";
-const FollowCompany = ({ companyId }) => {
+const FollowCompany = ({ id }) => {
   return (
     <button className={buttonClasses}>
       <svg

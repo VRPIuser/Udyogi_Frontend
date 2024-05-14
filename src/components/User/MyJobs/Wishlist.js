@@ -1,10 +1,7 @@
 import React, { useState } from "react";
 import CustomImage from "@/components/UI/Image/Image";
 import { hoverBgClasses } from "@/components/tailwindClasses/ButtonClassess";
-
-import formatDate from "@/hooks/formatDate";
 import UserData from "@/data/user";
-import { LatestJobsData } from "@/data/Jobs";
 import SavedJobsTable from "./SavedJobTable";
 import useInput from "@/hooks/use-Input";
 import { ValueUndefinedValidations } from "@/components/InputValidations/InputValidations";

@@ -56,7 +56,7 @@ const CompanyCard = ({ job, isApplied }) => {
             height={250}
             className="w-16 h-16 object-cover cursor-pointer hover:scale-110 transition-all"
             onClick={() => {
-              router.push(`/companies/${job.companyDetails.companyId}`);
+              router.push(`/companies/${job.companyDetails.id}`);
             }}
             title={job.companyDetails.name}
           />
@@ -93,7 +93,7 @@ const CompanyCard = ({ job, isApplied }) => {
             <div
               className="font-semibold pb-1 text-zinc-500 cursor-pointer"
               onClick={() => {
-                router.push(`/companies/${job.companyDetails.companyId}`);
+                router.push(`/companies/${job.companyDetails.id}`);
               }}
               title={"Jobs at " + job.companyDetails.name}
             >

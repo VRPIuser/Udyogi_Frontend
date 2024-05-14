@@ -14,7 +14,7 @@ const CompanyDetailsPage = () => {
   useEffect(() => {
     setCompany(
       AllCompaniesData.find(
-        (company) => company.companyId.toString().trim() === query?.companyId
+        (company) => company.id.toString().trim() === query?.companyId
       )
     );
   }, [query]);
@@ -30,7 +30,7 @@ const CompanyDetailsPage = () => {
     },
     {
       name: company?.name,
-      link: `/companies/${company?.companyId}`,
+      link: `/companies/${company?.id}`,
     },
   ];
   return (

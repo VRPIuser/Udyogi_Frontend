@@ -81,7 +81,9 @@ const CompanyRow = ({ company }) => {
           </div>
         </div>
       </td>
-      <td className={TABLE_CELL_CLASS}>{formatDate(company?.foundedIn)}</td>
+      <td className={TABLE_CELL_CLASS}>
+        {formatDate(company?.foundedIn).date}
+      </td>
       <td className={`${TABLE_CELL_CLASS} text-right relative`}>
         <button
           className={`text-zinc-400 w-6 h-6 flex items-center justify-center pb-5 text-2xl hover:text-zinc-500 ${hoverBgClasses}`}

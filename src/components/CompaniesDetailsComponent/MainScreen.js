@@ -16,7 +16,7 @@ const MainScreen = ({ company }) => {
             height={250}
             className="w-16 h-16 object-contain cursor-pointer hover:scale-110 transition-all"
             onClick={() => {
-              router.push(`/companies/${company.companyId}`);
+              router.push(`/companies/${company.id}`);
             }}
           />
           <div>
@@ -39,7 +39,7 @@ const MainScreen = ({ company }) => {
           </div>
         </div>
         <div className="flex gap-4  flex-wrap">
-          <FollowCompany company={company.companyId} />
+          <FollowCompany company={company.id} />
           <button
             className={`border rounded-3xl text-sm flex gap-2 sm:px-4 px-2 py-2 h-8 items-center border-orange-500 text-orange-500 hover:scale-105 transition-all`}
             onClick={() => {
