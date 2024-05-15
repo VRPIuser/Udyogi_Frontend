@@ -4,6 +4,7 @@ import { useRouter } from "next/router";
 import { useDispatch } from "react-redux";
 import { logout } from "@/store/LoginState/LoginStateActions";
 import UserData from "@/data/user";
+import ProfileDataComponent from "@/data/ProfileData";
 
 // Define shared tailwind classes
 const flexItemsCenter =
@@ -24,61 +25,63 @@ const spaceY2 = "space-y-2";
 const ProfileComponent = () => {
   const dispatch = useDispatch();
   const router = useRouter();
-  const profileData = [
-    {
-      icon: "profileActivity.png",
-      label: "My Following",
+  // const profileData = [
+  //   {
+  //     icon: "profileActivity.png",
+  //     label: "My Following",
 
-      action: () => {
-        router.push("/user/my-following");
-      },
-    },
-    {
-      icon: "subscription.png",
-      label: "My Subscriptions",
-      action: () => {
-        router.push("/user/my-subscriptions");
-      },
-    },
-    {
-      icon: "myJobs.png",
-      label: "My Jobs",
+  //     action: () => {
+  //       router.push("/user/my-following");
+  //     },
+  //   },
+  //   {
+  //     icon: "subscription.png",
+  //     label: "My Subscriptions",
+  //     action: () => {
+  //       router.push("/user/my-subscriptions");
+  //     },
+  //   },
+  //   {
+  //     icon: "myJobs.png",
+  //     label: "My Jobs",
 
-      action: () => {
-        router.push("/user/my-jobs");
-      },
-    },
-    {
-      icon: "subscription.png",
-      label: "Messages",
-      action: () => {
-        router.push("/user/chat");
-      },
-    },
+  //     action: () => {
+  //       router.push("/user/my-jobs");
+  //     },
+  //   },
+  //   {
+  //     icon: "subscription.png",
+  //     label: "Messages",
+  //     action: () => {
+  //       router.push("/user/chat");
+  //     },
+  //   },
 
-    {
-      icon: "settings.png",
-      label: "Settings",
-      action: () => {
-        router.push("/user/settings");
-      },
-    },
-    {
-      icon: "contactSupport.png",
-      label: "Help & Support",
-      action: () => {
-        router.push("/user/contact-support");
-      },
-    },
-    {
-      icon: "logout.png",
-      label: "Log Out",
-      action: () => {
-        dispatch(logout());
-        router.push("/sign-in");
-      },
-    },
-  ];
+  //   {
+  //     icon: "settings.png",
+  //     label: "Settings",
+  //     action: () => {
+  //       router.push("/user/settings");
+  //     },
+  //   },
+  //   {
+  //     icon: "contactSupport.png",
+  //     label: "Help & Support",
+  //     action: () => {
+  //       router.push("/user/contact-support");
+  //     },
+  //   },
+  //   {
+  //     icon: "logout.png",
+  //     label: "Log Out",
+  //     action: () => {
+  //       dispatch(logout());
+  //       router.push("/sign-in");
+  //     },
+  //   },
+  // ];
+
+  const profileData = ProfileDataComponent();
 
   return (
     <div className="bg-white rounded-lg max-w-lg">

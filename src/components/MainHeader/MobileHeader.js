@@ -12,6 +12,7 @@ import { LeftHeaderLinks, RightSideIcons } from "@/data/HeaderData";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import CustomImage from "../UI/Image/Image";
+import ProfileDataComponent from "@/data/ProfileData";
 
 const MobileHeader = ({ setShowSideBar, showSideBar }) => {
   const isLoggedIn = useSelector((state) => state.login.isUdyogiUserLoggedIn);
@@ -24,6 +25,9 @@ const MobileHeader = ({ setShowSideBar, showSideBar }) => {
       .trim()
       .includes(address.toString().trim().toLowerCase());
   };
+
+  const profileData = ProfileDataComponent();
+
   return (
     <div
       className="sm:hidden flex absolute top-0 left-0 justify-between items-center w-full"
@@ -51,41 +55,58 @@ const MobileHeader = ({ setShowSideBar, showSideBar }) => {
         >
           <UdyogiLogo className={styles.logo} />
           <ul className={styles.sideBarList}>
-            <ul className="flex flex-col gap-4 w-full">
+            <ul className="w-full">
               {LeftHeaderLinks.map((link, index) => (
-                <li key={index} className="w-full">
+                <li
+                  key={index}
+                  className={`w-full flex p-2 hover:bg-zinc-100 cursor-pointer border-b 
+                  ${CheckPath(link.address) ? "bg-zinc-100" : "bg-white"}
+                  `}
+                  onClick={() => {
+                    router.push(link.address);
+                  }}
+                >
                   <Link
                     href={link.address}
                     title={link.name}
-                    className={`${
-                      CheckPath(link.address)
-                        ? "bg-orange-600"
-                        : "bg-orange-500"
-                    } w-full p-2  text-white font-medium block text-start rounded-lg`}
+                    className={` w-full font-medium block text-start`}
                   >
                     {link.name}
                   </Link>
+                  <CustomImage
+                    src={`/assets/icons/nextIcon_s.png`}
+                    alt={link.image}
+                    width={25}
+                    height={25}
+                  />
                 </li>
               ))}
             </ul>
-            <div className={`flex gap-4 w-full justify-end`}>
+            <ul className={`w-full`}>
               {isLoggedIn ? (
-                RightSideIcons.map((link, index) => (
-                  <div key={index} className="">
+                profileData.map((link, index) => (
+                  <li
+                    key={index}
+                    className={`flex gap-2 items-center p-2 hover:bg-zinc-100 cursor-pointer border-b
+                  ${CheckPath(link.address) ? "bg-zinc-100" : "bg-white"}
+                    `}
+                    onClick={link.action}
+                  >
+                    <span className="text-black font-medium block w-full text-start">
+                      {link.label}
+                    </span>
                     <CustomImage
-                      src={`/assets/icons/${link.image}`}
+                      src={`/assets/icons/nextIcon_s.png`}
                       alt={link.image}
-                      onClick={() => router.push(link.link)}
                       width={25}
                       height={25}
-                      className="hover:scale-125 transition-all cursor-pointer"
                     />
-                  </div>
+                  </li>
                 ))
               ) : (
                 <InitialRightSideElements />
               )}
-            </div>
+            </ul>
           </ul>
         </div>
       }

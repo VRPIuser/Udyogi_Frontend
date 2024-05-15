@@ -1,6 +1,5 @@
 import HideExtraText from "@/components/UI/HideExtraText/HideExtraText";
 import CustomImage from "@/components/UI/Image/Image";
-import UserData from "@/data/user";
 import formatDate from "@/hooks/formatDate";
 
 export const SearchBar = () => (
