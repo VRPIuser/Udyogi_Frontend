@@ -1,15 +1,15 @@
+import CustomImage from "@/components/UI/Image/Image";
 import formatDate from "@/hooks/formatDate";
 
 const { ChatMessage } = require("./ChatElements");
 
-const RenderMessagesByDate = ({ sortMessagesByDate, sender }) => {
+const RenderMessagesByDate = ({ sortMessagesByDate }) => {
   const sortedMessages = sortMessagesByDate();
   const currentDate = new Date();
 
   let previousDate = null;
   return sortedMessages.map((msg, index) => {
-    const messageDate = new Date(msg.date);
-    // let messageTime = formatDate(msg.date).time;
+    const messageDate = new Date(msg.createAt);
 
     let messageDateString;
     if (
@@ -25,7 +25,7 @@ const RenderMessagesByDate = ({ sortMessagesByDate, sender }) => {
     ) {
       messageDateString = "Yesterday";
     } else {
-      messageDateString = formatDate(msg.date).date;
+      messageDateString = formatDate(msg.createAt).date;
     }
 
     let renderDateHeading;
@@ -43,7 +43,7 @@ const RenderMessagesByDate = ({ sortMessagesByDate, sender }) => {
     return (
       <div key={index}>
         <div className="flex justify-center">{renderDateHeading}</div>
-        <ChatMessage chat={msg} sender={sender} />
+        <ChatMessage chat={msg} />
       </div>
     );
   });

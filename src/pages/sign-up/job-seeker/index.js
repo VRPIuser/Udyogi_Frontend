@@ -2,7 +2,6 @@ import SignUpOrLoginContainer from "@/components/SignUpOrLoginContainer/SignUpOr
 import UserSignupFrom from "@/components/Signup/UserSignupFrom/UserSignupFrom";
 import styles from "./index.module.css";
 import { useRouter } from "next/router";
-import CustomImage from "@/components/UI/Image/Image";
 import EmailVerified from "@/components/Signup/EmailVerified/EmailVerified";
 import EmailVerification from "@/components/Signup/EmailVerification/EmailVerification";
 import { useState } from "react";
@@ -10,11 +9,15 @@ import BackComponent from "@/components/Signup/BackComponent/BackComponent";
 import Head from "next/head";
 import { useDispatch } from "react-redux";
 import { loginWithid } from "@/store/LoginState/LoginStateActions";
+import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
+import { auth, db, storage } from "@/firebaseConfig/firebaseConfig";
+import { doc, setDoc } from "firebase/firestore";
 const loginScreenData = {
   description:
     "You’re one step away to unlock all the possible features of Udhyogi ",
   image: "signUpScreen.svg",
 };
+import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 
 const UserSignUpPage = () => {
   const [signUpData, setSignUpData] = useState(null);
@@ -30,10 +33,89 @@ const UserSignUpPage = () => {
 
   const dispatch = useDispatch();
 
-  const UserDataHandler = (userData) => {
+  const UserDataHandler = async (userData) => {
     console.log(userData);
     if (userData) {
-      setSignUpData(userData);
+      // firstName: firstNameInput.value,
+      // lastName: lastNameInput.value,
+      // mobileNumber: mobileNumberInput.value,
+      // email: emailInput.value,
+      // password: passwordInput.value,
+      // gender: gender.value,
+      try {
+        const res = await createUserWithEmailAndPassword(
+          auth,
+          userData.email,
+          userData.password
+        );
+
+        const storageRef = ref(storage, userData.firstName);
+
+        const uploadTask = uploadBytesResumable(
+          storageRef,
+          userData.profilePicture
+        );
+
+        uploadTask.on(
+          "state_changed",
+          (snapshot) => {
+            // Observe state change events such as progress, pause, and resume
+            // Get task progress, including the number of bytes uploaded and the total number of bytes to be uploaded
+            const progress =
+              (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+            console.log("Upload is " + progress + "% done");
+            switch (snapshot.state) {
+              case "paused":
+                console.log("Upload is paused");
+                break;
+              case "running":
+                console.log("Upload is running");
+                break;
+            }
+          },
+          (error) => {
+            // Handle unsuccessful uploads
+          },
+          () => {
+            // Handle successful uploads on complete
+            // For instance, get the download URL: https://firebasestorage.googleapis.com/...
+            getDownloadURL(uploadTask.snapshot.ref).then(
+              async (downloadURL) => {
+                // console.log('File available at', downloadURL);
+                await updateProfile(res.user, {
+                  displayName: userData.firstName + " " + userData.lastName,
+                  photoURL: downloadURL,
+                });
+                await setDoc(doc(db, "users", res.user.uid), {
+                  uid: res.user.uid,
+                  firstName: userData.firstName,
+                  lastName: userData.lastName,
+                  mobileNumber: userData.mobileNumber,
+                  // email: userData.email,
+                  // password:  userData.password,
+                  gender: userData.gender,
+                  userType: userData.userType,
+                  photoURL: downloadURL,
+                });
+                setSignUpData(userData);
+              }
+            );
+          }
+        );
+
+        console.log(res);
+      } catch (error) {
+        console.log(error);
+      }
+      // .then((userCredentials) => {
+      //   const user = userCredentials.user;
+      //   console.log(user);
+      //   dispatch(loginWithid(1, "user"));
+      //   router.push("/");
+      // })
+      // .catch((error) => {
+      //   console.log(error);
+      // });
     }
   };
 

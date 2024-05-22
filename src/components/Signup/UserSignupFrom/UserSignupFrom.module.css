@@ -12,6 +12,10 @@
   /* flex-wrap: wrap; */
 }
 
+.line6 {
+  display: block;
+}
+
 @media (max-width: 600px) {
   .line1,
   .line2,

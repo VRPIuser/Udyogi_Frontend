@@ -122,7 +122,7 @@ const SignInForm = ({ onSubmitCredentials, role }) => {
           </div>
           <Button
             onClick={() => {
-              navigate("/signup");
+              router.push("/sign-up");
             }}
             className={style.signUpBtn}
           >

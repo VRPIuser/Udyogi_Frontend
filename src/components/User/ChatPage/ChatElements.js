@@ -1,5 +1,6 @@
 import HideExtraText from "@/components/UI/HideExtraText/HideExtraText";
 import CustomImage from "@/components/UI/Image/Image";
+import { auth } from "@/firebaseConfig/firebaseConfig";
 import formatDate from "@/hooks/formatDate";
 
 export const SearchBar = () => (
@@ -28,36 +29,38 @@ export const MessageItem = ({ sender, message }) => (
   </div>
 );
 
-export const ChatMessage = ({ chat, sender }) => {
-  const statusIcon =
-    (chat.status?.send &&
-      !chat.status?.delivered &&
-      !chat.status?.seen &&
-      "tick_b.png") ||
-    (chat.status?.send &&
-      chat.status?.delivered &&
-      !chat.status?.seen &&
-      "doubleTick.png") ||
-    (chat.status?.seen && "seen.png");
-  const isSender =
-    chat.messageBy.toString().trim().toLowerCase() ===
-    sender.id.toString().trim().toLowerCase();
+export const ChatMessage = ({ chat }) => {
+  // const statusIcon =
+  //   (chat.status?.send &&
+  //     !chat.status?.delivered &&
+  //     !chat.status?.seen &&
+  //     "tick_b.png") ||
+  //   (chat.status?.send &&
+  //     chat.status?.delivered &&
+  //     !chat.status?.seen &&
+  //     "doubleTick.png") ||
+  //   (chat.status?.seen && "seen.png");
+  // const isSender =
+  //   chat.messageBy.toString().trim().toLowerCase() ===
+  //   sender.id.toString().trim().toLowerCase();
+
+  const isUserLoggedIn = auth.currentUser.displayName === chat.user;
 
   return (
     <div
       className={`flex items-end mb-4 ${
-        isSender ? "justify-end" : "justify-start"
+        isUserLoggedIn ? "justify-end" : "justify-start"
       }`}
     >
       <div
         className={`${
-          isSender ? "bg-white" : "bg-orange-100"
+          isUserLoggedIn ? "bg-white" : "bg-orange-100"
         } shadow rounded-lg py-2 px-2 max-w-xs relative`}
       >
-        <p className="text-black">{chat.message}</p>
+        <p className="text-black">{chat.text}</p>
         <div className="w-full flex justify-end gap-2 h-4 items-center">
-          <div className="h-fit text-xs">{formatDate(chat.date).time}</div>
-          {!isSender && (
+          <div className="h-fit text-xs">{formatDate(chat.createAt).time}</div>
+          {/* {!isUserLoggedIn && (
             <div className="flex">
               <CustomImage
                 src={`/assets/icons/${statusIcon}`}
@@ -67,17 +70,17 @@ export const ChatMessage = ({ chat, sender }) => {
                 className="min-w-4 min-h-4 w-4 h-4 opacity-90"
               />
             </div>
-          )}
+          )} */}
         </div>
       </div>
     </div>
   );
 };
 
-export const ChatHead = ({ receiver, IsReceiverIsCompany }) => {
+export const ChatHead = ({}) => {
   const titleClasses = "text-lg font-bold text-gray-600";
 
-  if (IsReceiverIsCompany) {
+  if (true) {
     return (
       <div className="p-4 bg-white dark:bg-gray-900 flex justify-between items-center border-b dark:border-gray-700">
         <div className="flex items-center gap-2">

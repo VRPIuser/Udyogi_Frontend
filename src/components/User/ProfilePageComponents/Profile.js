@@ -60,7 +60,11 @@ const Profile = () => {
             );
           })}
         </div>
-        <PercentageDisplay percentage={80} />
+        <PercentageDisplay
+          percentage={80}
+          radius={60}
+          text={"Profile Strength"}
+        />
       </div>
 
       <div className="flex gap-8 w-full">

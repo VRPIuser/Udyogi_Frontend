@@ -1,10 +1,11 @@
 import { ValueUndefinedValidations } from "@/components/InputValidations/InputValidations";
 import CustomImage from "@/components/UI/Image/Image";
+import MenuIcon from "@/components/UI/MenuIcon/MenuIcon";
 import SearchInput from "@/components/UI/SearchInput/SearchInput";
 import { hoverBgClasses } from "@/components/tailwindClasses/ButtonClassess";
 import useInput from "@/hooks/use-Input";
 
-const DashboardHeader = ({ role, setShowSidebar }) => {
+const DashboardHeader = ({ role, setShowSidebar, showSidebar }) => {
   const searchInput = useInput({ validateValue: ValueUndefinedValidations });
 
   return (
@@ -20,10 +21,16 @@ const DashboardHeader = ({ role, setShowSidebar }) => {
           //   divStyles={{ height: "24px", width: "24px" }}
           //   style={{ height: "25px" }}
           className="w-5 h-5 object-contain"
-          onClick={setShowSidebar}
         />
       </div>
       <SearchInput searchInput={searchInput} />
+
+      <div className="block lg:hidden">
+        <MenuIcon
+          action={() => setShowSidebar(!showSidebar)}
+          show={showSidebar}
+        />
+      </div>
     </div>
   );
 };

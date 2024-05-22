@@ -36,6 +36,7 @@ const ChatInput = ({ onSendMessage }) => {
         onClick={handleMessageSubmit}
         disabled={!chatInput.isValid}
         style={{ backgroundColor: !chatInput.isValid && "#ccc" }}
+        doNotScrollToTop={true}
       >
         Send
       </Button>

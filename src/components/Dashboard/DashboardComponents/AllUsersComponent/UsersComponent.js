@@ -207,29 +207,7 @@ const DateFilter = () => {
   return (
     <div className="bg-zinc-100 border border-zinc-200 rounded-lg flex items-center justify-center p-1 content-center gap-2">
       <span className="text-sm">Sort by :</span>
-      {/* <Dropdown
-        options={DateOptions}
-        onSelect={(value) => DateFilterInput.AssignValue(value)}
-        placeholder={"filter"}
-        inputStyles={{
-          margin: 0,
-          border: "0px solid",
-          // backgroundColor: "#f1f1f14d",
-          width: "100px",
-          fontWeight: "500",
-          // height: "40px",
-          // padding: "0.3rem",
-        }}
-        colorTheme={colorTheme.input}
-        style={{
-          minWidth: "100px",
-          // width: "100px",
-          // height: "40px",
-        }}
-        optionStyles={{
-          top: "100%",
-        }}
-      /> */}
+
       <select
         onChange={DateFilterInput.valueChangeHandler}
         className="rounded-lg px-1"

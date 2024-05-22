@@ -4,6 +4,7 @@ import InputWithInvalidText from "@/components/UI/Input/InputWithInvalidText";
 import styles from "./UserSignupFrom.module.css";
 import useInput from "@/hooks/use-Input";
 import {
+  ValueUndefinedValidations,
   confirmPasswordValidation,
   emailValidation,
   mobileNumberValidation,
@@ -15,6 +16,7 @@ import LoadingButton from "@/components/UI/LoadingButton/LoadingButton";
 import Button from "@/components/UI/Button/Button";
 import { useRouter } from "next/router";
 import { colorTheme } from "../../../../constants";
+import CustomFileUploader from "@/components/UI/FileUploader/FileUploader";
 
 const Genders = [
   { value: "female", label: "Female" },
@@ -36,6 +38,9 @@ const UserSignupFrom = ({ onSubmit }) => {
       confirmPasswordValidation(value, passwordInput.value),
   });
 
+  const profilePictureInput = useInput({
+    validateValue: ValueUndefinedValidations,
+  });
   const [formIsValid, setFormIsValid] = useState(false);
 
   const router = useRouter();
@@ -48,9 +53,11 @@ const UserSignupFrom = ({ onSubmit }) => {
         emailInput.isValid &&
         passwordInput.isValid &&
         confirmPasswordInput.isValid &&
+        profilePictureInput.isValid &&
         gender
     );
   }, [
+    profilePictureInput.isValid,
     firstNameInput.isValid,
     lastNameInput.isValid,
     mobileNumberInput.isValid,
@@ -77,6 +84,7 @@ const UserSignupFrom = ({ onSubmit }) => {
       email: emailInput.value,
       password: passwordInput.value,
       gender: gender.value,
+      profilePicture: profilePictureInput.value,
     });
 
     // router.push("/sign-up/job-seeker/email-OTP-verification");
@@ -168,6 +176,17 @@ const UserSignupFrom = ({ onSubmit }) => {
       />
     </div>
   );
+  const Line6 = (
+    <div className={styles.line6}>
+      <CustomFileUploader
+        onChange={profilePictureInput.AssignValue}
+        buttonText={"Upload Profile pic"}
+        acceptedFileType={["image/png", "image/jpeg"]}
+        colorTheme={colorTheme.input}
+        height={"h-32"}
+      />
+    </div>
+  );
 
   return (
     <div className={styles.container}>
@@ -176,6 +195,7 @@ const UserSignupFrom = ({ onSubmit }) => {
       {Line3}
       {Line4}
       {Line5}
+      {Line6}
       <div className={styles.btns}>
         <LoadingButton
           className={formIsValid ? styles.submitBtn : `${styles.disabled}`}

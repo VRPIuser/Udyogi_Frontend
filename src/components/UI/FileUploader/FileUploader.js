@@ -120,9 +120,10 @@ const ContentComponent = ({
 }) => {
   return (
     <div
-      className={`flex flex-col justify-center items-center content-center w-full p-4 ${height} ${
-        dragOver ? " hidden" : "flex"
-      } ${style.box}`}
+      className={`flex flex-col justify-center items-center content-center w-full p-4 
+      
+      ${height}
+      ${dragOver ? " hidden" : "flex"} ${style.box}`}
     >
       {isLoading ? (
         <LoadingBar loadingTime={loadingTime} />
@@ -157,7 +158,9 @@ const DragComponent = ({ height, dragOver }) => {
         dragOver
           ? "flex flex-col justify-center items-center content-center w-full bg-zinc-100 "
           : "hidden"
-      } ${style.box} ${height}`}
+      } ${style.box} 
+      ${height}
+      `}
     >
       <>
         <span className="sm:text-base text-sm">

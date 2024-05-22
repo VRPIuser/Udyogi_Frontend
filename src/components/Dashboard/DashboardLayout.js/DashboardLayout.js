@@ -13,7 +13,8 @@ const DashboardLayout = ({ children }) => {
         <main className="w-full">
           <DashboardHeader
             role={"Admin"}
-            setShowSidebar={() => setShowSidebar(!showSidebar)}
+            setShowSidebar={setShowSidebar}
+            showSidebar={showSidebar}
           />
           {children}
         </main>

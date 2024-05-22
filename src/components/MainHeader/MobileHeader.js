@@ -13,6 +13,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import CustomImage from "../UI/Image/Image";
 import ProfileDataComponent from "@/data/ProfileData";
+import MenuIcon from "../UI/MenuIcon/MenuIcon";
 
 const MobileHeader = ({ setShowSideBar, showSideBar }) => {
   const isLoggedIn = useSelector((state) => state.login.isUdyogiUserLoggedIn);
@@ -35,18 +36,12 @@ const MobileHeader = ({ setShowSideBar, showSideBar }) => {
     >
       <UdyogiLogo className={styles.logo} />
 
-      <div
-        className={`${styles.menuIcon} ${
-          showSideBar && styles.menuIconChange
-        } `}
-        onClick={() => {
+      <MenuIcon
+        action={() => {
           setShowSideBar(!showSideBar);
         }}
-      >
-        <div className={styles.bar1}></div>
-        <div className={styles.bar2}></div>
-        <div className={styles.bar3}></div>
-      </div>
+        show={showSideBar}
+      />
       {
         <div
           className={`${styles.sideBar} ${

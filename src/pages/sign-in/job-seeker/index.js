@@ -14,6 +14,8 @@ import styles from "./index.module.css";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { loginWithid } from "@/store/LoginState/LoginStateActions";
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { auth } from "@/firebaseConfig/firebaseConfig";
 
 const UserSignIn = () => {
   const router = useRouter();
@@ -30,6 +32,17 @@ const UserSignIn = () => {
   const SignUpDataHandler = (data) => {
     setSignUpData(data);
     console.log(data);
+    const email = data.email;
+    const password = data.password;
+
+    // createUserWithEmailAndPassword(auth, email, password)
+    //   .then((userCredentials) => {
+    //     const user = userCredentials.user;
+    //     console.log(user);
+    //   })
+    //   .catch((error) => {
+    //     console.log(error);
+    //   });
     dispatch(loginWithid(1, "user"));
     router.push("/");
   };

@@ -2,12 +2,26 @@ import React from "react";
 import HeaderClasses from "./HeaderClasses";
 import UdyogiLogo from "@/components/UdyogiLogo/UdyogiLogo";
 import Link from "next/link";
+import CustomImage from "@/components/UI/Image/Image";
+
+const SideBarData = [
+  { icon: "addPosts.png", text: "All Posts" },
+  { icon: "quantity.png", text: "All Users" },
+  { icon: "correct.png", text: "Shortlisted" },
+  { icon: "interview.png", text: "Interviews" },
+  { icon: "onBoarding.png", text: "Onboarding Status" },
+  { icon: "resume.png", text: "Resumes" },
+  { icon: "message.png", text: "Messages" },
+  { icon: "profile.png", text: "Profile" },
+  { icon: "transactions.png", text: "Transactions" },
+  { icon: "logout.png", text: "Logout" },
+];
 
 const Sidebar = ({ setShowSidebar, showSidebar }) => {
   return (
     <div
-      className={`bg-white lg:static lg:translate-x-0 absolute z-10 ${
-        showSidebar ? "-translate-x-full" : "-translate-x-0"
+      className={`bg-white lg:static lg:translate-x-0 absolute z-10 transition-all ${
+        !showSidebar ? "-translate-x-full" : "-translate-x-0"
       }`}
     >
       <SidebarHeader />
@@ -28,14 +42,9 @@ const SidebarHeader = () => {
         >
           Dashboard
         </a>
-        <SidebarLink icon="📄" text="All Posts" />
-        <SidebarLink icon="🌟" text="Shortlisted" />
-        <SidebarLink icon="🎤" text="Interviews" />
-        <SidebarLink icon="🚀" text="Onboarding Status" />
-        <SidebarLink icon="📁" text="Resumes" />
-        <SidebarLink icon="💬" text="Messages" />
-        <SidebarLink icon="👤" text="Profile" />
-        <SidebarLink icon="🚪" text="Logout" />
+        {SideBarData.map((item, index) => (
+          <SidebarLink icon={item.icon} text={item.text} key={index} />
+        ))}
       </div>
     </div>
   );
@@ -44,7 +53,14 @@ const SidebarHeader = () => {
 const SidebarLink = ({ icon, text }) => {
   return (
     <Link href="#" className={HeaderClasses.link}>
-      <span className="text-lg">{icon}</span>
+      {/* <span className="text-lg">{icon}</span> */}
+      <CustomImage
+        src={`/assets/icons/${icon}`}
+        alt=""
+        width={20}
+        height={20}
+        className="grayscale opacity-65"
+      />
       <span className="ml-2 text-gray-500">{text}</span>
     </Link>
   );

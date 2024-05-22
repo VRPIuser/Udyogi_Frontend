@@ -1,133 +1,58 @@
-import RootLayout from "@/components/RootLayout/RootLayout";
+import Button from "@/components/UI/Button/Button";
 import ChatComponent from "@/components/User/ChatPage/ChatComponent";
-import { AllCompaniesData } from "@/data/CompaniesData";
-import UserData from "@/data/user";
-import ConvertToValueUsedForCondition from "@/hooks/ConvertToValueUsedForCondition";
-import { useEffect } from "react";
+import Auth from "@/components/chatComponents/Auth";
+import { auth } from "@/firebaseConfig/firebaseConfig";
+import { useEffect, useRef, useState } from "react";
 
-const chat = {
-  sender: "12",
-  receiver: "2",
-  messages: [
-    {
-      messageBy: 2,
-      message: "Hello!",
-      date: "2024-05-14T11:10:02",
-      status: {
-        send: true,
-        delivered: true,
-        seen: true,
-      },
-    },
-    {
-      messageBy: 12,
-
-      message: "Hi there!",
-      date: "2024-05-14T11:10:45",
-      status: {
-        send: true,
-        delivered: true,
-        seen: true,
-      },
-    },
-    {
-      messageBy: 12,
-
-      message: "How are you?",
-      date: "2024-05-14T11:12:20",
-      status: {
-        send: true,
-        delivered: true,
-        seen: true,
-      },
-    },
-    {
-      messageBy: 1,
-
-      message: "I'm good, thanks!",
-      date: "2024-05-14T11:15:03",
-      status: {
-        send: true,
-        delivered: true,
-        seen: false,
-      },
-    },
-    {
-      messageBy: 12,
-
-      message: "What have you been up to?",
-      date: "2024-05-14T11:17:40",
-      status: {
-        send: true,
-        delivered: false,
-        seen: false,
-      },
-    },
-    {
-      messageBy: 1,
-
-      message: "Just working on some projects. How about you?",
-      date: "2024-05-14T11:20:55",
-      status: {
-        send: true,
-        delivered: false,
-        seen: false,
-      },
-    },
-    {
-      messageBy: 12,
-
-      message: "Same here, busy with work.",
-      date: "2024-04-14T11:25:18",
-      status: {
-        send: true,
-        delivered: true,
-        seen: true,
-      },
-    },
-    {
-      messageBy: 1,
-      message: "Sounds like we're both staying productive!",
-      date: "2024-04-14T11:30:09",
-      status: {
-        send: true,
-        delivered: true,
-        seen: true,
-      },
-    },
-  ],
-};
-
-// const sender =
-//   ConvertToValueUsedForCondition(UserData?.id) !==
-//   ConvertToValueUsedForCondition(chat?.user1Id)
-//     ? ConvertToValueUsedForCondition(chat?.user1Id)
-//     : ConvertToValueUsedForCondition(chat?.user2Id);
-// const receiver =
-//   ConvertToValueUsedForCondition(UserData?.id) ===
-//   ConvertToValueUsedForCondition(chat?.user1Id)
-//     ? ConvertToValueUsedForCondition(chat?.user1Id)
-//     : ConvertToValueUsedForCondition(chat?.user2Id);
-
-const sender = UserData;
-
-const receiver = AllCompaniesData.find(
-  (company) =>
-    ConvertToValueUsedForCondition(company.id) ===
-    ConvertToValueUsedForCondition(chat.receiver)
-);
+// Ensure Firebase is initialized only once
 
 const UserChatPage = () => {
+  const [room, setRoom] = useState("room1");
+
+  const [user, setUser] = useState(null);
+
   useEffect(() => {
-    console.log("s->", sender, "r->", receiver);
-  });
+    const unsubscribe = auth.onAuthStateChanged((user) => {
+      if (user) {
+        setUser(user);
+      } else {
+        setUser(null);
+      }
+    });
+
+    return () => unsubscribe();
+  }, []);
+
   return (
-    <ChatComponent
-      messagesData={chat.messages}
-      sender={sender}
-      receiver={receiver}
-    />
+    <>
+      <Auth />
+      <>
+        {room ? (
+          <>{user && <ChatComponent room={room} />}</>
+        ) : (
+          <CreateRoom setRoom={setRoom} />
+        )}
+      </>
+    </>
   );
 };
 
 export default UserChatPage;
+
+const CreateRoom = ({ setRoom }) => {
+  const roomInputRef = useRef();
+
+  return (
+    <div>
+      <label>Room Name</label>
+      <input type="text" ref={roomInputRef} />
+      <Button
+        onClick={() => {
+          setRoom(roomInputRef.current.value);
+        }}
+      >
+        Enter Chat
+      </Button>
+    </div>
+  );
+};

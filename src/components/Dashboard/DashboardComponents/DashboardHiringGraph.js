@@ -5,7 +5,7 @@ const DashboardHiringGraph = ({ weeklyActivity }) => {
 
   return (
     <div
-      className="w-full min-w-60 h-60 p-3 bg-white shadow-lg rounded-lg flex flex-col justify-between"
+      className="w-full min-w-60 h-52 p-3 bg-white shadow-lg rounded-lg flex flex-col justify-between"
       // style={{ maxWidth: "calc(100% - (384px + 1rem))" }}
     >
       <div className="flex justify-between items-center gap-4">
@@ -31,7 +31,7 @@ const DashboardHiringGraph = ({ weeklyActivity }) => {
 
 const DayActivity = ({ day, zincHeight, orangeHeight }) => {
   return (
-    <div className="text-center h-full">
+    <div className="text-center h-full flex flex-col gap-2">
       <div
         className="flex gap-2 items-end"
         style={{
@@ -47,7 +47,7 @@ const DayActivity = ({ day, zincHeight, orangeHeight }) => {
           className="w-2 mt-1 bg-orange-500"
         ></div>
       </div>
-      <p className="mt-2 text-sm">{day}</p>
+      <p className="text-sm">{day}</p>
     </div>
   );
 };
