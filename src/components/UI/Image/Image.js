@@ -33,7 +33,13 @@ const CustomImage = ({
       {loading && (
         // <GhostLoading count={1} />
         <div className={styles.loadingState}>
-          <CircularProgress />
+          <CircularProgress
+            style={{
+              width: "inherit",
+              height: "inherit",
+              objectFit: "contain",
+            }}
+          />
         </div>
       )}
       {/* {!loading && ( */}

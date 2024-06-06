@@ -3,6 +3,8 @@ import JobFilter from "../JobFilter/JobFilter";
 import { JobFiltersData } from "@/data/filtersData";
 import JobCard from "../../HomeComponents/LatestJobs/JobCard/JobCard";
 import CustomImage from "../../UI/Image/Image";
+import Pagination from "@/components/UI/Pagination/Pagination";
+import usePagination from "@/hooks/use-Pagination";
 
 const JobFilteredResults = ({ jobs, searchData }) => {
   const [filters, setFilters] = useState(JobFiltersData);
@@ -116,6 +118,9 @@ const JobFilteredResults = ({ jobs, searchData }) => {
 
   const [showFilter, setShowFilter] = useState(false);
 
+  const { currentItems, currentPage, paginate, totalItems, itemsPerPage } =
+    usePagination({ items: filteredJobs, itemsPerPage: 3 });
+
   return (
     <div className={"max-w-full mx-auto px-4 py-8 flex gap-4 justify-center"}>
       <div className="max-w-screen-2xl w-full">
@@ -147,24 +152,32 @@ const JobFilteredResults = ({ jobs, searchData }) => {
           />
           {filteredJobs.length > 0 ? (
             // <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-4">
-            <div
-              // className="flex flex-wrap gap-4"
-              style={{
-                display: "grid",
-                gap: "1rem",
-                width: "100%",
-                justifyContent: "center",
-                gridTemplateColumns: "repeat(auto-fill, minmax(250px, 350px))",
-              }}
-            >
-              {filteredJobs.map((job) => (
-                <JobCard key={job.id} job={job} />
-              ))}
-            </div>
+            <>
+              <div
+                // className="flex flex-wrap gap-4"
+                style={{
+                  display: "grid",
+                  gap: "1rem",
+                  width: "100%",
+                  justifyContent: "center",
+                  gridTemplateColumns:
+                    "repeat(auto-fill, minmax(250px, 350px))",
+                }}
+              >
+                {currentItems.map((job) => (
+                  <JobCard key={job.id} job={job} />
+                ))}
+              </div>
+            </>
           ) : (
             <div>No jobs</div>
           )}
         </div>
+        <Pagination
+          itemsPerPage={itemsPerPage}
+          onPageChange={paginate}
+          totalItems={totalItems}
+        />
       </div>
     </div>
   );

@@ -1,68 +1,65 @@
 import React from "react";
 import HeaderClasses from "./HeaderClasses";
 import UdyogiLogo from "@/components/UdyogiLogo/UdyogiLogo";
-import Link from "next/link";
-import CustomImage from "@/components/UI/Image/Image";
 
-const SideBarData = [
-  { icon: "addPosts.png", text: "All Posts" },
-  { icon: "quantity.png", text: "All Users" },
-  { icon: "correct.png", text: "Shortlisted" },
-  { icon: "interview.png", text: "Interviews" },
-  { icon: "onBoarding.png", text: "Onboarding Status" },
-  { icon: "resume.png", text: "Resumes" },
-  { icon: "message.png", text: "Messages" },
-  { icon: "profile.png", text: "Profile" },
-  { icon: "transactions.png", text: "Transactions" },
-  { icon: "logout.png", text: "Logout" },
-];
+import CustomImage from "@/components/UI/Image/Image";
+import { useRouter } from "next/router";
+import { AdminSideBarData } from "@/data/admin/AdminSideBarData";
 
 const Sidebar = ({ setShowSidebar, showSidebar }) => {
+  const SideBarData = AdminSideBarData();
   return (
     <div
       className={`bg-white lg:static lg:translate-x-0 absolute z-10 transition-all ${
         !showSidebar ? "-translate-x-full" : "-translate-x-0"
       }`}
     >
-      <SidebarHeader />
+      <SidebarHeader SideBarData={SideBarData} />
     </div>
   );
 };
 
-const SidebarHeader = () => {
+const SidebarHeader = ({ SideBarData }) => {
   return (
     <div className="min-w-64 h-screen ">
       <div className="flex items-center justify-center mt-5 mb-5">
         <UdyogiLogo />
       </div>
       <div className="flex flex-col">
-        <a
-          href="#"
-          className="text-white bg-orange-500 py-2 px-4 my-1 mx-3 rounded"
-        >
-          Dashboard
-        </a>
         {SideBarData.map((item, index) => (
-          <SidebarLink icon={item.icon} text={item.text} key={index} />
+          <SidebarLink key={index} item={item} />
         ))}
       </div>
     </div>
   );
 };
 
-const SidebarLink = ({ icon, text }) => {
+const SidebarLink = ({ item }) => {
+  const router = useRouter();
+
+  const isActive = item.link === router.pathname;
+
   return (
-    <Link href="#" className={HeaderClasses.link}>
-      {/* <span className="text-lg">{icon}</span> */}
+    <span
+      className={`${isActive ? "bg-orange-500" : "hover:bg-zinc-300"} ${
+        HeaderClasses.link
+      }`}
+      onClick={item.action}
+    >
       <CustomImage
-        src={`/assets/icons/${icon}`}
+        src={`/assets/icons/${item.icon}`}
         alt=""
         width={20}
         height={20}
         className="grayscale opacity-65"
+        onClick={() => {
+          console.log(router.pathname);
+        }}
       />
-      <span className="ml-2 text-gray-500">{text}</span>
-    </Link>
+      <span className={`ml-2 ${isActive ? "text-white" : "text-gray-500"}`}>
+        {item.text}
+      </span>
+    </span>
   );
 };
 

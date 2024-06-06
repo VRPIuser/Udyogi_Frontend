@@ -1,27 +1,25 @@
 import React, { useEffect, useRef, useState } from "react";
-import { ChatHead, ChatMessage, MessageItem, SearchBar } from "./ChatElements";
 import ChatInput from "./ChatInput";
-import GetCurrentDate from "@/hooks/GetCurrentData";
-import formatDate from "@/hooks/formatDate";
 import RenderMessagesByDate from "./RenderMessagesByDate";
 import {
   addDoc,
   collection,
-  getDoc,
   onSnapshot,
   query,
-  serverTimestamp,
   where,
 } from "firebase/firestore";
 import { auth, db } from "@/firebaseConfig/firebaseConfig";
 import CustomImage from "@/components/UI/Image/Image";
+import GetCurrentDate from "@/hooks/GetCurrentData";
 
 const ChatComponent = ({ messagesData, sender, receiver, room }) => {
   // Dummy data for messages
   const [messages, setMessages] = useState();
+  const [showScrollDownButton, setShowScrollDownButton] = useState(false);
+
+  const [loading, setLoading] = useState(false);
 
   // Function to sort messages based on date
-
   const sortMessagesByDate = () => {
     if (messages) {
       return messages.sort((a, b) => {
@@ -35,28 +33,35 @@ const ChatComponent = ({ messagesData, sender, receiver, room }) => {
   const messagesRef = collection(db, "messages");
 
   const dummyRef = useRef(null);
+  const chatContainerRef = useRef(null);
 
   const scrollToBottom = () => {
-    console.log("scrollToBottom");
     dummyRef.current.scrollIntoView({
       behavior: "smooth",
-      block: "center",
+      block: "end",
       inline: "nearest",
     });
   };
+
   const sendMessage = async (message) => {
+    setLoading(true);
     await addDoc(messagesRef, {
       text: message,
       createAt: GetCurrentDate(),
       user: auth.currentUser.displayName,
+      uid: auth.currentUser.uid,
       room: room,
     });
+    setLoading(false);
     scrollToBottom();
+    // console.log(auth.currentUser);
   };
 
   useEffect(() => {
     const queryMessages = query(messagesRef, where("room", "==", room));
     // const unsubscribe =
+    // setLoading(true);
+
     onSnapshot(queryMessages, (snapshot) => {
       let snapMessage = [];
       snapshot.forEach((doc) => {
@@ -66,34 +71,67 @@ const ChatComponent = ({ messagesData, sender, receiver, room }) => {
         });
       });
       setMessages(snapMessage);
+      // setLoading(false);
+      // console.log(loading);
     });
-  }, [room, messagesRef]);
+    scrollToBottom();
+  }, [room]);
 
   // useEffect(() => {
-  //   scrollToBottom();
-  // }, []);
+  //   console.log(loading);
+  // });
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (chatContainerRef.current) {
+        const { scrollTop, scrollHeight, clientHeight } =
+          chatContainerRef.current;
+        if (scrollHeight - scrollTop === clientHeight) {
+          setShowScrollDownButton(false);
+        } else {
+          setShowScrollDownButton(true);
+        }
+      }
+    };
+
+    scrollToBottom();
+    const chatContainer = chatContainerRef.current;
+    chatContainer.addEventListener("scroll", handleScroll);
+
+    return () => {
+      chatContainer.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   return (
-    <div className="flex bg-white border" style={{ height: "calc(100vh)" }}>
+    <div
+      className="flex bg-white border"
+      style={{ height: "calc(100vh - 56px)" }}
+    >
       <div className="flex-1 flex flex-col">
-        <ChatHead />
-        <div className="flex-1 px-4 pt-4 overflow-y-auto pb-0">
+        {/* <ChatHead /> */}
+        <div
+          ref={chatContainerRef}
+          className="flex-1 px-4 pt-4 overflow-y-auto pb-0"
+        >
           <RenderMessagesByDate sortMessagesByDate={sortMessagesByDate} />
           <div ref={dummyRef}></div>
         </div>
-        <CustomImage
-          src={`/assets/icons/down.png`}
-          alt=""
-          width={30}
-          height={30}
-          classForDiv="bottom-16 left-4 p-4 bg-white hover:bg-zinc-100 transitions-all opacity-50 hover:opacity-100 rounded-full"
-          divStyles={{ position: "absolute" }}
-          className=""
-          onClick={() => {
-            scrollToBottom();
-          }}
-        />
-        <ChatInput onSendMessage={sendMessage} />
+        {showScrollDownButton && (
+          <CustomImage
+            src={`/assets/icons/down.png`}
+            alt=""
+            width={30}
+            height={30}
+            classForDiv="bottom-16 left-1/2 -translate-x-1/2 p-2 bg-zinc-50 border hover:bg-zinc-100 transitions-all rounded-full"
+            divStyles={{ position: "absolute" }}
+            className=""
+            divClick={() => {
+              scrollToBottom();
+            }}
+          />
+        )}
+        <ChatInput onSendMessage={sendMessage} loading={loading} />
       </div>
     </div>
   );

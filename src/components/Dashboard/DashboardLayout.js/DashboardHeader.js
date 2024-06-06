@@ -23,7 +23,7 @@ const DashboardHeader = ({ role, setShowSidebar, showSidebar }) => {
           className="w-5 h-5 object-contain"
         />
       </div>
-      <SearchInput searchInput={searchInput} />
+      <SearchInput searchInput={searchInput} className="md:flex hidden" />
 
       <div className="block lg:hidden">
         <MenuIcon

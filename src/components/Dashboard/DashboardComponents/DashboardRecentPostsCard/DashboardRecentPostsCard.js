@@ -1,3 +1,4 @@
+import { JobPostsData } from "@/data/admin/PostsData";
 import sharedClasses from "../DashboardClasses";
 import JobTable from "./JobTable";
 
@@ -12,97 +13,9 @@ const DashboardRecentPostsCard = () => {
     
         <span>No data is previewed</span>
       </div> */}
-      <JobTable tableData={tableData} />
+      <JobTable tableData={JobPostsData} />
     </div>
   );
 };
 
 export default DashboardRecentPostsCard;
-
-const tableData = [
-  {
-    title: "UI/UX Designer",
-    date: "Today",
-    openings: 7,
-    applications: 359,
-    active: true,
-  },
-  {
-    title: "Frontend Developer",
-    date: "Yesterday",
-    openings: 5,
-    applications: 210,
-    active: false,
-  },
-  {
-    title: "Backend Developer",
-    date: "2 days ago",
-    openings: 3,
-    applications: 120,
-    active: true,
-  },
-  {
-    title: "UI/UX Designer",
-    date: "Today",
-    openings: 7,
-    applications: 359,
-    active: true,
-  },
-  {
-    title: "Frontend Developer",
-    date: "Yesterday",
-    openings: 5,
-    applications: 210,
-    active: false,
-  },
-  {
-    title: "Backend Developer",
-    date: "2 days ago",
-    openings: 3,
-    applications: 120,
-    active: true,
-  },
-  {
-    title: "UI/UX Designer",
-    date: "Today",
-    openings: 7,
-    applications: 359,
-    active: true,
-  },
-  {
-    title: "Frontend Developer",
-    date: "Yesterday",
-    openings: 5,
-    applications: 210,
-    active: false,
-  },
-  {
-    title: "Backend Developer",
-    date: "2 days ago",
-    openings: 3,
-    applications: 120,
-    active: true,
-  },
-  {
-    title: "UI/UX Designer",
-    date: "Today",
-    openings: 7,
-    applications: 359,
-    active: true,
-  },
-  {
-    title: "Frontend Developer",
-    date: "Yesterday",
-    openings: 5,
-    applications: 210,
-    active: false,
-  },
-  {
-    title: "Backend Developer",
-    date: "2 days ago",
-    openings: 3,
-    applications: 120,
-    active: true,
-  },
-  // Add more rows as needed
-];

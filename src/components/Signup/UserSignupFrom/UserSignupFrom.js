@@ -183,7 +183,7 @@ const UserSignupFrom = ({ onSubmit }) => {
         buttonText={"Upload Profile pic"}
         acceptedFileType={["image/png", "image/jpeg"]}
         colorTheme={colorTheme.input}
-        height={"h-32"}
+        height={"h-28"}
       />
     </div>
   );

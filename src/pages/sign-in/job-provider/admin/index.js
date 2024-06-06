@@ -30,7 +30,7 @@ const AdminSignIn = () => {
   const SignUpDataHandler = (data) => {
     setSignUpData(data);
     dispatch(loginWithid(1, "admin"));
-    router.push("/admin/dashboard");
+    router.push("/dashboard/admin");
     console.log(data);
   };
 

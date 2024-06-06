@@ -36,77 +36,75 @@ const UserSignUpPage = () => {
   const UserDataHandler = async (userData) => {
     console.log(userData);
     if (userData) {
+      setSignUpData(userData);
+
       // firstName: firstNameInput.value,
       // lastName: lastNameInput.value,
       // mobileNumber: mobileNumberInput.value,
       // email: emailInput.value,
       // password: passwordInput.value,
       // gender: gender.value,
-      try {
-        const res = await createUserWithEmailAndPassword(
-          auth,
-          userData.email,
-          userData.password
-        );
-
-        const storageRef = ref(storage, userData.firstName);
-
-        const uploadTask = uploadBytesResumable(
-          storageRef,
-          userData.profilePicture
-        );
-
-        uploadTask.on(
-          "state_changed",
-          (snapshot) => {
-            // Observe state change events such as progress, pause, and resume
-            // Get task progress, including the number of bytes uploaded and the total number of bytes to be uploaded
-            const progress =
-              (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-            console.log("Upload is " + progress + "% done");
-            switch (snapshot.state) {
-              case "paused":
-                console.log("Upload is paused");
-                break;
-              case "running":
-                console.log("Upload is running");
-                break;
-            }
-          },
-          (error) => {
-            // Handle unsuccessful uploads
-          },
-          () => {
-            // Handle successful uploads on complete
-            // For instance, get the download URL: https://firebasestorage.googleapis.com/...
-            getDownloadURL(uploadTask.snapshot.ref).then(
-              async (downloadURL) => {
-                // console.log('File available at', downloadURL);
-                await updateProfile(res.user, {
-                  displayName: userData.firstName + " " + userData.lastName,
-                  photoURL: downloadURL,
-                });
-                await setDoc(doc(db, "users", res.user.uid), {
-                  uid: res.user.uid,
-                  firstName: userData.firstName,
-                  lastName: userData.lastName,
-                  mobileNumber: userData.mobileNumber,
-                  // email: userData.email,
-                  // password:  userData.password,
-                  gender: userData.gender,
-                  userType: userData.userType,
-                  photoURL: downloadURL,
-                });
-                setSignUpData(userData);
-              }
-            );
-          }
-        );
-
-        console.log(res);
-      } catch (error) {
-        console.log(error);
-      }
+      // try {
+      //   const res = await createUserWithEmailAndPassword(
+      //     auth,
+      //     userData.email,
+      //     userData.password
+      //   );
+      //   const storageRef = ref(storage, userData.firstName);
+      //   const uploadTask = uploadBytesResumable(
+      //     storageRef,
+      //     userData.profilePicture
+      //   );
+      //   uploadTask.on(
+      //     "state_changed",
+      //     (snapshot) => {
+      //       // Observe state change events such as progress, pause, and resume
+      //       // Get task progress, including the number of bytes uploaded and the total number of bytes to be uploaded
+      //       const progress =
+      //         (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+      //       console.log("Upload is " + progress + "% done");
+      //       switch (snapshot.state) {
+      //         case "paused":
+      //           console.log("Upload is paused");
+      //           break;
+      //         case "running":
+      //           console.log("Upload is running");
+      //           break;
+      //       }
+      //     },
+      //     (error) => {
+      //       // Handle unsuccessful uploads
+      //     },
+      //     () => {
+      //       // Handle successful uploads on complete
+      //       // For instance, get the download URL: https://firebasestorage.googleapis.com/...
+      //       getDownloadURL(uploadTask.snapshot.ref).then(
+      //         async (downloadURL) => {
+      //           // console.log('File available at', downloadURL);
+      //           await updateProfile(res.user, {
+      //             displayName: userData.firstName + " " + userData.lastName,
+      //             photoURL: downloadURL,
+      //           });
+      //           await setDoc(doc(db, "users", res.user.uid), {
+      //             uid: res.user.uid,
+      //             firstName: userData.firstName,
+      //             lastName: userData.lastName,
+      //             mobileNumber: userData.mobileNumber,
+      //             // email: userData.email,
+      //             // password:  userData.password,
+      //             gender: userData.gender,
+      //             userType: userData.userType,
+      //             photoURL: downloadURL,
+      //           });
+      //           setSignUpData(userData);
+      //         }
+      //       );
+      //     }
+      //   );
+      //   console.log(res);
+      // } catch (error) {
+      //   console.log(error);
+      // }
       // .then((userCredentials) => {
       //   const user = userCredentials.user;
       //   console.log(user);

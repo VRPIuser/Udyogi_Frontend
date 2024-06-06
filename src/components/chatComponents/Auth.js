@@ -1,10 +1,12 @@
 import { useState, useEffect } from "react";
 import { auth, provider } from "@/firebaseConfig/firebaseConfig";
 import { signInWithPopup, signOut } from "firebase/auth";
-import Button from "../UI/Button/Button";
 import Cookies from "universal-cookie";
+import Button from "@/components//UI/Button/Button";
+import MenuIcon from "@/components/UI/MenuIcon/MenuIcon";
+import Sidebar from "./SideHeader";
 
-const Auth = ({ setIsAuth }) => {
+const Auth = ({ setIsAuth, room, setRoom }) => {
   const [user, setUser] = useState(null);
 
   useEffect(() => {
@@ -36,6 +38,7 @@ const Auth = ({ setIsAuth }) => {
     try {
       await signOut(auth);
       cookies.set("auth-token", null);
+      setUser(null);
 
       setIsAuth(false);
     } catch (error) {
@@ -43,17 +46,34 @@ const Auth = ({ setIsAuth }) => {
     }
   };
 
+  const [showSidebar, setShowSidebar] = useState(false);
+
   return (
-    <div>
+    <div className="h-14 p-2 flex items-center bg-white border border-b-0">
       {user ? (
-        <div className="flex gap-4 my-2 w-full justify-end pr-4 items-center">
-          <p>Welcome, {user.displayName}</p>
-          <Button onClick={signOutHandler}>Sign Out</Button>
+        <div className="flex gap-4 w-full justify-between items-center pl-4">
+          <h2>{room}</h2>
+
+          <MenuIcon
+            action={() => setShowSidebar(!showSidebar)}
+            show={showSidebar}
+          />
         </div>
       ) : (
-        <div className="flex gap-4 my-4 w-full justify-end pr-4 items-center">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
           <Button onClick={signInWithGoogleHandler}>Sign In with Google</Button>
         </div>
+      )}
+      {user && (
+        <>
+          <Sidebar
+            setShowSidebar={setShowSidebar}
+            user={user}
+            showSidebar={showSidebar}
+            signOutHandler={signOutHandler}
+            setRoom={setRoom}
+          />
+        </>
       )}
     </div>
   );

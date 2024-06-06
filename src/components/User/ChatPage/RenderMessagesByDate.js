@@ -1,4 +1,3 @@
-import CustomImage from "@/components/UI/Image/Image";
 import formatDate from "@/hooks/formatDate";
 
 const { ChatMessage } = require("./ChatElements");
@@ -31,7 +30,7 @@ const RenderMessagesByDate = ({ sortMessagesByDate }) => {
     let renderDateHeading;
     if (messageDateString !== previousDate) {
       renderDateHeading = (
-        <div className="w-fit py-1 px-3 font-semibold text-center text-sm rounded-3xl border">
+        <div className="w-fit py-1 px-3 font-semibold text-center text-sm rounded-3xl border bg-white">
           {messageDateString}
         </div>
       );

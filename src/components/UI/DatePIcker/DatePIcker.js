@@ -58,7 +58,10 @@ const CustomDatePicker = ({
   };
 
   return (
-    <div>
+    <div
+      // style={{ width: "100%", minWidth: "" }}
+      className={style.mainContainer}
+    >
       <div className={style.container} style={DivStyles}>
         <DatePicker
           selected={selectedDate}

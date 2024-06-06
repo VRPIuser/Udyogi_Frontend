@@ -56,7 +56,8 @@ const DegreeDetails = ({
             Still Pursuing
           </label>
         </div>
-        <div className="flex flex-col sm:flex-row sm:gap-4 gap-0 ">
+        <div className="flex flex-col sm:flex-row md:flex-col lg:flex-row gap-4 ">
+          {/* <div className="flex flex-wrap gap-4 "> */}
           <CustomDatePicker
             onChange={degreeStartedOnInput.AssignValue}
             placeholderText="From"

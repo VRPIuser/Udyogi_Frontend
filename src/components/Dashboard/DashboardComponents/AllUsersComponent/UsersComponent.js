@@ -9,7 +9,7 @@ import Pagination from "@/components/UI/Pagination/Pagination";
 import usePagination from "@/hooks/use-Pagination";
 import { useEffect } from "react";
 
-const tableData = [
+const UsersTableData = [
   {
     id: "1",
     coordinator: "Pavan",
@@ -142,22 +142,24 @@ const UsersComponent = () => {
   const searchInput = useInput({ validateValue: ValueUndefinedValidations });
 
   const { currentItems, currentPage, itemsPerPage, paginate, totalItems } =
-    usePagination({ items: tableData, itemsPerPage: 8 });
+    usePagination({ items: UsersTableData, itemsPerPage: 8 });
 
   return (
     <div className="mt-4 p-4 bg-white rounded-lg">
       <div className={`${sharedClasses.flexCenter} mb-4`}>
         <h2 className="text-lg font-semibold">All Users</h2>
-        <div className="flex gap-4">
+        <div className="flex gap-4 flex-wrap">
           <SearchInput searchInput={searchInput} />
           <DateFilter />
-          <button className={`${sharedClasses.button}`}>Create Post</button>
+          <button className={`${sharedClasses.button}`}>Create user</button>
         </div>
       </div>
-      <UsersTable tableData={currentItems} />
+      <UsersTable UsersTableData={currentItems} />
       <div className="flex justify-between items-center">
         <span>
-          Showing data 1 to {itemsPerPage} of {tableData.length} entries
+          Showing data {1 + itemsPerPage * (currentPage - 1)} to{" "}
+          {currentItems.length + itemsPerPage * (currentPage - 1)} of{" "}
+          {UsersTableData.length} entries
         </span>
 
         <Pagination

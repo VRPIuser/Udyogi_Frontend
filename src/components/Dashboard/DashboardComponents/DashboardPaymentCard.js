@@ -2,7 +2,7 @@ import PercentageDisplay from "@/components/User/ProfilePageComponents/Percentag
 import React from "react";
 
 const cardClass =
-  "w-full min-w-80 rounded-lg overflow-hidden shadow-lg relative bg-white flex justify-end";
+  "w-full min-w-56 rounded-lg overflow-hidden shadow-lg relative bg-white flex justify-end ";
 const buttonClass =
   "w-fit bg-orange-500 text-white font-bold py-2 px-2 rounded-full uppercase text-sm border border-orange-700 hover:bg-orange-600 transition-all";
 
@@ -14,7 +14,7 @@ const iconStyle = { width: "36px", height: "36px" };
 const DashboardPaymentCard = () => {
   return (
     <div className={cardClass}>
-      <div className="absolute top-0 left-0 bg-white-500 p-4 w-3/4 h-full flex flex-col justify-between">
+      <div className="absolute top-0 left-0 bg-white-500 p-4 w-3/4 h-full flex flex-col justify-between ">
         {/* <button className={buttonClass}>Make Payment</button>
         <p className={textClass}>
           In turpis tempor suspendisse malesuada vivamus pellentesque ac
@@ -27,7 +27,7 @@ const DashboardPaymentCard = () => {
             <p className="text-xs">20 Mar 2024</p>
           </div>
           <div className="flex gap-2">
-            <PercentageDisplay percentage={50} radius={30} />
+            <PercentageDisplay percentage={80} radius={30} />
             <div>
               <p className="text-sm">Credits Used</p>
               <p className="text-xl font-bold">₹ 345</p>

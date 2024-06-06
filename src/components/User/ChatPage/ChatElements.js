@@ -1,5 +1,4 @@
 import HideExtraText from "@/components/UI/HideExtraText/HideExtraText";
-import CustomImage from "@/components/UI/Image/Image";
 import { auth } from "@/firebaseConfig/firebaseConfig";
 import formatDate from "@/hooks/formatDate";
 
@@ -44,7 +43,7 @@ export const ChatMessage = ({ chat }) => {
   //   chat.messageBy.toString().trim().toLowerCase() ===
   //   sender.id.toString().trim().toLowerCase();
 
-  const isUserLoggedIn = auth.currentUser.displayName === chat.user;
+  const isUserLoggedIn = auth.currentUser.uid === chat.uid;
 
   return (
     <div
@@ -55,8 +54,9 @@ export const ChatMessage = ({ chat }) => {
       <div
         className={`${
           isUserLoggedIn ? "bg-white" : "bg-orange-100"
-        } shadow rounded-lg py-2 px-2 max-w-xs relative`}
+        } shadow-lg rounded-lg py-2 px-2 max-w-xs relative`}
       >
+        <h4 className="text-xs">{chat.user}</h4>
         <p className="text-black">{chat.text}</p>
         <div className="w-full flex justify-end gap-2 h-4 items-center">
           <div className="h-fit text-xs">{formatDate(chat.createAt).time}</div>
@@ -85,13 +85,13 @@ export const ChatHead = ({}) => {
       <div className="p-4 bg-white dark:bg-gray-900 flex justify-between items-center border-b dark:border-gray-700">
         <div className="flex items-center gap-2">
           <div>
-            <span
+            {/* <span
               className={
                 "text-orange-500 font-bold text-3xl pt-1 bg-white border border-gray-300 w-12 h-12 inline-block rounded-full text-center leading-12"
               }
             >
               {receiver.name[0]}
-            </span>
+            </span> */}
           </div>
           <div className="w-full">
             <div className="flex justify-between w-full gap-2">
@@ -114,11 +114,13 @@ export const ChatHead = ({}) => {
       </div>
     );
   } else {
-    <div className="p-4 bg-white dark:bg-gray-900 flex justify-between items-center border-b dark:border-gray-700">
-      <div className="text-lg font-semibold">
-        {/* Chat Group Name · Location · Remote - Full-Time */}
+    return (
+      <div className="p-4 bg-white dark:bg-gray-900 flex justify-between items-center border-b dark:border-gray-700">
+        <div className="text-lg font-semibold">
+          {/* Chat Group Name · Location · Remote - Full-Time */}
+        </div>
+        <div className="text-gray-600 dark:text-gray-400 cursor-pointer">⋮</div>
       </div>
-      <div className="text-gray-600 dark:text-gray-400 cursor-pointer">⋮</div>
-    </div>;
+    );
   }
 };
