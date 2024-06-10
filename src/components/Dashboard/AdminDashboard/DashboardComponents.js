@@ -38,7 +38,7 @@ const AdminDashboardComponents = () => {
   ];
 
   return (
-    <div className="max-w-5xl w-full mx-auto px-4 py-8">
+    <div className="max-w-5xl w-full mx-auto">
       <div
         className="grid grid-cols-1 lg:grid-cols-2 mb-4 gap-4 h-fit"
         // className="flex gap-4 mb-4 min-h-60 flex-wrap"

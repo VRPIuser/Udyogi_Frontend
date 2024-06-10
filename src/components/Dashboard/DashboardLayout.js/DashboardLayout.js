@@ -16,7 +16,7 @@ const DashboardLayout = ({ children }) => {
             setShowSidebar={setShowSidebar}
             showSidebar={showSidebar}
           />
-          {children}
+          <div className="m-0 sm:m-4">{children}</div>
         </main>
       </div>
     </>

@@ -6,7 +6,7 @@ const { default: StatsCard } = require("../StatsCard");
 const AllUsersComponent = () => {
   return (
     <div
-      className="m-4 flex flex-col gap-4 overflow-hidden"
+      className="flex flex-col gap-4 overflow-hidden"
       style={{ height: "calc(100% - 80px - 4rem)" }}
     >
       <StatsCard statsData={UserStatsData} />

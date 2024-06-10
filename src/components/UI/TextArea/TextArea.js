@@ -5,12 +5,14 @@ const CustomTextArea = React.forwardRef(
   (
     {
       placeholder,
-      value,
-      onChange,
+      // value,
+      // onChange,
+      // onBlur = () => {},
+      // onFocus = () => {}
+      // ,
+      inputFields,
       className,
       style,
-      onBlur = () => {},
-      onFocus = () => {},
       mandatory, // Add a prop to indicate if the input is mandatory
       name,
       colorTheme,
@@ -27,10 +29,10 @@ const CustomTextArea = React.forwardRef(
       : combinedClassName;
 
     useEffect(() => {
-      if (value && value.trim() === "") {
+      if (inputFields.value && inputFields.value.trim() === "") {
         setIsTouched(false);
       }
-    }, [value]);
+    }, [inputFields.value]);
 
     const textareaRef = useRef();
 
@@ -54,12 +56,13 @@ const CustomTextArea = React.forwardRef(
     };
 
     const handleFocus = () => {
-      onFocus();
+      inputFields.focusHandler();
       handleTextareaFocus();
     };
 
     const handleBlur = () => {
-      onBlur();
+      // onBlur();
+      inputFields.validateValueHandler();
       handleTextareaBlur();
     };
 
@@ -70,8 +73,8 @@ const CustomTextArea = React.forwardRef(
           className={textareaClasses}
           // placeholder={placeholder || ""}
           name={name}
-          value={value}
-          onChange={onChange}
+          value={inputFields.value}
+          onChange={inputFields.valueChangeHandler}
           style={textareaStyles} // Don't wrap style in another object
           onFocus={handleFocus}
           onBlur={handleBlur}
@@ -79,7 +82,9 @@ const CustomTextArea = React.forwardRef(
         />
         <label
           className={` ${
-            isTouched || value !== "" ? styles.transition : styles.placeholder
+            isTouched || inputFields.value !== ""
+              ? styles.transition
+              : styles.placeholder
           } transition-all `}
           onClick={handleLabelClick}
         >

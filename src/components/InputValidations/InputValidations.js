@@ -25,6 +25,10 @@ export const descriptionValidation = (value) => {
   return value.trim().length >= 5 && value.trim().length <= 200;
 };
 
+export const NumberValidation = (value) => {
+  return value !== undefined && value !== null && /^\d+(\.\d+)?$/.test(value);
+};
+
 const mobileNumberValidation = (value) => {
   // Add your validation logic for mobile number here
   return value.trim() !== "" && /^\d{10}$/.test(value); // Example: Not empty and exactly 10 digits

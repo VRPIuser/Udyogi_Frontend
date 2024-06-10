@@ -5,14 +5,17 @@ import AllJobsTable from "./AllJobsTable";
 import usePagination from "@/hooks/use-Pagination";
 import Pagination from "@/components/UI/Pagination/Pagination";
 import StatsCard from "../StatsCard";
+import { useRouter } from "next/router";
 
 const AllPostsComponent = () => {
   const { paginate, itemsPerPage, currentItems, currentPage, totalItems } =
     usePagination({ items: JobPostsData, itemsPerPage: 6 });
 
+  const router = useRouter();
+
   return (
     <div
-      className="m-4 flex flex-col gap-4 overflow-hidden"
+      className="flex flex-col gap-4 overflow-hidden"
       style={{ height: "calc(100% - 80px - 4rem)" }}
     >
       <StatsCard statsData={JobStatsData} />
@@ -22,7 +25,14 @@ const AllPostsComponent = () => {
         <div>
           <div className={`${sharedClasses.flexCenter} mb-4`}>
             <h2 className="text-lg font-semibold">Recent Job Posts</h2>
-            <button className={`${sharedClasses.button}`}>Create Post</button>
+            <button
+              className={`${sharedClasses.button}`}
+              onClick={() => {
+                router.push("/dashboard/admin/posts/create-post");
+              }}
+            >
+              Create Post
+            </button>
           </div>
 
           <AllJobsTable tableData={currentItems} />
