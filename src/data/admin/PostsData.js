@@ -1,3 +1,5 @@
+import Skills from "@/components/Signup/Preferences/skills";
+
 export const JobStatsData = [
   {
     title: "Active Posts",
@@ -27,6 +29,7 @@ export const JobPostsData = [
     dateOfPost: "02/03/2024",
     coordinator: "Sushritha",
     status: "Active",
+    Skills: ["figma", "canvas", "System design"],
   },
   {
     id: "0002",
@@ -38,6 +41,7 @@ export const JobPostsData = [
     dateOfPost: "02/03/2024",
     coordinator: "Sushritha",
     status: "Inactive",
+    skills: ["figma", "canvas", "System design"],
   },
   {
     id: "0003",
@@ -49,6 +53,7 @@ export const JobPostsData = [
     dateOfPost: "02/03/2024",
     coordinator: "Sushritha",
     status: "Active",
+    skills: ["figma", "canvas", "System design"],
   },
   {
     id: "0004",
@@ -60,6 +65,7 @@ export const JobPostsData = [
     dateOfPost: "01/03/2024",
     coordinator: "Ankita",
     status: "Active",
+    skills: ["HTML", "CSS", "JavaScript", "React"],
   },
   {
     id: "0005",
@@ -71,6 +77,12 @@ export const JobPostsData = [
     dateOfPost: "28/02/2024",
     coordinator: "Rajesh",
     status: "Inactive",
+    skills: [
+      "node.js",
+      "express.js",
+      "API understanding",
+      "Database management",
+    ],
   },
   {
     id: "0006",
@@ -82,6 +94,7 @@ export const JobPostsData = [
     dateOfPost: "27/02/2024",
     coordinator: "Priya",
     status: "Active",
+    skills: ["AWS", "Azure", "EC2"],
   },
   {
     id: "0007",
@@ -93,6 +106,7 @@ export const JobPostsData = [
     dateOfPost: "26/02/2024",
     coordinator: "Vikram",
     status: "Inactive",
+    skills: ["Python", "Numpy", "Pandas"],
   },
   {
     id: "0008",
@@ -104,6 +118,7 @@ export const JobPostsData = [
     dateOfPost: "25/02/2024",
     coordinator: "Anjali",
     status: "Active",
+    skills: ["Python", "Numpy", "Pandas"],
   },
   {
     id: "0009",
@@ -115,6 +130,7 @@ export const JobPostsData = [
     dateOfPost: "24/02/2024",
     coordinator: "Rohit",
     status: "Active",
+    skills: ["figma", "canvas", "System design"],
   },
   {
     id: "0010",
@@ -126,6 +142,7 @@ export const JobPostsData = [
     dateOfPost: "23/02/2024",
     coordinator: "Sneha",
     status: "Inactive",
+    skills: ["figma", "canvas", "System design"],
   },
   {
     id: "0011",
@@ -137,6 +154,7 @@ export const JobPostsData = [
     dateOfPost: "22/02/2024",
     coordinator: "Abhishek",
     status: "Active",
+    skills: ["figma", "canvas", "System design"],
   },
   {
     id: "0012",
@@ -148,6 +166,7 @@ export const JobPostsData = [
     dateOfPost: "21/02/2024",
     coordinator: "Nidhi",
     status: "Inactive",
+    skills: ["figma", "canvas", "System design"],
   },
   {
     id: "0013",
@@ -159,6 +178,7 @@ export const JobPostsData = [
     dateOfPost: "20/02/2024",
     coordinator: "Karthik",
     status: "Active",
+    skills: ["figma", "canvas", "System design"],
   },
   {
     id: "0014",
@@ -170,6 +190,7 @@ export const JobPostsData = [
     dateOfPost: "19/02/2024",
     coordinator: "Megha",
     status: "Inactive",
+    skills: ["figma", "canvas", "System design"],
   },
   {
     id: "0015",
@@ -181,5 +202,9 @@ export const JobPostsData = [
     dateOfPost: "18/02/2024",
     coordinator: "Gaurav",
     status: "Active",
+    skills: ["figma", "canvas", "System design"],
+    location: "Hyderabad",
+    jobType: "Remote",
+    workMode: "",
   },
 ];

@@ -1,3 +1,6 @@
+import formatDate from "@/hooks/formatDate";
+import { useRouter } from "next/router";
+
 const AllJobsTable = ({ tableData }) => {
   const tableClasses = "min-w-full bg-white shadow-md rounded-lg";
   const thClasses = "py-3 px-1 text-sm font-medium";
@@ -7,6 +10,8 @@ const AllJobsTable = ({ tableData }) => {
   const rowClasses = "border-b border-zinc-200 hover:bg-zinc-100";
   const headerRowClasses = "border-b border-zinc-200 text-zinc-400 text-sm";
   const fontClasses = "text-zinc-600 text-sm font-light";
+
+  const router = useRouter();
 
   return (
     <div className="overflow-y-auto">
@@ -26,25 +31,31 @@ const AllJobsTable = ({ tableData }) => {
         </thead>
         <tbody className={fontClasses}>
           {tableData.map((rowData, index) => (
-            <tr key={index} className={rowClasses}>
+            <tr
+              key={index}
+              className={rowClasses}
+              onClick={() => {
+                router.push(`/dashboard/admin/posts/${rowData.jobId}`);
+              }}
+            >
               <td className={`${tdClasses} text-left whitespace-nowrap`}>
-                {rowData.id}
+                {rowData.jobId}
               </td>
               <td className={`${tdClasses} text-left whitespace-nowrap`}>
-                {rowData.title}
+                {rowData.jobTitle}
               </td>
               <td className={`${tdClasses} text-center whitespace-nowrap`}>
-                {rowData.experience}
+                {`${rowData.expectedExperience.lowerLimit} - ${rowData.expectedExperience.upperLimit} ${rowData.expectedExperience.experienceMetrics}`}
               </td>
               <td className={`${tdClasses} text-center whitespace-nowrap`}>
-                {rowData.salary}
+                {`${rowData.salaryRange.lowerLimit} - ${rowData.salaryRange.upperLimit} ${rowData.salaryRange.salaryType}`}
               </td>
               <td className={`${tdClasses} text-center`}>{rowData.openings}</td>
               <td className={`${tdClasses} text-center`}>
-                {rowData.applications}
+                {rowData.applicants.length}
               </td>
               <td className={`${tdClasses} text-center`}>
-                {rowData.dateOfPost}
+                {formatDate(rowData.postedDate).date}
               </td>
               <td className={`${tdClasses} text-center`}>
                 {rowData.coordinator}

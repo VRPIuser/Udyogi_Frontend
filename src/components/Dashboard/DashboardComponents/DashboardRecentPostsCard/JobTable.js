@@ -1,3 +1,5 @@
+import formatDate from "@/hooks/formatDate";
+
 const JobTable = ({ tableData }) => {
   const tableClasses = "min-w-full bg-white shadow-md rounded-lg";
   const thClasses = "py-3 px-1 text-sm font-medium";
@@ -24,14 +26,14 @@ const JobTable = ({ tableData }) => {
           {tableData.map((rowData, index) => (
             <tr key={index} className={rowClasses}>
               <td className={`${tdClasses} text-left whitespace-nowrap`}>
-                {rowData.title}
+                {rowData.jobTitle}
               </td>
               <td className={`${tdClasses} text-center`}>
-                {rowData.dateOfPost}
+                {formatDate(rowData.postedDate).date}
               </td>
               <td className={`${tdClasses} text-center`}>{rowData.openings}</td>
               <td className={`${tdClasses} text-center`}>
-                {rowData.applications}
+                {rowData.applicants.length}
               </td>
               <td className={`${tdClasses} text-center`}>
                 <span

@@ -1,8 +1,26 @@
 import { JobPostsData } from "@/data/admin/PostsData";
 import sharedClasses from "../DashboardClasses";
 import JobTable from "./JobTable";
+import { useEffect, useState } from "react";
+import ConvertToValueUsedForCondition from "@/hooks/ConvertToValueUsedForCondition";
+import { LatestJobsData } from "@/data/Jobs";
 
 const DashboardRecentPostsCard = () => {
+  const [jobPostsData, setJobPostsData] = useState([]);
+
+  useEffect(() => {
+    let companyId = "1";
+
+    setJobPostsData(
+      LatestJobsData.filter(
+        (job) =>
+          ConvertToValueUsedForCondition(job.companyDetails.id) ===
+          ConvertToValueUsedForCondition(companyId)
+      )
+    );
+    console.log(jobPostsData);
+  }, [LatestJobsData]);
+
   return (
     <div className={`${sharedClasses.cardContainer}`}>
       <div className={`${sharedClasses.flexCenter} mb-4`}>
@@ -13,7 +31,7 @@ const DashboardRecentPostsCard = () => {
     
         <span>No data is previewed</span>
       </div> */}
-      <JobTable tableData={JobPostsData} />
+      <JobTable tableData={jobPostsData} />
     </div>
   );
 };

@@ -2,7 +2,7 @@ import { ABCTechnologies, DataCrunchersInc, VRPIGroup } from "./CompaniesData";
 
 export const LatestJobsData = [
   {
-    jobId: "1",
+    jobId: "001",
     jobTitle: "Software Engineer",
     location: "Hyderabad",
     workType: "Remote",
@@ -32,11 +32,13 @@ export const LatestJobsData = [
       requirements:
         "Be heavily involved in turning user stories into testable, maintainable and high-quality code. This is a hands-on code design and coding role!\n\nBe a valued member of an autonomous, cross-functional team delivering our messaging experience to businesses around the world.\n\nPromote and share knowledge for improvement of methodologies and best practices.\n\nClose-knitted collaboration with equally passionate team members having fun at work and feeling proud that you are a key part of creating world-class solutions for customer engagement.",
     },
-
+    openings: "4",
+    status: "active",
+    coordinator: "Ganga Prakash",
     companyDetails: VRPIGroup,
   },
   {
-    jobId: "2",
+    jobId: "002",
 
     jobTitle: "Data Analyst",
     location: "Bangalore",
@@ -46,7 +48,8 @@ export const LatestJobsData = [
     careerLevel: "Junior",
     postedDate: "2022-01-15T08:30:00",
     qualification: "Bachelor Degree",
-
+    status: "active",
+    coordinator: "Ganga Prakash",
     shortDescriptionData:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer ullamcorper nisl ut nunc ullamcorper, ac consectetur magna luctus.",
     expectedSkills: ["SQL", "Python", "Data Visualization"],
@@ -62,6 +65,7 @@ export const LatestJobsData = [
       currency: "INR",
       salaryType: "LPA",
     },
+    openings: "4",
 
     applicants: ["1", "2", "3", "4", "5", "6"],
     expectedExperience: {
@@ -79,7 +83,7 @@ export const LatestJobsData = [
     companyDetails: VRPIGroup,
   },
   {
-    jobId: "3",
+    jobId: "003",
 
     jobTitle: "UX Designer",
     location: "Bangalore",
@@ -88,7 +92,8 @@ export const LatestJobsData = [
     shift: "Night",
     careerLevel: "Junior",
     qualification: "Bachelor Degree",
-
+    status: "active",
+    coordinator: "Ganga Prakash",
     postedDate: "2022-01-15T08:30:00",
     shortDescriptionData:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer ullamcorper nisl ut nunc ullamcorper, ac consectetur magna luctus.",
@@ -105,6 +110,7 @@ export const LatestJobsData = [
       currency: "INR",
       salaryType: "LPA",
     },
+    openings: "4",
 
     applicants: ["1", "2", "3", "4", "5", "6"],
     expectedExperience: {
@@ -121,7 +127,7 @@ export const LatestJobsData = [
     companyDetails: ABCTechnologies,
   },
   {
-    jobId: "4",
+    jobId: "004",
     careerLevel: "Senior",
 
     jobTitle: "Frontend Developer",
@@ -130,7 +136,8 @@ export const LatestJobsData = [
     jobType: "freelancer",
     shift: "Rotational",
     qualification: "Bachelor Degree",
-
+    status: "active",
+    coordinator: "Ganga Prakash",
     postedDate: "2022-01-15T08:30:00",
     shortDescriptionData:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer ullamcorper nisl ut nunc ullamcorper, ac consectetur magna luctus.",
@@ -147,6 +154,7 @@ export const LatestJobsData = [
       currency: "INR",
       salaryType: "LPA",
     },
+    openings: "4",
 
     applicants: ["1", "2", "3", "4", "5", "6"],
     expectedExperience: {
@@ -163,7 +171,7 @@ export const LatestJobsData = [
     companyDetails: ABCTechnologies,
   },
   {
-    jobId: "5",
+    jobId: "005",
     careerLevel: "Junior",
 
     jobTitle: "Backend Developer",
@@ -172,7 +180,8 @@ export const LatestJobsData = [
     jobType: "Contract",
     shift: "Day",
     qualification: "Bachelor Degree",
-
+    status: "active",
+    coordinator: "Ganga Prakash",
     postedDate: "2022-01-15T08:30:00",
     shortDescriptionData:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer ullamcorper nisl ut nunc ullamcorper, ac consectetur magna luctus.",
@@ -189,6 +198,7 @@ export const LatestJobsData = [
       currency: "INR",
       salaryType: "LPA",
     },
+    openings: "4",
 
     applicants: ["1", "2", "3", "4", "5", "6"],
     expectedExperience: {
@@ -205,7 +215,7 @@ export const LatestJobsData = [
     companyDetails: DataCrunchersInc,
   },
   {
-    jobId: "6",
+    jobId: "006",
     jobTitle: "Product Manager",
     location: "Gurgaon",
     workType: "Hybrid",
@@ -213,7 +223,7 @@ export const LatestJobsData = [
     shift: "Rotational",
     careerLevel: "Senior",
     qualification: "Bachelor Degree",
-
+    openings: "4",
     postedDate: "2022-01-15T08:30:00",
     shortDescriptionData:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer ullamcorper nisl ut nunc ullamcorper, ac consectetur magna luctus.",
@@ -241,5 +251,7 @@ export const LatestJobsData = [
         "Be heavily involved in turning user stories into testable, maintainable and high-quality code. This is a hands-on code design and coding role!\n\nBe a valued member of an autonomous, cross-functional team delivering our messaging experience to businesses around the world.\n\nPromote and share knowledge for improvement of methodologies and best practices.\n\nClose-knitted collaboration with equally passionate team members having fun at work and feeling proud that you are a key part of creating world-class solutions for customer engagement.",
     },
     companyDetails: DataCrunchersInc,
+    status: "active",
+    coordinator: "Ganga Prakash",
   },
 ];
