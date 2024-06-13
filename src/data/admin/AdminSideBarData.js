@@ -24,10 +24,10 @@ export const AdminSideBarData = () => {
     },
     {
       icon: "quantity.png",
-      text: "All Users",
-      link: "/dashboard/admin/all-users",
+      text: "All Recruiters",
+      link: "/dashboard/admin/all-recruiters",
       action: () => {
-        router.push("/dashboard/admin/all-users");
+        router.push("/dashboard/admin/all-recruiters");
       },
     },
     {

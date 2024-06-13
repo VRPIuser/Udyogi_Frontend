@@ -1,11 +1,11 @@
-export const UserStatsData = [
+export const RecruitersStatsData = [
   {
-    title: "Active Users",
+    title: "Active Recruiters",
     count: 54,
     icon: "live.png",
   },
   {
-    title: "Inactive Users",
+    title: "Inactive Recruiters",
     count: 54,
     icon: "inActive.png",
   },

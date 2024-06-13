@@ -1,10 +1,10 @@
-import AllUsersComponent from "@/components/Dashboard/DashboardComponents/Users/AllUsersComponent";
+import AllRecruitersComponent from "@/components/Dashboard/DashboardComponents/Recruiters/AllRecruitersComponent";
 import DashboardLayout from "@/components/Dashboard/DashboardLayout.js/DashboardLayout";
 
 const AllUsers = () => {
   return (
     <DashboardLayout>
-      <AllUsersComponent />
+      <AllRecruitersComponent />
     </DashboardLayout>
   );
 };

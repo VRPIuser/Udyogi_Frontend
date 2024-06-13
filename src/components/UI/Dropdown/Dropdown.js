@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import styles from "./Dropdown.module.css";
 import Image from "next/image";
 import CustomImage from "../Image/Image";
+import HideExtraText from "../HideExtraText/HideExtraText";
 
 const Dropdown = ({
   options,
@@ -39,6 +40,7 @@ const Dropdown = ({
   const handleDeselect = () => {
     setSelectedOption(null);
     setIsOpen(false);
+    onSelect(null);
   };
 
   const InputStyles = {
@@ -92,7 +94,9 @@ const Dropdown = ({
             </li>
           ))}
           {selectedOption && ( // Render deselect option if an option is selected
-            <li onClick={handleDeselect}>Clear Selection</li>
+            <li onClick={handleDeselect} className="bg-zinc-300">
+              Clear Selection
+            </li>
           )}
         </ul>
       )}

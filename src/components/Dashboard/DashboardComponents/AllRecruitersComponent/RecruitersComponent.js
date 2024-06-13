@@ -1,15 +1,13 @@
-import UsersTable from "./UsersTable";
+import RecruitersTable from "./RecruitersTable";
 import sharedClasses from "../DashboardClasses";
 import SearchInput from "@/components/UI/SearchInput/SearchInput";
 import useInput from "@/hooks/use-Input";
 import { ValueUndefinedValidations } from "@/components/InputValidations/InputValidations";
-import Dropdown from "@/components/UI/Dropdown/Dropdown";
-import { colorTheme } from "../../../../../constants";
 import Pagination from "@/components/UI/Pagination/Pagination";
 import usePagination from "@/hooks/use-Pagination";
 import { useEffect } from "react";
 
-const UsersTableData = [
+const RecruitersTableData = [
   {
     id: "1",
     coordinator: "Pavan",
@@ -138,28 +136,30 @@ const UsersTableData = [
   },
 ];
 
-const UsersComponent = () => {
+const RecruitersComponent = () => {
   const searchInput = useInput({ validateValue: ValueUndefinedValidations });
 
   const { currentItems, currentPage, itemsPerPage, paginate, totalItems } =
-    usePagination({ items: UsersTableData, itemsPerPage: 8 });
+    usePagination({ items: RecruitersTableData, itemsPerPage: 8 });
 
   return (
-    <div className="mt-4 p-4 bg-white rounded-lg">
+    <div className="p-4 bg-white rounded-lg">
       <div className={`${sharedClasses.flexCenter} mb-4`}>
-        <h2 className="text-lg font-semibold">All Users</h2>
+        <h2 className="text-lg font-semibold">All Recruiters</h2>
         <div className="flex gap-4 flex-wrap">
           <SearchInput searchInput={searchInput} />
           <DateFilter />
-          <button className={`${sharedClasses.button}`}>Create user</button>
+          <button className={`${sharedClasses.button}`}>
+            Create recruiter
+          </button>
         </div>
       </div>
-      <UsersTable UsersTableData={currentItems} />
+      <RecruitersTable RecruitersTableData={currentItems} />
       <div className="flex justify-between items-center">
         <span>
           Showing data {1 + itemsPerPage * (currentPage - 1)} to{" "}
           {currentItems.length + itemsPerPage * (currentPage - 1)} of{" "}
-          {UsersTableData.length} entries
+          {RecruitersTableData.length} entries
         </span>
 
         <Pagination
@@ -172,7 +172,7 @@ const UsersComponent = () => {
   );
 };
 
-export default UsersComponent;
+export default RecruitersComponent;
 
 const DateFilter = () => {
   const DateFilterInput = useInput({

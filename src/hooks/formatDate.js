@@ -85,7 +85,7 @@ export default function formatDate(dateString) {
   const formattedTime =
     hour !== null && minute !== null ? formatTime(date) : null;
 
-  return { date: formattedDate, time: formattedTime };
+  return { date: formattedDate, time: formattedTime, year: year };
 }
 
 function formatTime(date) {

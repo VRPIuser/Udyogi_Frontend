@@ -1,4 +1,4 @@
-const UsersTable = ({ UsersTableData }) => {
+const RecruitersTable = ({ RecruitersTableData }) => {
   const tableClasses = "min-w-full bg-white rounded-lg";
   const thClasses = "py-3 px-1 text-sm font-medium";
   const tdClasses = "py-3 px-1 text-xs font-semibold";
@@ -30,7 +30,7 @@ const UsersTable = ({ UsersTableData }) => {
           </tr>
         </thead>
         <tbody className={fontClasses}>
-          {UsersTableData?.map((rowData, index) => (
+          {RecruitersTableData?.map((rowData, index) => (
             <tr key={index} className={rowClasses}>
               <td className={`${tdClasses} text-left whitespace-nowrap`}>
                 {rowData.id}
@@ -68,4 +68,4 @@ const UsersTable = ({ UsersTableData }) => {
     </div>
   );
 };
-export default UsersTable;
+export default RecruitersTable;

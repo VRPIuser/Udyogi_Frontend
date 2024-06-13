@@ -17,7 +17,7 @@ const JobCard = ({ job }) => {
   ];
 
   return (
-    <div className="max-w-5xl mx-auto p-4 pl-8 pt-8 bg-white rounded-lg shadow-md">
+    <div className="max-w-5xl mt-4 mx-auto p-4 pl-8 pt-8 bg-white rounded-lg shadow-md">
       <div className="flex justify-between items-center">
         <div>
           <h2 className="text-3xl font-bold text-gray-800">

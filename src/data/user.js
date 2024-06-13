@@ -23,6 +23,7 @@ const UserData = {
         startDate: "2022-01-27",
         endDate: "2024-08-01",
         latestExperience: true,
+        verified: false,
       },
       {
         companyName: "TCS",
@@ -32,6 +33,7 @@ const UserData = {
         startDate: "2022-01-27",
         endDate: "2024-08-01",
         latestExperience: true,
+        verified: true,
       },
     ],
   },
@@ -43,6 +45,7 @@ const UserData = {
       startDate: "2017-06-27",
       endDate: "2021-08-01",
       latestDegree: true,
+      verified: true,
     },
     {
       degree: "Bachelor of Technology",
@@ -51,6 +54,7 @@ const UserData = {
       startDate: "2017-06-27",
       endDate: "2021-08-01",
       latestDegree: false,
+      verified: true,
     },
   ],
 

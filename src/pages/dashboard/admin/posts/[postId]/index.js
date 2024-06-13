@@ -1,6 +1,7 @@
 import ApplicationsTable from "@/components/Dashboard/DashboardComponents/Posts/JobPostDetailsComponent/ApplicationsTable";
 import JobCard from "@/components/Dashboard/DashboardComponents/Posts/JobPostDetailsComponent/JobCard";
 import DashboardLayout from "@/components/Dashboard/DashboardLayout.js/DashboardLayout";
+import GoBackWithText from "@/components/UI/GoBackWithText/GoBackWithText";
 import CustomImage from "@/components/UI/Image/Image";
 import { LatestJobsData } from "@/data/Jobs";
 import { JobPostsData } from "@/data/admin/PostsData";
@@ -30,22 +31,7 @@ const PostDetailsPage = () => {
     <DashboardLayout>
       {post && (
         <div className="max-w-5xl mx-auto">
-          <div className="flex gap-2 items-center justify-start mb-4">
-            <CustomImage
-              src={`/assets/icons/down.png`}
-              alt="back_btn"
-              width={25}
-              height={25}
-              className="rotate-90 min-w-6 min-y-6 "
-              classForDiv={
-                "hover:bg-zinc-100 rounded-full p-2 transition-all active:scale-75"
-              }
-              onClick={() => {
-                router.push("/dashboard/admin/posts");
-              }}
-            />
-            <h2 className="text-2xl font-bold">Job Post-info</h2>
-          </div>
+          <GoBackWithText text={"Job Post-info"} />
           <JobCard job={post} />
           <ApplicationsTable />
         </div>

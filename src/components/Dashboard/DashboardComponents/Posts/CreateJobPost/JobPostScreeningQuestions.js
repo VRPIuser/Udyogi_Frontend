@@ -69,19 +69,25 @@ const JobPostScreeningQuestions = () => {
               maxWidth: "500px",
             }}
           />
-          <Button className={""} onClick={HandleInputQuestions}>
-            Add
-          </Button>
-          <button
-            className={
-              "bg-white border border-orange-500 rounded-sm px-6 py-2 hover:bg-zinc-100 transition-all"
-            }
-            onClick={() => {
-              setAdd(false);
-            }}
-          >
-            cancel
-          </button>
+          <div className="grid grid-cols-2 gap-4">
+            <Button
+              className={""}
+              onClick={HandleInputQuestions}
+              disabled={screeningQuestionsInput.value.length < 2}
+            >
+              Add
+            </Button>
+            <button
+              className={
+                "bg-white border border-orange-500 rounded-sm px-6 py-2 hover:bg-zinc-100 transition-all"
+              }
+              onClick={() => {
+                setAdd(false);
+              }}
+            >
+              cancel
+            </button>
+          </div>
         </div>
       ) : (
         <span

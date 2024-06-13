@@ -2,10 +2,9 @@ import React from "react";
 import DashboardCard from "../DashboardComponents/DashboardCard";
 import DashboardStatsCard from "../DashboardComponents/DashboardStatsCard";
 import DashboardRecentPostsCard from "../DashboardComponents/DashboardRecentPostsCard/DashboardRecentPostsCard";
-import Sidebar from "../DashboardLayout.js/SideHeader";
 import DashboardPaymentCard from "../DashboardComponents/DashboardPaymentCard";
 import DashboardHiringGraph from "../DashboardComponents/DashboardHiringGraph";
-import UsersComponent from "../DashboardComponents/AllUsersComponent/UsersComponent";
+import RecruitersComponent from "../DashboardComponents/AllRecruitersComponent/RecruitersComponent";
 
 const AdminDashboardComponents = () => {
   const DashboardCardData = [
@@ -54,11 +53,11 @@ const AdminDashboardComponents = () => {
           <DashboardCard title={card.title} count={card.count} key={index} />
         ))}
       </div>
-      <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
+      <div className="grid grid-cols-1 gap-4 lg:grid-cols-2 mb-4">
         <DashboardStatsCard />
         <DashboardRecentPostsCard />
       </div>
-      <UsersComponent />
+      <RecruitersComponent />
     </div>
   );
 };
