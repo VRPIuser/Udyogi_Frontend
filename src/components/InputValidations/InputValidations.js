@@ -39,6 +39,21 @@ const emailValidation = (value) => {
   return value.trim() !== "" && /^\S+@\S+\.\S+$/.test(value); // Example: Not empty and follows email format
 };
 
+export const urlValidation = (value) => {
+  // Add your validation logic for URL here
+  const urlPattern = new RegExp(
+    "^(https?:\\/\\/)?" + // Protocol
+      "((([a-zA-Z0-9$-_.+!*'(),]|%[0-9a-fA-F]{2})+)(:([a-zA-Z0-9$-_.+!*'(),]|%[0-9a-fA-F]{2})+)?@)?" + // User:pass
+      "(((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?))" + // IP address
+      "|((([a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,}))" + // Domain name
+      "(\\:[0-9]{1,5})?" + // Port number
+      "(\\/($|[a-zA-Z0-9$-_.+!*'(),;:@&=/?%#]*)?$)",
+    "i"
+  ); // Path and query string
+
+  return value.trim() !== "" && urlPattern.test(value); // Example: Not empty and follows URL format
+};
+
 const aadhaarValidation = (value) => {
   // Add your validation logic for Aadhaar number here
   return value.trim() !== "" && /^\d{12}$/.test(value); // Example: Not empty and exactly 12 digits

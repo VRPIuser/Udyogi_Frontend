@@ -85,7 +85,7 @@ const CustomTextArea = React.forwardRef(
             isTouched || inputFields.value !== ""
               ? styles.transition
               : styles.placeholder
-          } transition-all `}
+          } transition-all`}
           onClick={handleLabelClick}
         >
           {placeholder}{" "}

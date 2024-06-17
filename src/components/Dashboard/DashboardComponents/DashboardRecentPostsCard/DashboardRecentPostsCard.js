@@ -4,6 +4,7 @@ import JobTable from "./JobTable";
 import { useEffect, useState } from "react";
 import ConvertToValueUsedForCondition from "@/hooks/ConvertToValueUsedForCondition";
 import { LatestJobsData } from "@/data/Jobs";
+import { useRouter } from "next/router";
 
 const DashboardRecentPostsCard = () => {
   const [jobPostsData, setJobPostsData] = useState([]);
@@ -21,11 +22,20 @@ const DashboardRecentPostsCard = () => {
     console.log(jobPostsData);
   }, [LatestJobsData]);
 
+  const router = useRouter();
+
   return (
     <div className={`${sharedClasses.cardContainer}`}>
       <div className={`${sharedClasses.flexCenter} mb-4`}>
         <h2 className="text-lg font-semibold">Recent Job Posts</h2>
-        <button className={`${sharedClasses.button}`}>Create Post</button>
+        <button
+          onClick={() => {
+            router.push("/dashboard/admin/posts/create-post");
+          }}
+          className={`${sharedClasses.button}`}
+        >
+          Create Post
+        </button>
       </div>
       {/* <div className="text-center py-12">
     
